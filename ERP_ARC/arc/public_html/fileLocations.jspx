@@ -1,0 +1,1413 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.1">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{fileLocations.filelocations}" id="Doc1"
+                 title="#{menu.resourceLabelMap['menu.fileLocations']}" uncommittedDataWarning="on">
+      <af:messages id="m1"/>
+      <af:form id="form1">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute name="pageTitle" value="#{menu.resourceLabelMap['menu.fileLocations']}"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1" layout="scroll">
+              <af:inputText value="#{bindings.DepartmentsPk.inputValue}"
+                            required="#{bindings.DepartmentsPk.hints.mandatory}"
+                            columns="#{bindings.DepartmentsPk.hints.displayWidth}"
+                            maximumLength="#{bindings.DepartmentsPk.hints.precision}"
+                            shortDesc="#{bindings.DepartmentsPk.hints.tooltip}" id="it6"
+                            partialTriggers="pc1:HcmFileLocationDepartmentsView" rendered="false">
+                <f:validator binding="#{bindings.DepartmentsPk.validator}"/>
+                <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentsPk.format}"/>
+              </af:inputText>
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.Department']}">
+                <af:panelGroupLayout id="pgl15">
+                  <af:panelStretchLayout dimensionsFrom="children" id="psl16" styleClass="AFStretchWidth">
+                    <f:facet name="center">
+                      <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc1"
+                                          styleClass="AFStretchWidth">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb1">
+                            <af:commandButton actionListener="#{bindings.Rollback.execute}" icon="#{menu.rollbackIcon}"
+                                              id="rb1" immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.rollback']}"
+                                              styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                              <af:resetActionListener/>
+                            </af:commandButton>
+                            <af:spacer width="5"/>
+                            <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print1"
+                                              immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.print']}"
+                                              styleClass="printButton" visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer width="5"/>
+                            <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel1"
+                                              immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.excel']}"
+                                              styleClass="excelButton" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="HcmFileLocationDepartmentsView" to="#{sessionScope.tableId}"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer width="5"/>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                  columnStretching="column:DisplayDepartmentsPk" displayRow="selected"
+                                  editingMode="editAll"
+                                  emptyText="#{bindings.HcmFileLocationDepartmentsView.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  fetchSize="#{bindings.HcmFileLocationDepartmentsView.rangeSize}"
+                                  filterModel="#{bindings.HcmFileLocationDepartmentsViewQuery.queryDescriptor}"
+                                  filterVisible="false" id="HcmFileLocationDepartmentsView"
+                                  queryListener="#{bindings.HcmFileLocationDepartmentsViewQuery.processQuery}"
+                                  rowBandingInterval="1" rowSelection="single"
+                                  rows="#{bindings.HcmFileLocationDepartmentsView.rangeSize}" scrollPolicy="page"
+                                  selectedRowKeys="#{bindings.HcmFileLocationDepartmentsView.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.HcmFileLocationDepartmentsView.collectionModel.makeCurrent}"
+                                  styleClass="AFStretchWidth"
+                                  value="#{bindings.HcmFileLocationDepartmentsView.collectionModel}" var="row"
+                                  varStatus="vs" verticalGridVisible="false">
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentsPk']}"
+                                     id="DepartmentsPk" sortProperty="DepartmentsPk" sortable="true" width="200">
+                            <af:inputText columns="#{bindings.HcmFileLocationDepartmentsView.hints.DepartmentsPk.displayWidth}"
+                                          id="it1"
+                                          label="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentsPk']}"
+                                          maximumLength="#{bindings.HcmFileLocationDepartmentsView.hints.DepartmentsPk.precision}"
+                                          readOnly="true"
+                                          required="#{bindings.HcmFileLocationDepartmentsView.hints.DepartmentsPk.mandatory}"
+                                          value="#{row.bindings.DepartmentsPk.inputValue}">
+                              <f:validator binding="#{row.bindings.DepartmentsPk.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.HcmFileLocationDepartmentsView.hints.DepartmentsPk.format}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentName']}"
+                                     id="DisplayDepartmentsPk" sortProperty="DisplayDepartmentsPkSearch" sortable="true"
+                                     width="200">
+                            <af:inputText columns="#{bindings.HcmFileLocationDepartmentsView.hints.DisplayDepartmentsPk.displayWidth}"
+                                          id="it2"
+                                          label="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentName']}"
+                                          maximumLength="#{bindings.HcmFileLocationDepartmentsView.hints.DisplayDepartmentsPk.precision}"
+                                          readOnly="true"
+                                          required="#{bindings.HcmFileLocationDepartmentsView.hints.DisplayDepartmentsPk.mandatory}"
+                                          value="#{row.bindings.DisplayDepartmentsPk.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayDepartmentsPk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.filedetail']}">
+                <af:panelTabbed id="PTSsoSystems19" styleClass="AFStretchWidth" dimensionsFrom="disclosedChild">
+                  <af:showDetailItem id="sdi_SsoSystems81" styleClass="AFStretchWidth" immediate="true"
+                                     text="#{menu.resourceLabelMap['menu.fileLocationsdetail']}">
+                    <af:panelGroupLayout id="pgfileLocationsdetail" layout="scroll" halign="center">
+                      <af:panelGroupLayout id="pgl1">
+                        <af:panelStretchLayout dimensionsFrom="children" id="psl1" styleClass="AFStretchWidth">
+                          <f:facet name="center">
+                            <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                                id="pc2" styleClass="AFStretchWidth">
+                              <f:facet name="secondaryToolbar">
+                                <af:toolbar id="t1">
+                                  <af:commandButton action="#{menu.genericDeleteAction}"
+                                                    disabled="#{!menu.deleteAllowed or !bindings.Delete.enabled}"
+                                                    icon="#{menu.deleteIcon}" id="Del1" immediate="true"
+                                                    partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.delete']}"
+                                                    styleClass="deleteButton">
+                                    <af:setPropertyListener from="Delete" to="#{sessionScope.deleteParam}"
+                                                            type="action"/>
+                                    <af:setPropertyListener from="ArcFilesLocation1" to="#{sessionScope.refreshParam}"
+                                                            type="action"/>
+                                    <af:setPropertyListener from="ArcFilesLocationView3" to="#{sessionScope.viewParam}"
+                                                            type="action"/>
+                                  </af:commandButton>
+                                  <af:spacer width="5" id="s3"/>
+                                  <af:commandButton actionListener="#{bindings.CreateInsert.execute}"
+                                                    disabled="#{!menu.insertAllowed or  bindings.DepartmentsPk.inputValue == null}"
+                                                    icon="#{menu.createInsertIcon}" id="ci1" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.createInsert']}"
+                                                    partialTriggers="::it6" styleClass="insertButton"
+                                                   />
+                                  <af:spacer width="5" id="s4"/>
+                                  <af:commandButton 
+                                                    disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}"
+                                                    id="Commit1" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.commit']}"
+                                                    styleClass="commitButton"
+                                                     action="#{fileLocations.commitFile}"
+                                                    partialTriggers="ArcFilesLocation1:OpenFlC34 ArcFilesLocation1:check1 ArcFilesLocation1:uncheck1"/>
+                                  <af:spacer width="5" id="s8"/>
+                                  <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                                    icon="#{menu.rollbackIcon}" id="cb1" immediate="true"
+                                                    partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.rollback']}"
+                                                    styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                                    <af:resetActionListener/>
+                                  </af:commandButton>
+                                  <af:spacer width="5" id="s9"/>
+                                  <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="cb2"
+                                                    immediate="true" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.print']}"
+                                                    styleClass="printButton" visible="#{menu.printVisible}">
+                                    <af:showPrintablePageBehavior/>
+                                  </af:commandButton>
+                                  <af:spacer width="5" id="s10"/>
+                                  <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="cb3"
+                                                    immediate="true" partialSubmit="true"
+                                                    text="#{menu.resourceLabelMap['label.excel']}"
+                                                    styleClass="excelButton" visible="#{menu.excelVisible}">
+                                    <af:setPropertyListener from="ArcFilesLocation1" to="#{sessionScope.tableId}"
+                                                            type="action"/>
+                                    <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                  </af:commandButton>
+                                  <af:spacer width="5" id="s11"/>
+                                  <af:commandButton disabled="#{!bindings.Delete.enabled  or bindings.FilesLocationPk.inputValue == null}"
+                                                    icon="#{menu.translationIcon}" id="translation1" immediate="true"
+                                                    partialSubmit="true" partialTriggers="Commit1 cb1"
+                                                    text="#{menu.resourceLabelMap['label.translation']}"
+                                                    styleClass="printButton">
+                                    <af:showPopupBehavior popupId="::ArcFilesLocationTlPopup" triggerType="action"/>
+                                  </af:commandButton>
+                                  <af:spacer width="5" id="s12"/>
+                                  <af:commandButton icon="#{menu.createInsertIcon}" id="insertFileLocation"
+                                                    disabled="#{!bindings.Delete5.enabled or bindings.DepartmentsPk.inputValue == null}"
+                                                    immediate="true" partialSubmit="true" partialTriggers="Commit1 cb1"
+                                                    shortDesc="#{menu.resourceLabelMap['fileLocations.insertFileLocation']}"
+                                                    
+                                                    text="#{menu.resourceLabelMap['fileLocations.insertFileLocation']}">
+                                    <af:showPopupBehavior popupId="::insertFileLocationPopup" triggerType="action"/>
+                                  </af:commandButton>
+                                  <af:spacer width="5" id="s14"/>
+                                  <af:commandButton icon="#{menu.createInsertIcon}" id="insertFileLocation1"
+                                                    disabled="#{!bindings.Delete5.enabled or bindings.DepartmentsPk.inputValue == null}"
+                                                    immediate="true" partialSubmit="true" partialTriggers="Commit1 cb1"
+                                                    
+                                                    styleClass="printButton"
+                                                    text="#{menu.resourceLabelMap['fileLocations.insertFileLocationByEmployee']}">
+                                    <af:showPopupBehavior popupId="::insertFileLocationByEmployeeNoPopup"
+                                                          triggerType="action"/>
+                                  </af:commandButton>
+                                </af:toolbar>
+                              </f:facet>
+                              <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                        columnStretching="column:DisplayFileLocationDescC14" displayRow="selected"
+                                        editingMode="editAll"
+                                        emptyText="#{bindings.ArcFilesLocationView3.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                        fetchSize="#{bindings.ArcFilesLocationView3.rangeSize}"
+                                        filterModel="#{bindings.ArcFilesLocationView3Query.queryDescriptor}"
+                                        filterVisible="false" id="ArcFilesLocation1"
+                                        partialTriggers=":::pc1:HcmFileLocationDepartmentsView ::ci1 ::Commit1 ::cb1 ::cb2 ::cb3 ::translation1 :::pc3:cb5 :::pc3:cb6 :::pc3:cb7 :::ArcFilesLocationTlDialog :::insertFileLocationDialog :::insertFileLocationByEmployeeNoDialog check1 uncheck1"
+                                        queryListener="#{bindings.ArcFilesLocationView3Query.processQuery}"
+                                        rowBandingInterval="1" rowSelection="single"
+                                        rows="#{bindings.ArcFilesLocationView3.rangeSize}" scrollPolicy="page"
+                                        selectedRowKeys="#{bindings.ArcFilesLocationView3.collectionModel.selectedRow}"
+                                        selectionListener="#{bindings.ArcFilesLocationView3.collectionModel.makeCurrent}"
+                                        styleClass="AFStretchWidth t50"
+                                        value="#{bindings.ArcFilesLocationView3.collectionModel}" var="row"
+                                        varStatus="vs" verticalGridVisible="false">
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}"
+                                           id="FilesLocationPkC3" sortProperty="FilesLocationPk" sortable="true"
+                                           width="70">
+                                  <af:inputText columns="#{bindings.ArcFilesLocationView3.hints.FilesLocationPk.displayWidth}"
+                                                id="it3"
+                                                label="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}"
+                                                maximumLength="#{bindings.ArcFilesLocationView3.hints.FilesLocationPk.precision}"
+                                                readOnly="true"
+                                                required="#{bindings.ArcFilesLocationView3.hints.FilesLocationPk.mandatory}"
+                                                value="#{row.bindings.FilesLocationPk.inputValue}">
+                                    <f:validator binding="#{row.bindings.FilesLocationPk.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ArcFilesLocationView3.hints.FilesLocationPk.format}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"
+                                           id="DisplayFileLocationDescC14" showRequired="true"
+                                           sortProperty="DisplayFileLocationDescSearch" sortable="true" width="200">
+                                  <af:inputText autoSubmit="true"
+                                                columns="#{bindings.ArcFilesLocationView3.hints.DisplayFileLocationDesc.displayWidth}"
+                                                id="it10"
+                                                label="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"
+                                                maximumLength="#{bindings.ArcFilesLocationView3.hints.DisplayFileLocationDesc.precision}"
+                                                required="true"
+                                                value="#{row.bindings.DisplayFileLocationDesc.inputValue}"
+                                                valueChangeListener="#{fileLocations.displayFileLocationDescChanged}">
+                                    <f:validator binding="#{row.bindings.DisplayFileLocationDesc.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.MainLocationFk']}"
+                                           id="MainLocationFkC5" sortProperty="MainLocationFkSearch" sortable="true"
+                                           width="110">
+                                <af:panelGroupLayout id="pgl35MainLocationFk" layout="horizontal">
+
+                                  <af:inputListOfValues autoSubmit="true"
+                                                        columns="#{bindings.ArcFilesLocationView3.hints.MainLocationFk.displayWidth}"
+                                                        id="mainLocationFkId"
+                                                        label="#{menu.resourceLabelMap['ArcFilesLocation.MainLocationFk']}"
+                                                        model="#{row.bindings.MainLocationFk.listOfValuesModel}"
+                                                        popupTitle="#{menu.resourceLabelMap['ArcFilesLocation.MainLocationFk']}"
+                                                        required="#{bindings.ArcFilesLocationView3.hints.MainLocationFk.mandatory}"
+                                                        value="#{row.bindings.MainLocationFk.inputValue}">
+                                    <f:validator binding="#{row.bindings.MainLocationFk.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ArcFilesLocationView3.hints.MainLocationFk.format}"/>
+                                  </af:inputListOfValues>
+                                  </af:panelGroupLayout>
+                                </af:column>
+                                <af:column filterFeatures="caseInsensitive" filterable="true"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.DisplayMainLocationFk']}"
+                                           id="DisplayMainLocationFkC6" sortProperty="DisplayMainLocationFkSearch"
+                                           sortable="true" width="150" align="center">
+                                  <af:inputText columns="#{bindings.ArcFilesLocationView3.hints.DisplayMainLocationFk.displayWidth}"
+                                                id="it8"
+                                                label="#{menu.resourceLabelMap['ArcFilesLocation.DisplayMainLocationFk']}"
+                                                maximumLength="#{bindings.ArcFilesLocationView3.hints.DisplayMainLocationFk.precision}"
+                                                partialTriggers="mainLocationFkId" readOnly="true"
+                                                required="#{bindings.ArcFilesLocationView3.hints.DisplayMainLocationFk.mandatory}"
+                                                value="#{row.bindings.DisplayMainLocationFk.inputValue}">
+                                    <f:validator binding="#{row.bindings.DisplayMainLocationFk.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column id="TagsFkC36" sortProperty="TagsFkSearch"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.TagsFk']}"
+                                           sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                           width="110" align="center">
+                                  <af:panelGroupLayout id="pgl35TagsFk" layout="horizontal">
+                                    <af:inputListOfValues value="#{row.bindings.TagsFk.inputValue}"
+                                                          label="#{menu.resourceLabelMap['ArcFilesLocation.TagsFk']}"
+                                                          required="#{bindings.ArcFilesLocationView3.hints.TagsFk.mandatory}"
+                                                          columns="#{bindings.ArcFilesLocationView3.hints.TagsFk.displayWidth}"
+                                                          id="arcFilesLocationTagsfk"
+                                                          model="#{row.bindings.TagsFk.listOfValuesModel}"
+                                                          autoSubmit="true" simple="true"
+                                                          popupTitle="#{bindings.ArcFilesLocationView3.hints.TagsFk.label}"
+                                                          searchDesc="#{menu.resourceLabelMap['ArcFilesLocation.TagsFk']}">
+                                      <af:convertNumber groupingUsed="false" pattern="#{row.bindings.TagsFk.format}"/>
+                                      <f:validator binding="#{row.bindings.TagsFk.validator}"/>
+                                    </af:inputListOfValues>
+                                  </af:panelGroupLayout>
+                                </af:column>
+                                <af:column id="DisplayTagsFkC37" sortProperty="DisplayTagsFkSearch"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.DisplayTagsFk']}"
+                                           sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                           width="150" align="center">
+                                  <af:inputText value="#{row.bindings.DisplayTagsFk.inputValue}"
+                                                label="#{menu.resourceLabelMap['ArcFilesLocation.DisplayTagsFk']}"
+                                                required="#{bindings.ArcFilesLocationView3.hints.DisplayTagsFk.mandatory}"
+                                                columns="#{bindings.ArcFilesLocationView3.hints.DisplayTagsFk.displayWidth}"
+                                                maximumLength="#{bindings.ArcFilesLocationView3.hints.DisplayTagsFk.precision}"
+                                                id="arcFilesLocationDisplaytagsfk" autoSubmit="true" readOnly="true"
+                                                partialTriggers="arcFilesLocationTagsfk">
+                                    <f:validator binding="#{row.bindings.DisplayTagsFk.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="FilesLockersFkSearch"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.FilesLockersFk']}"
+                                           sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                           showRequired="false" width="110" id="c1" align="center">
+                                     <af:panelGroupLayout id="pgl35filesLockersFkId" layout="horizontal">
+
+                                  <af:inputListOfValues id="filesLockersFkId"
+                                                        popupTitle="#{menu.resourceLabelMap['ArcFilesLocation.FilesLockersFk']}"
+                                                        label="#{menu.resourceLabelMap['ArcFilesLocation.FilesLockersFk']}"
+                                                        value="#{row.bindings.FilesLockersFk.inputValue}"
+                                                        model="#{row.bindings.FilesLockersFk.listOfValuesModel}"
+                                                        required="false"
+                                                        columns="#{bindings.ArcFilesLocationView3.hints.FilesLockersFk.displayWidth}"
+                                                        shortDesc="#{bindings.ArcFilesLocationView3.hints.FilesLockersFk.tooltip}"
+                                                        autoSubmit="true">
+                                    <f:validator binding="#{row.bindings.FilesLockersFk.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ArcFilesLocationView3.hints.FilesLockersFk.format}"/>
+                                  </af:inputListOfValues>
+                                </af:panelGroupLayout>
+                                </af:column>
+                                <af:column id="DisplayFilesLockersFkC29" sortProperty="DisplayFilesLockersFkSearch"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.DisplayFilesLockersFk']}"
+                                           sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                           width="150" align="center">
+                                  <af:inputText value="#{row.bindings.DisplayFilesLockersFk.inputValue}"
+                                                label="#{menu.resourceLabelMap['ArcFilesLocation.DisplayFilesLockersFk']}"
+                                                required="#{bindings.ArcFilesLocationView3.hints.DisplayFilesLockersFk.mandatory}"
+                                                columns="#{bindings.ArcFilesLocationView3.hints.DisplayFilesLockersFk.displayWidth}"
+                                                maximumLength="#{bindings.ArcFilesLocationView3.hints.DisplayFilesLockersFk.precision}"
+                                                id="arcFilesLocationDisplayfileslockersfk" readOnly="true"
+                                                autoSubmit="true" partialTriggers="filesLockersFkId">
+                                    <f:validator binding="#{row.bindings.DisplayFilesLockersFk.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column id="c3" sortProperty="FilesColumnsLockersFkSearch"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.FilesColumnsLockersFk']}"
+                                           sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                           showRequired="false" width="110" align="center">
+                           <af:panelGroupLayout id="pgl35filesColumnsLockersFkId" layout="horizontal">
+
+                                  <af:inputListOfValues id="filesColumnsLockersFkId"
+                                                        popupTitle="#{menu.resourceLabelMap['ArcFilesLocation.FilesColumnsLockersFk']}"
+                                                        label="#{menu.resourceLabelMap['ArcFilesLocation.FilesColumnsLockersFk']}"
+                                                        value="#{row.bindings.FilesColumnsLockersFk.inputValue}"
+                                                        model="#{row.bindings.FilesColumnsLockersFk.listOfValuesModel}"
+                                                        required="false"
+                                                        columns="#{bindings.ArcFilesLocationView3.hints.FilesColumnsLockersFk.displayWidth}"
+                                                        shortDesc="#{bindings.ArcFilesLocationView3.hints.FilesColumnsLockersFk.tooltip}"
+                                                        autoSubmit="true" partialTriggers="filesLockersFkId"
+                                                        disabled="#{row.bindings.FilesLockersFk.inputValue==null}">
+                                    <f:validator binding="#{row.bindings.FilesColumnsLockersFk.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ArcFilesLocationView3.hints.FilesColumnsLockersFk.format}"/>
+                                  </af:inputListOfValues>
+                                  </af:panelGroupLayout>
+                                </af:column>
+                                <af:column id="DisplayFilesColumnsLockersFkC26"
+                                           sortProperty="DisplayFilesColumnsLockersFkSearch"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.DisplayFilesColumnsLockersFk']}"
+                                           sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                           width="150" align="center">
+                                  <af:inputText value="#{row.bindings.DisplayFilesColumnsLockersFk.inputValue}"
+                                                label="#{menu.resourceLabelMap['ArcFilesLocation.DisplayFilesColumnsLockersFk']}"
+                                                required="#{bindings.ArcFilesLocationView3.hints.DisplayFilesColumnsLockersFk.mandatory}"
+                                                columns="#{bindings.ArcFilesLocationView3.hints.DisplayFilesColumnsLockersFk.displayWidth}"
+                                                maximumLength="#{bindings.ArcFilesLocationView3.hints.DisplayFilesColumnsLockersFk.precision}"
+                                                id="arcFilesLocationDisplayfilescolumnslockersfk" readOnly="true"
+                                                autoSubmit="true" partialTriggers="filesColumnsLockersFkId">
+                                    <f:validator binding="#{row.bindings.DisplayFilesColumnsLockersFk.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="FilesRowsColumnsLockersFkSearch"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.FilesRowsColumnsLockersFk']}"
+                                           sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                           showRequired="false" width="110" id="c2" align="center">
+                                           <af:panelGroupLayout id="pgl35filesRowsColumnsLockersFkId" layout="horizontal">
+                                  <af:inputListOfValues id="filesRowsColumnsLockersFkId"
+                                                        popupTitle="#{menu.resourceLabelMap['ArcFilesLocation.FilesRowsColumnsLockersFk']}"
+                                                        label="#{menu.resourceLabelMap['ArcFilesLocation.FilesRowsColumnsLockersFk']}"
+                                                        value="#{row.bindings.FilesRowsColumnsLockersFk.inputValue}"
+                                                        model="#{row.bindings.FilesRowsColumnsLockersFk.listOfValuesModel}"
+                                                        required="false"
+                                                        columns="#{bindings.ArcFilesLocationView3.hints.FilesRowsColumnsLockersFk.displayWidth}"
+                                                        shortDesc="#{bindings.ArcFilesLocationView3.hints.FilesRowsColumnsLockersFk.tooltip}"
+                                                        autoSubmit="true" partialTriggers="filesColumnsLockersFkId"
+                                                        disabled="#{row.bindings.FilesColumnsLockersFk.inputValue==null}">
+                                    <f:validator binding="#{row.bindings.FilesRowsColumnsLockersFk.validator}"/>
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.ArcFilesLocationView3.hints.FilesRowsColumnsLockersFk.format}"/>
+                                  </af:inputListOfValues>
+                                  </af:panelGroupLayout>
+                                </af:column>
+                                <af:column id="DisplayFilesRowsColumnsLockersFkC32"
+                                           sortProperty="DisplayFilesRowsColumnsLockersFkSearch"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.DisplayFilesRowsColumnsLockersFk']}"
+                                           sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                           width="150" align="center">
+                                  <af:inputText value="#{row.bindings.DisplayFilesRowsColumnsLockersFk.inputValue}"
+                                                label="#{menu.resourceLabelMap['ArcFilesLocation.DisplayFilesRowsColumnsLockersFk']}"
+                                                required="#{bindings.ArcFilesLocationView3.hints.DisplayFilesRowsColumnsLockersFk.mandatory}"
+                                                columns="#{bindings.ArcFilesLocationView3.hints.DisplayFilesRowsColumnsLockersFk.displayWidth}"
+                                                maximumLength="#{bindings.ArcFilesLocationView3.hints.DisplayFilesRowsColumnsLockersFk.precision}"
+                                                id="arcFilesLocationDisplayfilesrowscolumnslockersfk" readOnly="true"
+                                                partialTriggers="filesRowsColumnsLockersFkId" autoSubmit="true">
+                                    <f:validator binding="#{row.bindings.DisplayFilesRowsColumnsLockersFk.validator}"/>
+                                  </af:inputText>
+                                </af:column>
+                             
+                                <af:column id="OpenFlC34" sortProperty="OpenFl" align="center"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.OpenFl']}"
+                                           sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                           width="40" partialTriggers="::Commit1 check1 uncheck1">
+                                  <af:commandImageLink actionListener="#{fileLocations.untick}" icon="/images/tick.png"
+                                                       id="check1" partialSubmit="true"
+                                                       partialTriggers="check1 uncheck1 ::Commit1 "
+                                                       visible="#{row.bindings.OpenFl.inputValue == '1'}">
+                                    <f:attribute name="iteratorName" value="ArcFilesLocationView3Iterator"/>
+                                    <f:attribute name="attributeName" value="OpenFl"/>
+                                  </af:commandImageLink>
+                                  <af:commandImageLink actionListener="#{fileLocations.tick}" icon="/images/untick.png"
+                                                       id="uncheck1" partialSubmit="true"
+                                                       partialTriggers="check1 uncheck1 ::Commit1"
+                                                       visible="#{row.bindings.OpenFl.inputValue == null or row.bindings.OpenFl.inputValue == '0'}">
+                                    <f:attribute name="iteratorName" value="ArcFilesLocationView3Iterator"/>
+                                    <f:attribute name="attributeName" value="OpenFl"/>
+                                  </af:commandImageLink>
+                                </af:column>
+                                <af:column id="MilitaryFileFlC33" sortProperty="MilitaryFileFl" align="center"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.MilitaryFileFl']}"
+                                           sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                           width="50">
+                                  <af:commandImageLink actionListener="#{fileLocations.untick}" icon="/images/tick.png"
+                                                       id="check" partialSubmit="true" partialTriggers="check uncheck"
+                                                       visible="#{row.bindings.MilitaryFileFl.inputValue == '1'}">
+                                    <f:attribute name="iteratorName" value="ArcFilesLocationView3Iterator"/>
+                                    <f:attribute name="attributeName" value="MilitaryFileFl"/>
+                                  </af:commandImageLink>
+                                  <af:commandImageLink actionListener="#{fileLocations.tick}" icon="/images/untick.png"
+                                                       id="uncheck" partialSubmit="true" partialTriggers="check uncheck"
+                                                       visible="#{row.bindings.MilitaryFileFl.inputValue == null or row.bindings.MilitaryFileFl.inputValue == '0'}">
+                                    <f:attribute name="iteratorName" value="ArcFilesLocationView3Iterator"/>
+                                    <f:attribute name="attributeName" value="MilitaryFileFl"/>
+                                  </af:commandImageLink>
+                                </af:column>
+                                <af:column id="AppendixFlC23" sortProperty="AppendixFl" align="center"
+                                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.AppendixFl']}"
+                                           sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                           width="40" >
+                                  <af:commandImageLink actionListener="#{fileLocations.untick}" icon="/images/tick.png"
+                                                       id="check2" partialSubmit="true"
+                                                       partialTriggers="check2 uncheck2"
+                                                       visible="#{row.bindings.AppendixFl.inputValue == '1'}">
+                                    <f:attribute name="iteratorName" value="ArcFilesLocationView3Iterator"/>
+                                    <f:attribute name="attributeName" value="AppendixFl"/>
+                                  </af:commandImageLink>
+                                  <af:commandImageLink actionListener="#{fileLocations.tick}" icon="/images/untick.png"
+                                                       id="uncheck2" partialSubmit="true"
+                                                       partialTriggers="check2 uncheck2"
+                                                       visible="#{row.bindings.AppendixFl.inputValue == null or row.bindings.AppendixFl.inputValue == '0'}">
+                                    <f:attribute name="iteratorName" value="ArcFilesLocationView3Iterator"/>
+                                    <f:attribute name="attributeName" value="AppendixFl"/>
+                                  </af:commandImageLink>
+                                </af:column>
+                              </af:table>
+                            </af:panelCollection>
+                          </f:facet>
+                        </af:panelStretchLayout>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                  </af:showDetailItem>
+                  <af:showDetailItem id="sdi2" styleClass="AFStretchWidth" immediate="true"
+                                     text="#{menu.resourceLabelMap['menu.filelockers']}">
+                    <af:panelGroupLayout id="pgl5" layout="scroll" halign="center">
+                      <af:panelGroupLayout id="pgl6">
+                        <af:panelBox text="#{menu.resourceLabelMap['menu.filelockersDetail']}" id="pb2">
+                          <af:panelStretchLayout dimensionsFrom="children" id="psl2" styleClass="AFStretchWidth">
+                            <f:facet name="center">
+                              <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                                  id="pc3" styleClass="AFStretchWidth">
+                                <f:facet name="secondaryToolbar">
+                                  <af:toolbar id="t2">
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.delete']}" id="cb4"
+                                                      styleClass="deleteButton" action="#{menu.genericDeleteAction}"
+                                                      immediate="true"
+                                                      disabled="#{!menu.deleteAllowed or !bindings.Delete1.enabled}"
+                                                      partialSubmit="true" icon="#{menu.deleteIcon}">
+                                      <af:setPropertyListener to="#{sessionScope.deleteParam}" from="Delete1"
+                                                              type="action"/>
+                                      <af:setPropertyListener to="#{sessionScope.refreshParam}"
+                                                              from="ArcFilesLockers1 ArcFilesColumnsLockers1 ArcFilesRowsColumnsLockers1"
+                                                              type="action"/>
+                                      <af:setPropertyListener to="#{sessionScope.viewParam}" from="ArcFilesLockersView2"
+                                                              type="action"/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.createInsert']}"
+                                                      id="cb5" styleClass="insertButton"
+                                                      actionListener="#{bindings.CreateInsert2.execute}"
+                                                      disabled="#{!menu.insertAllowed or  bindings.DepartmentsPk.inputValue == null}"
+                                                      partialSubmit="true" partialTriggers="::it6"
+                                                      icon="#{menu.createInsertIcon}"/>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="cb6"
+                                                      styleClass="commitButton"
+                                                      actionListener="#{bindings.Commit.execute}"
+                                                      disabled="#{!menu.updateAllowed}" partialSubmit="true"
+                                                      icon="#{menu.commitIcon}"/>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.rollback']}" id="cb8"
+                                                      styleClass="rollbackButton"
+                                                      actionListener="#{bindings.Rollback.execute}" immediate="true"
+                                                      partialSubmit="true" icon="#{menu.rollbackIcon}"
+                                                      visible="#{menu.rollbackVisible}">
+                                      <af:resetActionListener/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="cb10"
+                                                      styleClass="printButton" immediate="true"
+                                                      disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                                      icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                                      <af:showPrintablePageBehavior/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}"
+                                                      id="cb9" immediate="true" partialSubmit="true"
+                                                      text="#{menu.resourceLabelMap['label.excel']}"
+                                                      styleClass="excelButton" visible="#{menu.excelVisible}">
+                                      <af:setPropertyListener from="ArcFilesLockers1" to="#{sessionScope.tableId}"
+                                                              type="action"/>
+                                      <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.translation']}" id="cb7"
+                                                      styleClass="printButton" immediate="true"
+                                                      disabled="#{!bindings.Delete1.enabled  or bindings.FilesLockersPk.inputValue == null}"
+                                                      partialSubmit="true" icon="#{menu.translationIcon}"
+                                                      partialTriggers="cb6 cb8">
+                                      <af:showPopupBehavior popupId="::ArcFilesLockersTlPopup" triggerType="action"/>
+                                    </af:commandButton>
+                                  </af:toolbar>
+                                </f:facet>
+                                <af:table value="#{bindings.ArcFilesLockersView2.collectionModel}" id="ArcFilesLockers1"
+                                          styleClass="AFStretchWidth t50" var="row" varStatus="vs"
+                                          rows="#{bindings.ArcFilesLockersView2.rangeSize}"
+                                          selectionListener="#{bindings.ArcFilesLockersView2.collectionModel.makeCurrent}"
+                                          selectedRowKeys="#{bindings.ArcFilesLockersView2.collectionModel.selectedRow}"
+                                          filterModel="#{bindings.ArcFilesLockersView2Query.queryDescriptor}"
+                                          queryListener="#{bindings.ArcFilesLockersView2Query.processQuery}"
+                                          partialTriggers="::cb4 ::cb5 ::cb6 ::cb8 ::cb10 ::cb9 ::cb7 :::ArcFilesLockersTlDialog :::pc1:HcmFileLocationDepartmentsView"
+                                          columnSelection="multiple"
+                                          columnStretching="column:DisplayFilesLockersNameC11"
+                                          verticalGridVisible="false"
+                                          emptyText="#{bindings.ArcFilesLockersView2.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                          rowSelection="single" fetchSize="#{bindings.ArcFilesLockersView2.rangeSize}"
+                                          displayRow="selected" editingMode="editAll" filterVisible="false"
+                                          autoHeightRows="5" blockRowNavigationOnError="always" scrollPolicy="page"
+                                          rowBandingInterval="1">
+                                  <af:column id="FilesLockersPkC3" sortProperty="FilesLockersPk"
+                                             headerText="#{menu.resourceLabelMap['ArcFilesLockers.FilesLockersPk']}"
+                                             sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                             width="70" align="center">
+                                    <af:inputText value="#{row.bindings.FilesLockersPk.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcFilesLockers.FilesLockersPk']}"
+                                                  required="#{bindings.ArcFilesLockersView2.hints.FilesLockersPk.mandatory}"
+                                                  columns="#{bindings.ArcFilesLockersView2.hints.FilesLockersPk.displayWidth}"
+                                                  maximumLength="#{bindings.ArcFilesLockersView2.hints.FilesLockersPk.precision}"
+                                                  id="arcFilesLockersFileslockerspk" readOnly="true">
+                                      <af:convertNumber groupingUsed="false"
+                                                        pattern="#{row.bindings.FilesLockersPk.format}"/>
+                                      <f:validator binding="#{row.bindings.FilesLockersPk.validator}"/>
+                                    </af:inputText>
+                                  </af:column>
+                                  <af:column id="DisplayFilesLockersNameC11"
+                                             sortProperty="DisplayFilesLockersNameSearch"
+                                             headerText="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersName']}"
+                                             sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                             showRequired="true">
+                                    <af:inputText value="#{row.bindings.DisplayFilesLockersName.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersName']}"
+                                                  required="true"
+                                                  columns="#{bindings.ArcFilesLockersView2.hints.DisplayFilesLockersName.displayWidth}"
+                                                  maximumLength="#{bindings.ArcFilesLockersView2.hints.DisplayFilesLockersName.precision}"
+                                                  id="arcFilesLockersDisplayfileslockersname"
+                                                  valueChangeListener="#{fileLocations.displayFilesLockersNameChanged}"
+                                                  autoSubmit="true">
+                                      <f:validator binding="#{row.bindings.DisplayFilesLockersName.validator}"/>
+                                    </af:inputText>
+                                  </af:column>
+                                  <af:column id="DisplayFilesLockersDescC12"
+                                             sortProperty="DisplayFilesLockersDescSearch"
+                                             headerText="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersDesc']}"
+                                             sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                             width="400" showRequired="true">
+                                    <af:inputText value="#{row.bindings.DisplayFilesLockersDesc.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersDesc']}"
+                                                  required="true"
+                                                  columns="#{bindings.ArcFilesLockersView2.hints.DisplayFilesLockersDesc.displayWidth}"
+                                                  maximumLength="#{bindings.ArcFilesLockersView2.hints.DisplayFilesLockersDesc.precision}"
+                                                  id="arcFilesLockersDisplayfileslockersdesc"
+                                                  valueChangeListener="#{fileLocations.displayFilesLockersDescChanged}"
+                                                  autoSubmit="true">
+                                      <f:validator binding="#{row.bindings.DisplayFilesLockersDesc.validator}"/>
+                                    </af:inputText>
+                                  </af:column>
+                                  <af:column id="DisplayFilesLockersLocationC13"
+                                             sortProperty="DisplayFilesLockersLocationSearch"
+                                             headerText="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersLocation']}"
+                                             sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                             width="400">
+                                    <af:inputText value="#{row.bindings.DisplayFilesLockersLocation.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersLocation']}"
+                                                  required="#{bindings.ArcFilesLockersView2.hints.DisplayFilesLockersLocation.mandatory}"
+                                                  columns="#{bindings.ArcFilesLockersView2.hints.DisplayFilesLockersLocation.displayWidth}"
+                                                  maximumLength="#{bindings.ArcFilesLockersView2.hints.DisplayFilesLockersLocation.precision}"
+                                                  id="arcFilesLockersDisplayfileslockerslocation"
+                                                  valueChangeListener="#{fileLocations.displayFilesLockersLocationChanged}"
+                                                  autoSubmit="true">
+                                      <f:validator binding="#{row.bindings.DisplayFilesLockersLocation.validator}"/>
+                                    </af:inputText>
+                                  </af:column>
+                                </af:table>
+                              </af:panelCollection>
+                            </f:facet>
+                          </af:panelStretchLayout>
+                        </af:panelBox>
+                        <af:panelBox text="#{menu.resourceLabelMap['menu.FilesColumnsLockers']}" id="pb4">
+                          <af:panelStretchLayout dimensionsFrom="children" id="psl3" styleClass="AFStretchWidth">
+                            <f:facet name="center">
+                              <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                                  id="pc4" styleClass="AFStretchWidth">
+                                <f:facet name="secondaryToolbar">
+                                  <af:toolbar id="tb3">
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.delete']}" id="Del3"
+                                                      styleClass="deleteButton" action="#{menu.genericDeleteAction}"
+                                                      immediate="true"
+                                                      disabled="#{!menu.deleteAllowed or !bindings.Delete2.enabled}"
+                                                      partialSubmit="true" icon="#{menu.deleteIcon}">
+                                      <af:setPropertyListener to="#{sessionScope.deleteParam}" from="Delete2"
+                                                              type="action"/>
+                                      <af:setPropertyListener to="#{sessionScope.refreshParam}"
+                                                              from="ArcFilesColumnsLockers1 ArcFilesRowsColumnsLockers1 "
+                                                              type="action"/>
+                                      <af:setPropertyListener to="#{sessionScope.viewParam}"
+                                                              from="ArcFilesColumnsLockersView3" type="action"/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.createInsert']}"
+                                                      id="ci3" styleClass="insertButton"
+                                                      actionListener="#{bindings.CreateInsert3.execute}"
+                                                      disabled="#{!menu.insertAllowed or  !bindings.Delete1.enabled or bindings.FilesLockersPk.inputValue == null}"
+                                                      partialSubmit="true" icon="#{menu.createInsertIcon}"
+                                                      partialTriggers="::pc3:cb6"/>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="Commit3"
+                                                      styleClass="commitButton"
+                                                      actionListener="#{bindings.Commit.execute}"
+                                                      disabled="#{!menu.updateAllowed}" partialSubmit="true"
+                                                      icon="#{menu.commitIcon}"/>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.rollback']}" id="rb3"
+                                                      styleClass="rollbackButton"
+                                                      actionListener="#{bindings.Rollback.execute}" immediate="true"
+                                                      partialSubmit="true" icon="#{menu.rollbackIcon}"
+                                                      visible="#{menu.rollbackVisible}">
+                                      <af:resetActionListener/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print3"
+                                                      styleClass="printButton" immediate="true"
+                                                      disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                                      icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                                      <af:showPrintablePageBehavior/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}"
+                                                      id="excel3" immediate="true" partialSubmit="true"
+                                                      text="#{menu.resourceLabelMap['label.excel']}"
+                                                      styleClass="excelButton" visible="#{menu.excelVisible}">
+                                      <af:setPropertyListener from="ArcFilesColumnsLockers1"
+                                                              to="#{sessionScope.tableId}" type="action"/>
+                                      <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.translation']}"
+                                                      id="translation3" styleClass="printButton" immediate="true"
+                                                      disabled="#{!bindings.Delete2.enabled  or bindings.FilesColumnsLockersPk.inputValue == null}"
+                                                      partialSubmit="true" icon="#{menu.translationIcon}"
+                                                      partialTriggers="Commit3 rb3">
+                                      <af:showPopupBehavior popupId="::ArcFilesColumnsLockersTlPopup"
+                                                            triggerType="action"/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                  </af:toolbar>
+                                </f:facet>
+                                <af:table value="#{bindings.ArcFilesColumnsLockersView3.collectionModel}"
+                                          id="ArcFilesColumnsLockers1" styleClass="AFStretchWidth" var="row"
+                                          varStatus="vs" rows="#{bindings.ArcFilesColumnsLockersView3.rangeSize}"
+                                          selectionListener="#{bindings.ArcFilesColumnsLockersView3.collectionModel.makeCurrent}"
+                                          selectedRowKeys="#{bindings.ArcFilesColumnsLockersView3.collectionModel.selectedRow}"
+                                          filterModel="#{bindings.ArcFilesColumnsLockersView3Query.queryDescriptor}"
+                                          queryListener="#{bindings.ArcFilesColumnsLockersView3Query.processQuery}"
+                                          partialTriggers="::Del3 ::ci3 ::Commit3 ::rb3 ::translation3 :::ArcFilesColumnsLockersTlDialog :::pc3:ArcFilesLockers1 :::pc3:cb4 :::pc3:cb5 :::pc3:cb6 :::pc3:cb8"
+                                          columnSelection="multiple" columnStretching="last" verticalGridVisible="false"
+                                          emptyText="#{bindings.ArcFilesColumnsLockersView3.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                          rowSelection="single"
+                                          fetchSize="#{bindings.ArcFilesColumnsLockersView3.rangeSize}"
+                                          displayRow="selected" editingMode="editAll" filterVisible="false"
+                                          autoHeightRows="5" blockRowNavigationOnError="always" scrollPolicy="page"
+                                          rowBandingInterval="1">
+                                  <af:column id="FilesColumnsLockersPkC35" sortProperty="FilesColumnsLockersPk"
+                                             headerText="#{menu.resourceLabelMap['ArcFilesColumnsLockers.FilesColumnsLockersPk']}"
+                                             sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                             width="150" align="center">
+                                    <af:inputText value="#{row.bindings.FilesColumnsLockersPk.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcFilesColumnsLockers.FilesColumnsLockersPk']}"
+                                                  required="#{bindings.ArcFilesColumnsLockersView3.hints.FilesColumnsLockersPk.mandatory}"
+                                                  columns="#{bindings.ArcFilesColumnsLockersView3.hints.FilesColumnsLockersPk.displayWidth}"
+                                                  maximumLength="#{bindings.ArcFilesColumnsLockersView3.hints.FilesColumnsLockersPk.precision}"
+                                                  id="arcFilesColumnsLockersFilescolumnslockerspk" readOnly="true">
+                                      <af:convertNumber groupingUsed="false"
+                                                        pattern="#{row.bindings.FilesColumnsLockersPk.format}"/>
+                                      <f:validator binding="#{row.bindings.FilesColumnsLockersPk.validator}"/>
+                                    </af:inputText>
+                                  </af:column>
+                                  <af:column id="LockersYearC37" sortProperty="LockersYear"
+                                             headerText="#{menu.resourceLabelMap['ArcFilesColumnsLockers.LockersYear']}"
+                                             sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                             width="150" showRequired="true">
+                                    <af:inputText value="#{row.bindings.LockersYear.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcFilesColumnsLockers.LockersYear']}"
+                                                  required="true"
+                                                  columns="#{bindings.ArcFilesColumnsLockersView3.hints.LockersYear.displayWidth}"
+                                                  maximumLength="#{bindings.ArcFilesColumnsLockersView3.hints.LockersYear.precision}"
+                                                  id="arcFilesColumnsLockersLockersyear">
+                                      <af:convertNumber groupingUsed="false"
+                                                        pattern="#{row.bindings.LockersYear.format}"/>
+                                      <f:validator binding="#{row.bindings.LockersYear.validator}"/>
+                                    </af:inputText>
+                                  </af:column>
+                                  <af:column id="DisplayFilesColumnsLockersNameC44"
+                                             sortProperty="DisplayFilesColumnsLockersNameSearch"
+                                             headerText="#{menu.resourceLabelMap['ArcFilesColumnsLockersTl.FilesColumnsLockersName']}"
+                                             sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                             showRequired="true">
+                                    <af:inputText value="#{row.bindings.DisplayFilesColumnsLockersName.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcFilesColumnsLockersTl.FilesColumnsLockersName']}"
+                                                  required="true"
+                                                  columns="#{bindings.ArcFilesColumnsLockersView3.hints.DisplayFilesColumnsLockersName.displayWidth}"
+                                                  maximumLength="#{bindings.ArcFilesColumnsLockersView3.hints.DisplayFilesColumnsLockersName.precision}"
+                                                  id="arcFilesColumnsLockersDisplayfilescolumnslockersname"
+                                                  valueChangeListener="#{fileLocations.displayFilesColumnsLockersNameChanged}"
+                                                  autoSubmit="true">
+                                      <f:validator binding="#{row.bindings.DisplayFilesColumnsLockersName.validator}"/>
+                                    </af:inputText>
+                                  </af:column>
+                                </af:table>
+                              </af:panelCollection>
+                            </f:facet>
+                          </af:panelStretchLayout>
+                        </af:panelBox>
+                        <af:panelBox text="#{menu.resourceLabelMap['menu.FilesRowsColumnsLockers']}" id="pb5">
+                          <f:facet name="toolbar"/>
+                          <af:panelStretchLayout dimensionsFrom="children" id="psl4" styleClass="AFStretchWidth">
+                            <f:facet name="center">
+                              <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                                  id="pc5" styleClass="AFStretchWidth">
+                                <f:facet name="secondaryToolbar">
+                                  <af:toolbar id="tb6">
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.delete']}" id="Del6"
+                                                      styleClass="deleteButton" action="#{menu.genericDeleteAction}"
+                                                      immediate="true"
+                                                      disabled="#{!menu.deleteAllowed or !bindings.Delete3.enabled}"
+                                                      partialSubmit="true" icon="#{menu.deleteIcon}">
+                                      <af:setPropertyListener to="#{sessionScope.deleteParam}" from="Delete3"
+                                                              type="action"/>
+                                      <af:setPropertyListener to="#{sessionScope.refreshParam}"
+                                                              from="ArcFilesRowsColumnsLockers1" type="action"/>
+                                      <af:setPropertyListener to="#{sessionScope.viewParam}"
+                                                              from="ArcFilesRowsColumnsLockersView3" type="action"/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.createInsert']}"
+                                                      id="ci6" styleClass="insertButton"
+                                                      actionListener="#{bindings.CreateInsert4.execute}"
+                                                      disabled="#{!menu.insertAllowed or  !bindings.Delete2.enabled or bindings.FilesColumnsLockersPk.inputValue == null}"
+                                                      partialSubmit="true" icon="#{menu.createInsertIcon}"
+                                                      partialTriggers="::pc4:Commit3"/>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="Commit6"
+                                                      styleClass="commitButton"
+                                                      actionListener="#{bindings.Commit.execute}"
+                                                      disabled="#{!menu.updateAllowed}" partialSubmit="true"
+                                                      icon="#{menu.commitIcon}"/>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.rollback']}" id="rb6"
+                                                      styleClass="rollbackButton"
+                                                      actionListener="#{bindings.Rollback.execute}" immediate="true"
+                                                      partialSubmit="true" icon="#{menu.rollbackIcon}"
+                                                      visible="#{menu.rollbackVisible}">
+                                      <af:resetActionListener/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print6"
+                                                      styleClass="printButton" immediate="true"
+                                                      disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                                      icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                                      <af:showPrintablePageBehavior/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}"
+                                                      id="excel6" immediate="true" partialSubmit="true"
+                                                      text="#{menu.resourceLabelMap['label.excel']}"
+                                                      styleClass="excelButton" visible="#{menu.excelVisible}">
+                                      <af:setPropertyListener from="ArcFilesRowsColumnsLockers1"
+                                                              to="#{sessionScope.tableId}" type="action"/>
+                                      <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                    </af:commandButton>
+                                    <af:spacer width="5"/>
+                                    <af:commandButton text="#{menu.resourceLabelMap['label.translation']}"
+                                                      id="cb11" styleClass="printButton" immediate="true"
+                                                      disabled="#{!bindings.Delete3.enabled  or bindings.FilesRowsColumnsLockersPk.inputValue == null}"
+                                                      partialSubmit="true" icon="#{menu.translationIcon}"
+                                                      partialTriggers="Del6 ci6 Commit6">
+                                      <af:showPopupBehavior popupId="::ArcFilesRowsColumnsLockersTlPopup"
+                                                            triggerType="action"/>
+                                    </af:commandButton>
+                                  </af:toolbar>
+                                </f:facet>
+                                <af:table value="#{bindings.ArcFilesRowsColumnsLockersView3.collectionModel}"
+                                          id="ArcFilesRowsColumnsLockers1" styleClass="AFStretchWidth" var="row"
+                                          varStatus="vs" rows="#{bindings.ArcFilesRowsColumnsLockersView3.rangeSize}"
+                                          selectionListener="#{bindings.ArcFilesRowsColumnsLockersView3.collectionModel.makeCurrent}"
+                                          selectedRowKeys="#{bindings.ArcFilesRowsColumnsLockersView3.collectionModel.selectedRow}"
+                                          filterModel="#{bindings.ArcFilesRowsColumnsLockersView3Query.queryDescriptor}"
+                                          queryListener="#{bindings.ArcFilesRowsColumnsLockersView3Query.processQuery}"
+                                          partialTriggers=":::pc4:Commit3 :::pc4:ArcFilesColumnsLockers1 ::Del6 ::ci6 ::Commit6 ::rb6 :::pc16:Commit2 :::pc16:rb2 :::ArcFilesRowsColumnsLockersTlDialog"
+                                          columnSelection="multiple" columnStretching="last" verticalGridVisible="false"
+                                          emptyText="#{bindings.ArcFilesRowsColumnsLockersView3.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                          rowSelection="single"
+                                          fetchSize="#{bindings.ArcFilesRowsColumnsLockersView3.rangeSize}"
+                                          displayRow="selected" editingMode="editAll" filterVisible="false"
+                                          autoHeightRows="5" blockRowNavigationOnError="always" scrollPolicy="page"
+                                          rowBandingInterval="1">
+                                  <af:column id="FilesRowsColumnsLockersPkC79" sortProperty="FilesRowsColumnsLockersPk"
+                                             headerText="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockers.FilesRowsColumnsLockersPk']}"
+                                             sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                             align="center" width="150">
+                                    <af:inputText value="#{row.bindings.FilesRowsColumnsLockersPk.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockers.FilesRowsColumnsLockersPk']}"
+                                                  required="#{bindings.ArcFilesRowsColumnsLockersView3.hints.FilesRowsColumnsLockersPk.mandatory}"
+                                                  columns="#{bindings.ArcFilesRowsColumnsLockersView3.hints.FilesRowsColumnsLockersPk.displayWidth}"
+                                                  maximumLength="#{bindings.ArcFilesRowsColumnsLockersView3.hints.FilesRowsColumnsLockersPk.precision}"
+                                                  id="arcFilesRowsColumnsLockersFilesrowscolumnslockerspk"
+                                                  readOnly="true">
+                                      <af:convertNumber groupingUsed="false"
+                                                        pattern="#{row.bindings.FilesRowsColumnsLockersPk.format}"/>
+                                      <f:validator binding="#{row.bindings.FilesRowsColumnsLockersPk.validator}"/>
+                                    </af:inputText>
+                                  </af:column>
+                                  <af:column id="DisplayFilesRowsColumnsLockerNameC87"
+                                             sortProperty="DisplayFilesRowsColumnsLockerNameSearch"
+                                             headerText="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockersTl.FilesRowsColumnsLockerName']}"
+                                             sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                             showRequired="true">
+                                    <af:inputText value="#{row.bindings.DisplayFilesRowsColumnsLockerName.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockersTl.FilesRowsColumnsLockerName']}"
+                                                  required="true"
+                                                  columns="#{bindings.ArcFilesRowsColumnsLockersView3.hints.DisplayFilesRowsColumnsLockerName.displayWidth}"
+                                                  maximumLength="#{bindings.ArcFilesRowsColumnsLockersView3.hints.DisplayFilesRowsColumnsLockerName.precision}"
+                                                  id="arcFilesRowsColumnsLockersDisplayfilesrowscolumnslockername"
+                                                  valueChangeListener="#{fileLocations.displayFilesRowsColumnsLockerNameChanged}"
+                                                  autoSubmit="true">
+                                      <f:validator binding="#{row.bindings.DisplayFilesRowsColumnsLockerName.validator}"/>
+                                    </af:inputText>
+                                  </af:column>
+                                </af:table>
+                              </af:panelCollection>
+                            </f:facet>
+                          </af:panelStretchLayout>
+                        </af:panelBox>
+                      </af:panelGroupLayout>
+                    </af:panelGroupLayout>
+                  </af:showDetailItem>
+                </af:panelTabbed>
+              </af:panelBox>
+              <af:popup contentDelivery="lazyUncached" id="ArcFilesLocationTlPopup"
+                        popupCanceledListener="#{fileLocations.cancelArcFilesLocationTlTranslation}">
+                <af:dialog dialogListener="#{fileLocations.commitArcFilesLocationTlTranslation}"
+                           id="ArcFilesLocationTlDialog" type="okCancel">
+                  <af:panelTabbed dimensionsFrom="disclosedChild" id="pt1" styleClass="AFStretchWidth">
+                    <af:showDetailItem id="sdi1" styleClass="AFStretchWidth"
+                                       text="#{menu.resourceLabelMap['label.translation']}">
+                      <af:panelStretchLayout dimensionsFrom="children" id="psl31" styleClass="AFStretchWidth">
+                        <f:facet name="center">
+                          <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                              id="pc17" styleClass="AFStretchWidth">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="tb2">
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print2"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.print']}"
+                                                  styleClass="printButton" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer id="s5" width="5"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel2"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.excel']}"
+                                                  styleClass="excelButton" visible="#{menu.excelVisible}">
+                                  <af:setPropertyListener from="ArcFilesLocationTl1" to="#{sessionScope.tableId}"
+                                                          type="action"/>
+                                  <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                </af:commandButton>
+                                <af:spacer id="s6" width="5"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                      columnStretching="last" displayRow="selected" editingMode="editAll"
+                                      emptyText="#{bindings.ArcFilesLocationTlView3.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                      fetchSize="#{bindings.ArcFilesLocationTlView3.rangeSize}"
+                                      filterModel="#{bindings.ArcFilesLocationTlView3Query.queryDescriptor}"
+                                      filterVisible="false" id="ArcFilesLocationTl1"
+                                      queryListener="#{bindings.ArcFilesLocationTlView3Query.processQuery}"
+                                      rowBandingInterval="1" rowSelection="single"
+                                      rows="#{bindings.ArcFilesLocationTlView3.rangeSize}" scrollPolicy="page"
+                                      selectedRowKeys="#{bindings.ArcFilesLocationTlView3.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.ArcFilesLocationTlView3.collectionModel.makeCurrent}"
+                                      styleClass="AFStretchWidth"
+                                      value="#{bindings.ArcFilesLocationTlView3.collectionModel}" var="row"
+                                      varStatus="vs" verticalGridVisible="false">
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesLocationTl.LanguagesFk']}"
+                                         id="LanguagesFkC21" sortProperty="LanguagesFk" sortable="true" width="150">
+                                <af:selectOneChoice id="soc1"
+                                                    label="#{menu.resourceLabelMap['ArcFilesLocationTl.LanguagesFk']}"
+                                                    readOnly="true"
+                                                    required="#{bindings.ArcFilesLocationTlView3.hints.LanguagesFk.mandatory}"
+                                                    value="#{row.bindings.LanguagesFk.inputValue}">
+                                  <f:selectItems id="si1" value="#{row.bindings.LanguagesFk.items}"/>
+                                  <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"
+                                         id="FileLocationDescC20" showRequired="true"
+                                         sortProperty="FileLocationDescSearch" sortable="true">
+                                <af:inputText autoSubmit="true"
+                                              columns="#{bindings.ArcFilesLocationTlView3.hints.FileLocationDesc.displayWidth}"
+                                              id="it4"
+                                              label="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"
+                                              maximumLength="#{bindings.ArcFilesLocationTlView3.hints.FileLocationDesc.precision}"
+                                              required="true" value="#{row.bindings.FileLocationDesc.inputValue}">
+                                  <f:validator binding="#{row.bindings.FileLocationDesc.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+              <af:popup contentDelivery="lazyUncached" id="insertFileLocationPopup"
+                        popupCanceledListener="#{fileLocations.cancelTranslation}">
+                <af:dialog dialogListener="#{fileLocations.insertFileLocation}" id="insertFileLocationDialog" title=""
+                           type="okCancel">
+                  <af:panelGroupLayout id="pgl3" layout="scroll">
+                    <af:panelBox id="pb3" styleClass="AFStretchWidth"
+                                 text="#{menu.resourceLabelMap['fileLocations.insertFileLocation']}">
+                      <div class="card-body">
+                        <div class="form-group row">
+                          <div class="col-md-3">
+                            <label class="col-form-label">
+                              <af:outputLabel id="ol3" showRequired="true"
+                                              value="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"/>
+                            </label>
+                             
+                            <af:inputText columns="#{bindings.FlStandardsName1.hints.displayWidth}" id="it12"
+                                          maximumLength="#{bindings.FlStandardsName1.hints.precision}" required="true"
+                                          simple="true" styleClass="form-control"
+                                           label="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}" 
+                                          value="#{bindings.FlStandardsName1.inputValue}">
+                              <f:validator binding="#{bindings.FlStandardsName1.validator}"/>
+                            </af:inputText>
+                          </div>
+                          <div class="col-md-3">
+                            <label class="col-form-label">
+                              <af:outputLabel id="ol1" showRequired="true"
+                                              value="#{menu.resourceLabelMap['ArcFlStandards.FlStandardsPk']}"/>
+                            </label>
+                             
+                            <af:inputListOfValues autoSubmit="true"
+                                                  columns="#{bindings.FlStandardsFK1.hints.displayWidth}"
+                                                  id="flStandardsFK1Id" 
+                                                  model="#{bindings.FlStandardsFK1.listOfValuesModel}"
+                                                  popupTitle="#{menu.resourceLabelMap['ArcFlStandards.FlStandardsPk']}"
+                                                  required="true" simple="true" styleClass="form-control"
+                                                   label="#{menu.resourceLabelMap['ArcFlStandards.FlStandardsPk']}"
+                                                  value="#{bindings.FlStandardsFK1.inputValue}">
+                              <f:validator binding="#{bindings.FlStandardsFK1.validator}"/>
+                              <af:convertNumber groupingUsed="false" pattern="#{bindings.FlStandardsFK1.format}"/>
+                            </af:inputListOfValues>
+                          </div>
+                          <div class="col-md-3">
+                            <label class="col-form-label">
+                              <af:outputLabel id="ol5" showRequired="true"
+                                              value="#{menu.resourceLabelMap['ArcFlStandardsTl.StandardDesc']}"/>
+                            </label>
+                             
+                            <af:inputText columns="#{bindings.DisplayFlStandardsFK1.hints.displayWidth}" id="it5"
+                                          maximumLength="#{bindings.DisplayFlStandardsFK1.hints.precision}"
+                                          partialTriggers="flStandardsFK1Id" disabled="true"
+                                          required="#{bindings.DisplayFlStandardsFK1.hints.mandatory}" simple="true"
+                                          styleClass="form-control"
+                                          label="#{menu.resourceLabelMap['ArcFlStandardsTl.StandardDesc']}"
+                                          value="#{bindings.DisplayFlStandardsFK1.inputValue}">
+                              <f:validator binding="#{bindings.DisplayFlStandardsFK1.validator}"/>
+                            </af:inputText>
+                          </div>
+                        </div>
+                      </div>
+                    </af:panelBox>
+                  </af:panelGroupLayout>
+                </af:dialog>
+              </af:popup>
+              <af:popup contentDelivery="lazyUncached" id="insertFileLocationByEmployeeNoPopup"
+                        popupCanceledListener="#{fileLocations.cancelTranslation}">
+                <af:dialog dialogListener="#{fileLocations.insertFileLocation}"
+                           id="insertFileLocationByEmployeeNoDialog" title="" type="okCancel">
+                  <af:panelGroupLayout id="pgl2" layout="scroll">
+                    <af:panelBox id="pb1" styleClass="AFStretchWidth"
+                                 text="#{menu.resourceLabelMap['fileLocations.insertFileLocationByEmployee']}">
+                      <div class="card-body">
+                        <div class="form-group row">
+                          <div class="col-md-3">
+                            <label class="col-form-label">
+                              <af:outputLabel id="ol2" showRequired="true"
+                                              value="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesPk']}"/>
+                            </label>
+                             
+                            <af:inputListOfValues autoSubmit="true"
+                                                  columns="#{bindings.EmployeesFk1.hints.displayWidth}"
+                                                  id="employeesFk1Id" 
+                                                  model="#{bindings.EmployeesFk1.listOfValuesModel}"
+                                                  popupTitle="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesPk']}"
+                                                  required="true" simple="true" styleClass="form-control"
+                                                label="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesPk']}"
+
+                                                  value="#{bindings.EmployeesFk1.inputValue}">
+                              <f:validator binding="#{bindings.EmployeesFk1.validator}"/>
+                              <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeesFk1.format}"/>
+                            </af:inputListOfValues>
+                          </div>
+                          <div class="col-md-3">
+                            <label class="col-form-label">
+                              <af:outputLabel id="ol7" showRequired="true"
+                                              value="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesName']}"/>
+                            </label>
+                             
+                            <af:inputText columns="#{bindings.DisplayEmployeesFk1.hints.displayWidth}" id="it9"
+                                          maximumLength="#{bindings.DisplayEmployeesFk1.hints.precision}"
+                                          partialTriggers="employeesFk1Id" disabled="true"
+                                            label="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesName']}"
+
+                                          required="#{bindings.DisplayEmployeesFk1.hints.mandatory}" simple="true"
+                                          styleClass="form-control" value="#{bindings.DisplayEmployeesFk1.inputValue}">
+                              <f:validator binding="#{bindings.DisplayEmployeesFk1.validator}"/>
+                            </af:inputText>
+                          </div>
+                          <div class="col-md-3">
+                            <label class="col-form-label">
+                              <af:outputLabel id="ol4" showRequired="true"
+                                              value="#{menu.resourceLabelMap['ArcFlStandards.FlStandardsPk']}"/>
+                            </label>
+                             
+                            <af:inputListOfValues autoSubmit="true"
+                                                  columns="#{bindings.FlStandardsFK1.hints.displayWidth}" id="ilov1"
+                                                  label="#{menu.resourceLabelMap['ArcFlStandards.FlStandardsPk']}"
+                                                  model="#{bindings.FlStandardsFK1.listOfValuesModel}"
+                                                  popupTitle="#{menu.resourceLabelMap['ArcFlStandards.FlStandardsPk']}"
+                                                  required="true" simple="true" styleClass="form-control"
+                                                  value="#{bindings.FlStandardsFK1.inputValue}">
+                              <f:validator binding="#{bindings.FlStandardsFK1.validator}"/>
+                              <af:convertNumber groupingUsed="false" pattern="#{bindings.FlStandardsFK1.format}"/>
+                            </af:inputListOfValues>
+                          </div>
+                          <div class="col-md-3">
+                            <label class="col-form-label">
+                              <af:outputLabel id="ol6" showRequired="true"
+                                              value="#{menu.resourceLabelMap['ArcFlStandardsTl.StandardDesc']}"/>
+                            </label>
+                             
+                            <af:inputText columns="#{bindings.DisplayFlStandardsFK1.hints.displayWidth}" id="it7"
+                                          maximumLength="#{bindings.DisplayFlStandardsFK1.hints.precision}"
+                                           label="#{menu.resourceLabelMap['ArcFlStandardsTl.StandardDesc']}"
+                                          partialTriggers="ilov1" disabled="true"
+                                          required="#{bindings.DisplayFlStandardsFK1.hints.mandatory}" simple="true"
+                                          styleClass="form-control"
+                                          value="#{bindings.DisplayFlStandardsFK1.inputValue}">
+                              <f:validator binding="#{bindings.DisplayFlStandardsFK1.validator}"/>
+                            </af:inputText>
+                          </div>
+                        </div>
+                      </div>
+                    </af:panelBox>
+                  </af:panelGroupLayout>
+                </af:dialog>
+              </af:popup>
+              <af:popup id="ArcFilesLockersTlPopup" contentDelivery="lazyUncached"
+                        popupCanceledListener="#{fileLocations.cancelArcFilesLockersTlTranslation}">
+                <af:dialog id="ArcFilesLockersTlDialog"
+                           dialogListener="#{fileLocations.commitArcFilesLockersTlTranslation}" type="okCancel">
+                  <af:panelTabbed styleClass="AFStretchWidth" dimensionsFrom="disclosedChild" id="pt2">
+                    <af:showDetailItem styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['label.translation']}"
+                                       id="sdi3">
+                      <af:panelStretchLayout id="psl32" styleClass="AFStretchWidth" dimensionsFrom="children">
+                        <f:facet name="center">
+                          <af:panelCollection id="pc16" styleClass="AFStretchWidth"
+                                              featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="t5">
+                                <af:commandButton text="#{menu.resourceLabelMap['label.commit']}" id="Commit2"
+                                                  rendered="false" styleClass="commitButton"
+                                                  actionListener="#{bindings.Commit.execute}"
+                                                  disabled="#{!menu.updateAllowed}" partialSubmit="true"
+                                                  icon="#{menu.commitIcon}"/>
+                                <af:spacer width="5" id="s17"/>
+                                <af:commandButton text="#{menu.resourceLabelMap['label.rollback']}" id="rb2"
+                                                  rendered="false" styleClass="rollbackButton"
+                                                  actionListener="#{bindings.Rollback.execute}" immediate="true"
+                                                  partialSubmit="true" icon="#{menu.rollbackIcon}"
+                                                  visible="#{menu.rollbackVisible}">
+                                  <af:resetActionListener/>
+                                </af:commandButton>
+                                <af:spacer width="5" id="s18"/>
+                                <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="cb25"
+                                                  styleClass="printButton" immediate="true"
+                                                  disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                                  icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer width="5" id="s19"/>
+                      
+                                
+                                  
+                                         <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="cb26"
+                                              immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.excel']}"
+                                              styleClass="excelButton" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="ArcFilesLockersTl1" to="#{sessionScope.tableId}"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                                <af:spacer width="5" id="s20"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table value="#{bindings.ArcFilesLockersTlView3.collectionModel}" id="ArcFilesLockersTl1"
+                                      styleClass="AFStretchWidth" var="row" varStatus="vs"
+                                      rows="#{bindings.ArcFilesLockersTlView3.rangeSize}"
+                                      selectionListener="#{bindings.ArcFilesLockersTlView3.collectionModel.makeCurrent}"
+                                      selectedRowKeys="#{bindings.ArcFilesLockersTlView3.collectionModel.selectedRow}"
+                                      filterModel="#{bindings.ArcFilesLockersTlView3Query.queryDescriptor}"
+                                      queryListener="#{bindings.ArcFilesLockersTlView3Query.processQuery}"
+                                      partialTriggers=":::pc3:cb6 :::pc3:ArcFilesLockers1 ::Commit2 ::rb2 ::cb25 ::cb26"
+                                      columnSelection="multiple" columnStretching="column:FilesLockersNameC19"
+                                      verticalGridVisible="false"
+                                      emptyText="#{bindings.ArcFilesLockersTlView3.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                      rowSelection="single" fetchSize="#{bindings.ArcFilesLockersTlView3.rangeSize}"
+                                      displayRow="selected" editingMode="editAll" filterVisible="false"
+                                      autoHeightRows="5" blockRowNavigationOnError="always" scrollPolicy="page"
+                                      rowBandingInterval="1">
+                              <af:column id="LanguagesFkC22" sortProperty="LanguagesFk"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesLockersTl.LanguagesFk']}"
+                                         sortable="true" filterable="true" filterFeatures="caseInsensitive" width="150"
+                                         align="center">
+                                <af:selectOneChoice value="#{row.bindings.LanguagesFk.inputValue}"
+                                                    label="#{row.bindings.LanguagesFk.label}"
+                                                    required="#{bindings.ArcFilesLockersTlView3.hints.LanguagesFk.mandatory}"
+                                                    id="soc2" readOnly="true">
+                                  <f:selectItems value="#{row.bindings.LanguagesFk.items}" id="si2"/>
+                                  <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column id="FilesLockersNameC19" sortProperty="FilesLockersName"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersName']}"
+                                         sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                         showRequired="true">
+                                <af:inputText value="#{row.bindings.FilesLockersName.inputValue}"
+                                              label="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersName']}"
+                                              required="true"
+                                              columns="#{bindings.ArcFilesLockersTlView3.hints.FilesLockersName.displayWidth}"
+                                              maximumLength="#{bindings.ArcFilesLockersTlView3.hints.FilesLockersName.precision}"
+                                              id="arcFilesLockersTlFileslockersname">
+                                  <f:validator binding="#{row.bindings.FilesLockersName.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                              <af:column id="FilesLockersDescC20" sortProperty="FilesLockersDesc"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersDesc']}"
+                                         sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                         showRequired="true" width="400">
+                                <af:inputText value="#{row.bindings.FilesLockersDesc.inputValue}"
+                                              label="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersDesc']}"
+                                              required="true"
+                                              columns="#{bindings.ArcFilesLockersTlView3.hints.FilesLockersDesc.displayWidth}"
+                                              maximumLength="#{bindings.ArcFilesLockersTlView3.hints.FilesLockersDesc.precision}"
+                                              id="arcFilesLockersTlFileslockersdesc">
+                                  <f:validator binding="#{row.bindings.FilesLockersDesc.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                              <af:column id="FilesLockersLocationC21" sortProperty="FilesLockersLocation"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersLocation']}"
+                                         sortable="true" filterable="true" filterFeatures="caseInsensitive" width="400">
+                                <af:inputText value="#{row.bindings.FilesLockersLocation.inputValue}"
+                                              label="#{menu.resourceLabelMap['ArcFilesLockersTl.FilesLockersLocation']}"
+                                              required="#{bindings.ArcFilesLockersTlView3.hints.FilesLockersLocation.mandatory}"
+                                              columns="#{bindings.ArcFilesLockersTlView3.hints.FilesLockersLocation.displayWidth}"
+                                              maximumLength="#{bindings.ArcFilesLockersTlView3.hints.FilesLockersLocation.precision}"
+                                              id="arcFilesLockersTlFileslockerslocation">
+                                  <f:validator binding="#{row.bindings.FilesLockersLocation.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+              <af:popup id="ArcFilesColumnsLockersTlPopup" contentDelivery="lazyUncached"
+                        popupCanceledListener="#{fileLocations.cancelArcFilesColumnsLockersTlTranslation}">
+                <af:dialog id="ArcFilesColumnsLockersTlDialog"
+                           dialogListener="#{fileLocations.commitArcFilesColumnsLockersTlTranslation}" type="okCancel">
+                  <af:panelTabbed styleClass="AFStretchWidth" dimensionsFrom="disclosedChild" id="pt3">
+                    <af:showDetailItem styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['label.translation']}"
+                                       id="sdi4">
+                      <af:panelStretchLayout id="psl76" styleClass="AFStretchWidth" dimensionsFrom="children">
+                        <f:facet name="center">
+                          <af:panelCollection id="pc62" styleClass="AFStretchWidth"
+                                              featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="tb5">
+                                <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print5"
+                                                  styleClass="printButton" immediate="true"
+                                                  disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                                  icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer width="5" id="s25"/>
+                          
+                                
+                                
+                                
+                                    <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel5"
+                                              immediate="true" partialSubmit="true"
+                                              text="#{menu.resourceLabelMap['label.excel']}"
+                                              styleClass="excelButton" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="ArcFilesColumnsLockersTl1" to="#{sessionScope.tableId}"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                                <af:spacer width="5" id="s26"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table value="#{bindings.ArcFilesColumnsLockersTlView3.collectionModel}"
+                                      id="ArcFilesColumnsLockersTl1" styleClass="AFStretchWidth" var="row"
+                                      varStatus="vs" rows="#{bindings.ArcFilesColumnsLockersTlView3.rangeSize}"
+                                      selectionListener="#{bindings.ArcFilesColumnsLockersTlView3.collectionModel.makeCurrent}"
+                                      selectedRowKeys="#{bindings.ArcFilesColumnsLockersTlView3.collectionModel.selectedRow}"
+                                      filterModel="#{bindings.ArcFilesColumnsLockersTlView3Query.queryDescriptor}"
+                                      queryListener="#{bindings.ArcFilesColumnsLockersTlView3Query.processQuery}"
+                                      partialTriggers=":::pc4:Del3 :::pc4:ci3 :::pc4:Commit3 :::pc4:rb3 :::pc4:translation3 :::pc4:ArcFilesColumnsLockers1"
+                                      columnSelection="multiple" columnStretching="last" verticalGridVisible="false"
+                                      emptyText="#{bindings.ArcFilesColumnsLockersTlView3.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                      rowSelection="single"
+                                      fetchSize="#{bindings.ArcFilesColumnsLockersTlView3.rangeSize}"
+                                      displayRow="selected" editingMode="editAll" filterVisible="false"
+                                      autoHeightRows="5" blockRowNavigationOnError="always" scrollPolicy="page"
+                                      rowBandingInterval="1">
+                              <af:column id="LanguagesFkC66" sortProperty="LanguagesFk"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesColumnsLockersTl.LanguagesFk']}"
+                                         sortable="true" filterable="true" filterFeatures="caseInsensitive" width="150"
+                                         align="center">
+                                <af:selectOneChoice value="#{row.bindings.LanguagesFk.inputValue}"
+                                                    label="#{row.bindings.LanguagesFk.label}"
+                                                    required="#{bindings.ArcFilesColumnsLockersTlView3.hints.LanguagesFk.mandatory}"
+                                                    id="soc3" readOnly="true">
+                                  <f:selectItems value="#{row.bindings.LanguagesFk.items}" id="si3"/>
+                                  <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column id="FilesColumnsLockersNameC65" sortProperty="FilesColumnsLockersName"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesColumnsLockersTl.FilesColumnsLockersName']}"
+                                         sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                         showRequired="true">
+                                <af:inputText value="#{row.bindings.FilesColumnsLockersName.inputValue}"
+                                              label="#{menu.resourceLabelMap['ArcFilesColumnsLockersTl.FilesColumnsLockersName']}"
+                                              required="true"
+                                              columns="#{bindings.ArcFilesColumnsLockersTlView3.hints.FilesColumnsLockersName.displayWidth}"
+                                              maximumLength="#{bindings.ArcFilesColumnsLockersTlView3.hints.FilesColumnsLockersName.precision}"
+                                              id="arcFilesColumnsLockersTlFilescolumnslockersname">
+                                  <f:validator binding="#{row.bindings.FilesColumnsLockersName.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+              <af:popup id="ArcFilesRowsColumnsLockersTlPopup" contentDelivery="lazyUncached"
+                        popupCanceledListener="#{fileLocations.cancelArcFilesRowsColumnsLockersTlTranslation}">
+                <af:dialog id="ArcFilesRowsColumnsLockersTlDialog"
+                           dialogListener="#{fileLocations.commitArcFilesRowsColumnsLockersTlTranslation}"
+                           type="okCancel">
+                  <af:panelTabbed styleClass="AFStretchWidth" dimensionsFrom="disclosedChild" id="pt4">
+                    <af:showDetailItem styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['label.translation']}"
+                                       id="sdi5">
+                      <af:panelStretchLayout id="psl61" styleClass="AFStretchWidth" dimensionsFrom="children">
+                        <f:facet name="center">
+                          <af:panelCollection id="pc47" styleClass="AFStretchWidth"
+                                              featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="tb4">
+                                <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print4"
+                                                  styleClass="printButton" immediate="true"
+                                                  disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                                  icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer width="5" id="s31"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel4"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.excel']}"
+                                                  styleClass="excelButton" visible="#{menu.excelVisible}">
+                                  <af:setPropertyListener from="ArcFilesRowsColumnsLockersTl1"
+                                                          to="#{sessionScope.tableId}" type="action"/>
+                                  <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                </af:commandButton>
+                                <af:spacer width="5" id="s32"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table value="#{bindings.ArcFilesRowsColumnsLockersTlView3.collectionModel}"
+                                      id="ArcFilesRowsColumnsLockersTl1" styleClass="AFStretchWidth" var="row"
+                                      varStatus="vs" rows="#{bindings.ArcFilesRowsColumnsLockersTlView3.rangeSize}"
+                                      selectionListener="#{bindings.ArcFilesRowsColumnsLockersTlView3.collectionModel.makeCurrent}"
+                                      selectedRowKeys="#{bindings.ArcFilesRowsColumnsLockersTlView3.collectionModel.selectedRow}"
+                                      filterModel="#{bindings.ArcFilesRowsColumnsLockersTlView3Query.queryDescriptor}"
+                                      queryListener="#{bindings.ArcFilesRowsColumnsLockersTlView3Query.processQuery}"
+                                      partialTriggers=":::pc5:Commit6 :::pc5:ArcFilesRowsColumnsLockers1"
+                                      columnSelection="multiple" columnStretching="last" verticalGridVisible="false"
+                                      emptyText="#{bindings.ArcFilesRowsColumnsLockersTlView3.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                      rowSelection="single"
+                                      fetchSize="#{bindings.ArcFilesRowsColumnsLockersTlView3.rangeSize}"
+                                      displayRow="selected" editingMode="editAll" filterVisible="false"
+                                      autoHeightRows="5" blockRowNavigationOnError="always" scrollPolicy="page"
+                                      rowBandingInterval="1">
+                              <af:column id="LanguagesFkC51" sortProperty="LanguagesFk"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockersTl.LanguagesFk']}"
+                                         sortable="true" filterable="true" filterFeatures="caseInsensitive" width="150"
+                                         align="center">
+                                <af:selectOneChoice value="#{row.bindings.LanguagesFk.inputValue}"
+                                                    label="#{row.bindings.LanguagesFk.label}"
+                                                    required="#{bindings.ArcFilesRowsColumnsLockersTlView3.hints.LanguagesFk.mandatory}"
+                                                    id="soc4" readOnly="true">
+                                  <f:selectItems value="#{row.bindings.LanguagesFk.items}" id="si4"/>
+                                  <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column id="FilesRowsColumnsLockerNameC50" sortProperty="FilesRowsColumnsLockerName"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockersTl.FilesRowsColumnsLockerName']}"
+                                         sortable="true" filterable="true" filterFeatures="caseInsensitive"
+                                         showRequired="true">
+                                <af:inputText value="#{row.bindings.FilesRowsColumnsLockerName.inputValue}"
+                                              label="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockersTl.FilesRowsColumnsLockerName']}"
+                                              required="true"
+                                              columns="#{bindings.ArcFilesRowsColumnsLockersTlView3.hints.FilesRowsColumnsLockerName.displayWidth}"
+                                              maximumLength="#{bindings.ArcFilesRowsColumnsLockersTlView3.hints.FilesRowsColumnsLockerName.precision}"
+                                              id="arcFilesRowsColumnsLockersTlFilesrowscolumnslockername">
+                                  <f:validator binding="#{row.bindings.FilesRowsColumnsLockerName.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

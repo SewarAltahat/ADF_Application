@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="ArcOldDocumentTl" BindingStyle="JDBC"
+    DBObjectName="ARC_OLD_DOCUMENT_TL" DBObjectType="table"
+    InheritPersonalization="merge" Name="ArcOldDocumentTl"
+    RowClass="arc.model.eo.ArcOldDocumentTlImpl" Version="12.2.1.16.48" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="OLD_DOCUMENT_TL_PK" ColumnType="NUMBER"
+        IsNotNull="false" Name="OldDocumentTlPk" PrimaryKey="true"
+        SQLType="NUMERIC" TableName="ARC_OLD_DOCUMENT_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DOCUMENT_SUBJECT" ColumnType="VARCHAR2"
+        Name="DocumentSubject" Precision="500" SQLType="VARCHAR"
+        TableName="ARC_OLD_DOCUMENT_TL" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="500"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="DOCUMENT_COMMENT" ColumnType="VARCHAR2"
+        Name="DocumentComment" Precision="1000" SQLType="VARCHAR"
+        TableName="ARC_OLD_DOCUMENT_TL" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="1000"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="DOCUMENT_DESCRIPTION" ColumnType="VARCHAR2"
+        Name="DocumentDescription" Precision="2000" SQLType="VARCHAR"
+        TableName="ARC_OLD_DOCUMENT_TL" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="2000"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="LANGUAGES_FK" ColumnType="NUMBER"
+        Name="LanguagesFk" SQLType="NUMERIC"
+        TableName="ARC_OLD_DOCUMENT_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="OLD_DOCUMENT_FK" ColumnType="NUMBER"
+        Name="OldDocumentFk" SQLType="NUMERIC"
+        TableName="ARC_OLD_DOCUMENT_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC"
+        TableName="ARC_OLD_DOCUMENT_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="ARC_OLD_DOCUMENT_TL" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC"
+        TableName="ARC_OLD_DOCUMENT_TL" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="ARC_OLD_DOCUMENT_TL" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="ARC_OLD_DOCUMENT_TL" Type="java.math.BigDecimal"/>
+    <AccessorAttribute
+        Association="arc.model.assoc.ArcDocumentTlFkAssoc"
+        AssociationEnd="arc.model.assoc.ArcDocumentTlFkAssoc.ArcOldDocument"
+        AssociationOtherEnd="arc.model.assoc.ArcDocumentTlFkAssoc.ArcOldDocumentTl"
+        IsUpdateable="true" Name="ArcOldDocument" Type="arc.model.eo.ArcOldDocumentImpl"/>
+    <Key Name="ArcDocumentTlPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="ARC_DOCUMENT_TL_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcOldDocumentTl.OldDocumentTlPk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcDocumentTlFk">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="ARC_DOCUMENT_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_DOCUMENT_TL_FK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcOldDocumentTl.OldDocumentFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcDocumentTlFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SSO_LANGUAGES_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_DOCUMENT_TL_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcOldDocumentTl.LanguagesFk"/>
+        </AttrArray>
+    </Key>
+</Entity>
+<!---->

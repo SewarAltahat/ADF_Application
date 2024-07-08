@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="ArcFilesLockers" BindingStyle="JDBC"
+    DBObjectName="ARC_FILES_LOCKERS" DBObjectType="table"
+    InheritPersonalization="merge" Name="ArcFilesLockers"
+    RowClass="arc.model.eo.ArcFilesLockersImpl"
+    Version="12.2.1.16.48" xmlns="http://xmlns.oracle.com/bc4j"
+    xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="FILES_LOCKERS_PK" ColumnType="NUMBER" Name="FilesLockersPk" PrimaryKey="true"
+        SQLType="NUMERIC" TableName="ARC_FILES_LOCKERS" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DEPARTMENTS_FK" ColumnType="NUMBER"
+        Name="DepartmentsFk" SQLType="NUMERIC"
+        TableName="ARC_FILES_LOCKERS" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC" TableName="ARC_FILES_LOCKERS" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="ARC_FILES_LOCKERS" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC"
+        TableName="ARC_FILES_LOCKERS" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="ARC_FILES_LOCKERS" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="ARC_FILES_LOCKERS" Type="java.math.BigDecimal"/>
+    <Attribute
+        ColumnType="CHAR"
+        IsPersistent="false"
+        Name="DisplayFilesLockersName"
+        Precision="200"
+        SQLType="VARCHAR"
+        Type="java.lang.String"
+        ColumnName="$none$"/>
+    <Attribute
+        ColumnType="CHAR"
+        IsPersistent="false"
+        Name="DisplayFilesLockersDesc"
+        Precision="200"
+        SQLType="VARCHAR"
+        Type="java.lang.String"
+        ColumnName="$none$"/>
+    <Attribute
+        ColumnType="CHAR"
+        IsPersistent="false"
+        Name="DisplayFilesLockersLocation"
+        Precision="200"
+        SQLType="VARCHAR"
+        Type="java.lang.String"
+        ColumnName="$none$"/>
+    <AccessorAttribute
+        Association="arc.model.assoc.ArcFilesColumnsLockersFk1Assoc"
+        AssociationEnd="arc.model.assoc.ArcFilesColumnsLockersFk1Assoc.ArcFilesColumnsLockers"
+        AssociationOtherEnd="arc.model.assoc.ArcFilesColumnsLockersFk1Assoc.ArcFilesLockers"
+        IsUpdateable="false" Name="ArcFilesColumnsLockers" Type="oracle.jbo.RowIterator"/>
+    <AccessorAttribute
+        Association="arc.model.assoc.ArcFilesLockersTlFk2Assoc"
+        AssociationEnd="arc.model.assoc.ArcFilesLockersTlFk2Assoc.ArcFilesLockersTl"
+        AssociationOtherEnd="arc.model.assoc.ArcFilesLockersTlFk2Assoc.ArcFilesLockers"
+        IsUpdateable="false" Name="ArcFilesLockersTl" Type="oracle.jbo.RowIterator"/>
+    <Key
+        Name="AltKey"
+        AltKey="true">
+        <DesignTime>
+            <Attr Name="_isUnique" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_LOCKERS"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesLockers.DisplayFilesLockersName"/>
+            <Item Value="arc.model.eo.ArcFilesLockers.DepartmentsFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesLockersPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_LOCKERS_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesLockers.FilesLockersPk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesLockersFk">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="HCM_DEPARTMENTS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_LOCKERS_FK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesLockers.DepartmentsFk"/>
+        </AttrArray>
+    </Key>
+    <validation:UniqueKeyValidationBean
+        Name="ArcFilesLockersRule0"
+        KeyName="AltKey"  ResId="#{menu.resourceLabelMap['error.DuplicateCode']}">
+        <validation:OnAttributes>
+            <validation:Item
+                Value="DisplayFilesLockersName"/>
+            <validation:Item
+                Value="DepartmentsFk"/>
+        </validation:OnAttributes>
+    </validation:UniqueKeyValidationBean>
+     <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</Entity>
+<!---->

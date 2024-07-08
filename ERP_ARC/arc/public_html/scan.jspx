@@ -1,0 +1,474 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:erplib="/erplib" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+          version="2.1">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{scan.doc}" id="Doc1" styleClass="sidebar-mini" title="#{menu.resourceLabelMap['menu.scan']}"
+                 uncommittedDataWarning="on">
+      <af:resource type="javascript">
+        function SecondScan()
+        {
+          AcquireImage();
+          UploadImage();
+        }
+      </af:resource>
+      <af:messages id="m1"/>
+      <af:form id="form1" usesUpload="true">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute name="pageTitle" value="#{menu.resourceLabelMap['menu.scan']}"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1" layout="scroll">
+              <af:panelBox styleClass="AFStretchWidth" id="pb3">
+                <af:panelGroupLayout id="pgl1" layout="horizontal" styleClass="AFStretchWidth">
+                  <af:inputFile autoSubmit="true" id="if1"
+                                label="#{menu.resourceLabelMap['ArcDocumentAttachment.FilePath']}"
+                                valueChangeListener="#{scan.uploadFileAttachment}"/>
+                </af:panelGroupLayout>
+                <af:spacer height="30" width="5" id="s1"/>
+                <af:panelGroupLayout id="pgl3" styleClass="AFStretchWidth">
+                  <erplib:scan/>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:panelBox id="pb2" styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.scan']}">
+                <af:panelGroupLayout id="pgl2" styleClass="AFStretchWidth">
+                  <af:panelGroupLayout halign="center" id="pgl4" layout="horizontal">
+                    <af:commandButton icon="/images/scanner.png" id="cb1" partialSubmit="true"
+                                      shortDesc="#{menu.resourceLabelMap['label.scanBefore']}" styleClass="printButton"
+                                      text="#{menu.resourceLabelMap['label.scanBefore']}">
+                      <af:clientListener method="SecondScan" type="click"/>
+                      <!--<af:clientListener method="UploadImage" type="click"/>-->
+                      <af:setPropertyListener from="AddBefore" to="#{sessionScope.operationType}" type="action"/>
+                    </af:commandButton>
+                    <af:spacer width="5"/>
+                    <af:commandButton icon="/images/scanner.png" id="cb2" partialSubmit="true"
+                                      shortDesc="#{menu.resourceLabelMap['label.scanAfter']}" styleClass="printButton"
+                                      text="#{menu.resourceLabelMap['label.scanAfter']}">
+                      <af:clientListener method="SecondScan" type="click"/>
+                      <!--<af:clientListener method="UploadImage" type="click"/>-->
+                      <af:setPropertyListener from="AddAfter" to="#{sessionScope.operationType}" type="action"/>
+                    </af:commandButton>
+                    <af:spacer width="5"/>
+                    <af:commandButton actionListener="#{scan.deleteCurrentPageActionPerformed}"
+                                      icon="/images/delete.png" id="cb3" partialSubmit="true"
+                                      shortDesc="#{menu.resourceLabelMap['label.removePage']}" styleClass="printButton"
+                                      text="#{menu.resourceLabelMap['label.removePage']}"/>
+                    <af:spacer width="5"/>
+                    <af:commandButton actionListener="#{scan.reorderPage}" icon="/images/returnDoc.png" id="cb4"
+                                      partialSubmit="true" shortDesc="#{menu.resourceLabelMap['label.reorder']}"
+                                      styleClass="printButton" text="#{menu.resourceLabelMap['label.reorder']}"/>
+                    <af:spacer width="5"/>
+                    <af:commandButton actionListener="#{scan.reverseOrder}" icon="/images/returnDoc.png" id="cb8"
+                                      partialSubmit="true" shortDesc="#{menu.resourceLabelMap['label.reverseOrder']}"
+                                      styleClass="printButton" text="#{menu.resourceLabelMap['label.reverseOrder']}"/>
+                    <af:spacer width="5"/>
+                    <af:commandButton actionListener="#{scan.rotateClockwiseActionPerformed}" icon="/images/reply.png"
+                                      id="cb5" partialSubmit="true"
+                                      shortDesc="#{menu.resourceLabelMap['label.rotateClockwise']}"
+                                      styleClass="printButton"
+                                      text="#{menu.resourceLabelMap['label.rotateClockwise']}"/>
+                    <af:spacer width="5"/>
+                    <af:commandButton actionListener="#{scan.rotateAntiClockwiseActionPerformed}"
+                                      icon="/images/reply.png" id="cb6" partialSubmit="true"
+                                      shortDesc="#{menu.resourceLabelMap['label.rotateAnticlockwise']}"
+                                      styleClass="printButton"
+                                      text="#{menu.resourceLabelMap['label.rotateAnticlockwise']}"/>
+                    <af:spacer width="5"/>
+                    <af:commandButton action="#{scan.getOCR}" icon="/images/reply.png" id="cb9" partialSubmit="true"
+                                      shortDesc="OCR" styleClass="printButton" text="OCR"/>
+                    <af:spacer width="5"/>
+                    <af:commandButton action="#{scan.addWaterMark}" icon="/images/reply.png" id="cb10"
+                                      partialSubmit="true" rendered="false" shortDesc="WaterMarkk"
+                                      styleClass="printButton" text="WaterMarkk"/>
+                    <af:spacer width="5"/>
+                    <af:commandButton action="#{scan.otherWaterMark}" icon="/images/reply.png" id="cb11"
+                                      partialSubmit="true" rendered="false" shortDesc="WaterMarkk2"
+                                      styleClass="printButton" text="WaterMarkk2"/>
+                    <!--<af:commandButton shortDesc="#{menu.resourceLabelMap['label.zoom']}" id="cb7"
+                                      text="#{menu.resourceLabelMap['label.zoom']}" styleClass="printButton"   partialSubmit="true"/>-->
+                  </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl6">
+                    <div class="card-body">
+                      <div class="form-group row">
+                        <div class="col-md-3">
+                          <label class="col-form-label">
+                            <af:outputLabel id="arcOldDocumentOlddocumentpkL"
+                                            value="#{menu.resourceLabelMap['label.pageNumber']}"/>
+                          </label><!--<af:inputText label="Label 1" id="it1" simple="true" autoSubmit="true"
+                                                binding="#{scan.pageNumber}"/>-->
+                           
+                          <af:inputText autoSubmit="true" columns="#{bindings.PageNumber.hints.displayWidth}" id="it3"
+                                        label="#{bindings.PageNumber.hints.label}"
+                                        maximumLength="#{bindings.PageNumber.hints.precision}"
+                                        required="#{bindings.PageNumber.hints.mandatory}" simple="true"
+                                        value="#{bindings.PageNumber.inputValue}">
+                            <f:validator binding="#{bindings.PageNumber.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.PageNumber.format}"/>
+                            <!--<af:validateDoubleRange minimum="1"/>-->
+                          </af:inputText>
+                        </div>
+                        <div class="col-md-3">
+                          <label class="col-form-label">
+                            <af:outputLabel id="ol1" value="#{menu.resourceLabelMap['label.orderPageNumber']}"/>
+                          </label><!--<af:inputText label="Label 1" id="it2" simple="true" autoSubmit="true"
+                                                binding="#{scan.orderPageNumber}"/>--><af:inputText autoSubmit="true"
+                                                                                                    columns="#{bindings.OrderPageNumber.hints.displayWidth}"
+                                                                                                    id="it1"
+                                                                                                    label="#{bindings.OrderPageNumber.hints.label}"
+                                                                                                    maximumLength="#{bindings.OrderPageNumber.hints.precision}"
+                                                                                                    required="#{bindings.OrderPageNumber.hints.mandatory}"
+                                                                                                    simple="true"
+                                                                                                    value="#{bindings.OrderPageNumber.inputValue}">
+                            <f:validator binding="#{bindings.OrderPageNumber.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.OrderPageNumber.format}"/>
+                            <!--<af:validateDoubleRange minimum="1"/>-->
+                          </af:inputText>
+                        </div>
+                        <div class="col-md-3">
+                          <label class="col-form-label">
+                            <af:outputLabel id="OrderPageEndRange"
+                                            value="#{menu.resourceLabelMap['label.OrderPageEndRange']}"/>
+                          </label><af:inputText autoSubmit="true"
+                                                columns="#{bindings.OrderPageEndRange.hints.displayWidth}" id="it7"
+                                                label="#{bindings.OrderPageEndRange.hints.label}"
+                                                maximumLength="#{bindings.OrderPageEndRange.hints.precision}"
+                                                required="#{bindings.OrderPageEndRange.hints.mandatory}" simple="true"
+                                                value="#{bindings.OrderPageEndRange.inputValue}">
+                            <f:validator binding="#{bindings.OrderPageEndRange.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.OrderPageEndRange.format}"/>
+                          </af:inputText>
+                        </div>
+                        <div class="col-md-3">
+                          <label class="col-form-label">
+                            <af:outputLabel id="OcrLabel" value="#{bindings.LangISOCode.label}"/>
+                          </label><af:selectOneChoice autoSubmit="true" id="soc1" label="#{bindings.LangISOCode.label}"
+                                                      required="#{bindings.LangISOCode.hints.mandatory}" simple="true"
+                                                      styleClass="form-control"
+                                                      value="#{bindings.LangISOCode.inputValue}">
+                            <f:selectItems id="si1" value="#{bindings.LangISOCode.items}"/>
+                            <f:validator binding="#{bindings.LangISOCode.validator}"/>
+                          </af:selectOneChoice>
+                        </div>
+                      </div>
+                    </div>
+                  </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl7">
+                    <af:richTextEditor columns="150" id="OCRText" label="OCR" partialTriggers="cb9"
+                                       required="#{bindings.OCRText.hints.mandatory}" rows="10" simple="true"
+                                       value="#{bindings.OCRText.inputValue}"/>
+                  </af:panelGroupLayout>
+                  <af:panelGroupLayout id="pgl5" partialTriggers="if1 cb1 cb2 cb3 cb4 cb8 cb5 cb6 cb11 cb10"
+                                       styleClass="AFStretchWidth" visible="#{bindings.FilePath.inputValue != null}">
+                    <erplib:viewer addWaterMark="0" filePath="${bindings.FilePath.inputValue}"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:inputText id="scanCompId" label=" " visible="false">
+                <af:serverListener method="#{scan.refreshFromScanner}" type="refreshFromScanner"/>
+              </af:inputText>
+              <af:panelBox id="pb1" styleClass="AFStretchWidth"
+                           text="#{menu.resourceLabelMap['label.ClassificationDetails']}">
+                <af:panelGroupLayout halign="center" id="pgl50">
+                  <af:panelStretchLayout dimensionsFrom="children" id="psl51" styleClass="AFStretchWidth">
+                    <f:facet name="center">
+                      <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc1"
+                                          styleClass="AFStretchWidth">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb1">
+                            <af:commandButton actionListener="#{scan.insertClassificationRow}"
+                                              disabled="#{!menu.insertAllowed}" icon="#{menu.createInsertIcon}" id="ci1"
+                                              partialSubmit="true" text="#{menu.resourceLabelMap['label.createInsert']}"
+                                              styleClass="insertButton"/>
+                            <af:commandButton actionListener="#{scan.splitPdf}" icon="/images/approve.png" id="cb7"
+                                              partialSubmit="true" text="#{menu.resourceLabelMap['label.apply']}"
+                                              styleClass="printButton"/>
+                            <af:commandButton actionListener="#{scan.rollback}" icon="#{menu.rollbackIcon}" id="cb12"
+                                              partialSubmit="true" immediate="true"
+                                              text="#{menu.resourceLabelMap['label.rollback']}"
+                                              styleClass="rollbackButton"/>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table columnStretching="column:DisplayDocumentDescription"
+                                  emptyText="#{bindings.ArcClassificationPVO1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  fetchSize="#{bindings.ArcClassificationPVO1.rangeSize}" id="t1"
+                                  partialTriggers="::ci1 :::updateFilesLocationFkDialog ::cb12 ::cb7"
+                                  rowBandingInterval="1" rowSelection="single"
+                                  rows="#{bindings.ArcClassificationPVO1.rangeSize}"
+                                  selectedRowKeys="#{bindings.ArcClassificationPVO1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.ArcClassificationPVO1.collectionModel.makeCurrent}"
+                                  styleClass="AFStretchWidth t50"
+                                  value="#{bindings.ArcClassificationPVO1.collectionModel}" var="row" autoHeightRows="5"
+                                  blockRowNavigationOnError="always" columnSelection="multiple" displayRow="selected"
+                                  editingMode="editAll" filterVisible="false" scrollPolicy="page" varStatus="vs"
+                                  verticalGridVisible="false">
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcClassificationPVO.StartPage']}"
+                                     id="StartPage" showRequired="true" sortProperty="StartPage" sortable="false"
+                                     width="70">
+                            <af:inputText autoSubmit="true"
+                                          columns="#{bindings.ArcClassificationPVO1.hints.StartPage.displayWidth}"
+                                          id="it2" label="#{bindings.ArcClassificationPVO1.hints.StartPage.label}"
+                                          maximumLength="#{bindings.ArcClassificationPVO1.hints.StartPage.precision}"
+                                          partialTriggers="it6" readOnly="true"
+                                          shortDesc="#{bindings.ArcClassificationPVO1.hints.StartPage.tooltip}"
+                                          value="#{row.bindings.StartPage.inputValue}">
+                              <f:validator binding="#{row.bindings.StartPage.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.ArcClassificationPVO1.hints.StartPage.format}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcClassificationPVO.EndPage']}" id="EndPage"
+                                     showRequired="true" sortProperty="EndPage" sortable="false" width="70">
+                            <af:inputText autoSubmit="true"
+                                          columns="#{bindings.ArcClassificationPVO1.hints.EndPage.displayWidth}"
+                                          disabled="#{row.bindings.RowUpdateFl.inputValue == '0'}" id="it4"
+                                          label="#{bindings.ArcClassificationPVO1.hints.EndPage.label}"
+                                          maximumLength="#{bindings.ArcClassificationPVO1.hints.EndPage.precision}"
+                                          partialTriggers="it6" required="true"
+                                          shortDesc="#{bindings.ArcClassificationPVO1.hints.EndPage.tooltip}"
+                                          value="#{row.bindings.EndPage.inputValue}"
+                                          valueChangeListener="#{scan.ClassificationChanged}">
+                              <f:validator binding="#{row.bindings.EndPage.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.ArcClassificationPVO1.hints.EndPage.format}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentSubject']}"
+                                     id="DisplayDocumentDescription" showRequired="true"
+                                     sortProperty="DisplayDocumentSubject" sortable="false" width="150">
+                            <af:inputText columns="#{bindings.ArcClassificationPVO1.hints.DisplayDocumentSubject.displayWidth}"
+                                          id="it12"
+                                          label="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentSubject']}"
+                                          maximumLength="#{bindings.ArcClassificationPVO1.hints.DisplayDocumentSubject.precision}"
+                                          required="true" value="#{row.bindings.DisplayDocumentSubject.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayDocumentSubject.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center"
+                                     headerText="#{bindings.ArcClassificationPVO1.hints.RowUpdateFl.label}" id="c6"
+                                     visible="false">
+                            <af:inputText columns="#{bindings.ArcClassificationPVO1.hints.RowUpdateFl.displayWidth}"
+                                          id="it6" label="#{bindings.ArcClassificationPVO1.hints.RowUpdateFl.label}"
+                                          maximumLength="#{bindings.ArcClassificationPVO1.hints.RowUpdateFl.precision}"
+                                          readOnly="true"
+                                          required="#{bindings.ArcClassificationPVO1.hints.RowUpdateFl.mandatory}"
+                                          shortDesc="#{bindings.ArcClassificationPVO1.hints.RowUpdateFl.tooltip}"
+                                          value="#{row.bindings.RowUpdateFl.inputValue}">
+                              <f:validator binding="#{row.bindings.RowUpdateFl.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.ArcClassificationPVO1.hints.RowUpdateFl.format}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcOldDocument.DocumentNumber']}"
+                                     id="DocumentNumber" sortProperty="DocumentNumber" sortable="false" width="100">
+                            <af:inputText columns="#{bindings.ArcClassificationPVO1.hints.DocumentNumber.displayWidth}"
+                                          id="it8" label="#{menu.resourceLabelMap['ArcOldDocument.DocumentNumber']}"
+                                          maximumLength="#{bindings.ArcClassificationPVO1.hints.DocumentNumber.precision}"
+                                          required="#{bindings.ArcClassificationPVO1.hints.DocumentNumber.mandatory}"
+                                          shortDesc="#{bindings.ArcClassificationPVO1.hints.DocumentNumber.tooltip}"
+                                          value="#{row.bindings.DocumentNumber.inputValue}">
+                              <f:validator binding="#{row.bindings.DocumentNumber.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcOldDocument.DocReceiveDate']}"
+                                     id="DocReceiveDate" showRequired="true" sortProperty="DocReceiveDate"
+                                     sortable="false" width="250">
+                            <af:inputDate columns="#{bindings.ArcClassificationPVO1.hints.DocReceiveDate.displayWidth}"
+                                          id="id1" label="#{menu.resourceLabelMap['ArcOldDocument.DocReceiveDate']}"
+                                          required="true" value="#{row.bindings.DocReceiveDate.inputValue}">
+                              <f:validator binding="#{row.bindings.DocReceiveDate.validator}"/>
+                              <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+                            </af:inputDate>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcOldDocument.DocumentTypeFk']}"
+                                     id="DocumentTypeFk" showRequired="true" sortProperty="DocumentTypeFkSearch"
+                                     sortable="false" width="110">
+                            <af:panelGroupLayout id="pgl6DocumentTypeFk" layout="horizontal">
+                              <af:inputListOfValues autoSubmit="true"
+                                                    columns="#{bindings.ArcClassificationPVO1.hints.DocumentTypeFk.displayWidth}"
+                                                    id="documentTypeFkId"
+                                                    label="#{menu.resourceLabelMap['ArcOldDocument.DocumentTypeFk']}"
+                                                    model="#{row.bindings.DocumentTypeFk.listOfValuesModel}"
+                                                    popupTitle="#{menu.resourceLabelMap['ArcOldDocument.DocumentTypeFk']}"
+                                                    required="true" value="#{row.bindings.DocumentTypeFk.inputValue}">
+                                <f:validator binding="#{row.bindings.DocumentTypeFk.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.ArcClassificationPVO1.hints.DocumentTypeFk.format}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentTypeFk']}"
+                                     id="DisplayDocumentTypeFk" sortProperty="DisplayDocumentTypeFkSearch"
+                                     sortable="false" width="120">
+                            <af:inputText columns="#{bindings.ArcClassificationPVO1.hints.DisplayDocumentTypeFk.displayWidth}"
+                                          id="it10"
+                                          label="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentTypeFk']}"
+                                          maximumLength="#{bindings.ArcClassificationPVO1.hints.DisplayDocumentTypeFk.precision}"
+                                          partialTriggers="documentTypeFkId" readOnly="true"
+                                          required="#{bindings.ArcClassificationPVO1.hints.DisplayDocumentTypeFk.mandatory}"
+                                          value="#{row.bindings.DisplayDocumentTypeFk.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayDocumentTypeFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcOldDocument.DocumentSecurityFk']}"
+                                     id="DocumentSecurityFk" showRequired="true" sortProperty="DocumentSecurityFkSearch"
+                                     sortable="false" width="110">
+                            <af:panelGroupLayout id="pgl6DocumentSecurityFk" layout="horizontal">
+                              <af:inputListOfValues autoSubmit="true"
+                                                    columns="#{bindings.ArcClassificationPVO1.hints.DocumentSecurityFk.displayWidth}"
+                                                    id="documentSecurityFkId"
+                                                    label="#{menu.resourceLabelMap['ArcOldDocument.DocumentSecurityFk']}"
+                                                    model="#{row.bindings.DocumentSecurityFk.listOfValuesModel}"
+                                                    popupTitle="#{menu.resourceLabelMap['ArcOldDocument.DocumentSecurityFk']}"
+                                                    required="true"
+                                                    value="#{row.bindings.DocumentSecurityFk.inputValue}">
+                                <f:validator binding="#{row.bindings.DocumentSecurityFk.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.ArcClassificationPVO1.hints.DocumentSecurityFk.format}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentSecurityFk']}"
+                                     id="DisplayDocumentSecurityFk" sortProperty="DisplayDocumentSecurityFkSearch"
+                                     sortable="false" width="120">
+                            <af:inputText columns="#{bindings.ArcClassificationPVO1.hints.DisplayDocumentSecurityFk.displayWidth}"
+                                          id="it9"
+                                          label="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentSecurityFk']}"
+                                          maximumLength="#{bindings.ArcClassificationPVO1.hints.DisplayDocumentSecurityFk.precision}"
+                                          partialTriggers="documentSecurityFkId" readOnly="true"
+                                          required="#{bindings.ArcClassificationPVO1.hints.DisplayDocumentSecurityFk.mandatory}"
+                                          value="#{row.bindings.DisplayDocumentSecurityFk.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayDocumentSecurityFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesPk']}"
+                                     id="EmployeesFk" sortProperty="EmployeesFk" sortable="false" width="110">
+                            <af:panelGroupLayout id="pgl6employeesFkId" layout="horizontal">
+                              <af:inputListOfValues autoSubmit="true"
+                                                    columns="#{bindings.ArcClassificationPVO1.hints.EmployeesFk.displayWidth}"
+                                                    id="employeesFkId"
+                                                    model="#{row.bindings.EmployeesFk.listOfValuesModel}"
+                                                    popupTitle="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesPk']}"
+                                                    required="#{bindings.ArcClassificationPVO1.hints.EmployeesFk.mandatory}"
+                                                    value="#{row.bindings.EmployeesFk.inputValue}">
+                                <f:validator binding="#{row.bindings.EmployeesFk.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.ArcClassificationPVO1.hints.EmployeesFk.format}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesName']}"
+                                     id="DisplayEmployeesFk" sortProperty="DisplayEmployeesFk" sortable="false"
+                                     width="300">
+                            <af:inputText columns="#{bindings.ArcClassificationPVO1.hints.DisplayEmployeesFk.displayWidth}"
+                                          id="it5"
+                                          label="#{bindings.ArcClassificationPVO1.hints.DisplayEmployeesFk.label}"
+                                          maximumLength="#{bindings.ArcClassificationPVO1.hints.DisplayEmployeesFk.precision}"
+                                          partialTriggers="employeesFkId" readOnly="true"
+                                          required="#{bindings.ArcClassificationPVO1.hints.DisplayEmployeesFk.mandatory}"
+                                          value="#{row.bindings.DisplayEmployeesFk.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayEmployeesFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentAttachTypeFk']}"
+                                     id="DocumentAttachTypeFk" showRequired="true" sortProperty="DocumentAttachTypeFk"
+                                     sortable="false" width="110">
+                            <af:panelGroupLayout id="pgl6DocumentAttachTypeFk" layout="horizontal">
+                              <af:inputListOfValues autoSubmit="true"
+                                                    columns="#{bindings.ArcClassificationPVO1.hints.DocumentAttachTypeFk.displayWidth}"
+                                                    id="documentAttachTypeFkId"
+                                                    label="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentAttachTypeFk']}"
+                                                    model="#{row.bindings.DocumentAttachTypeFk.listOfValuesModel}"
+                                                    popupTitle="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentAttachTypeFk']}"
+                                                    required="true"
+                                                    value="#{row.bindings.DocumentAttachTypeFk.inputValue}">
+                                <f:validator binding="#{row.bindings.DocumentAttachTypeFk.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.ArcClassificationPVO1.hints.DocumentAttachTypeFk.format}"/>
+                              </af:inputListOfValues>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcDocumentAttachment.DisplayDocumentAttachTypeFk']}"
+                                     id="DisplayDocumentAttachTypeFk" sortProperty="DisplayDocumentAttachTypeFk"
+                                     sortable="false" width="120">
+                            <af:inputText columns="#{bindings.ArcClassificationPVO1.hints.DisplayDocumentAttachTypeFk.displayWidth}"
+                                          id="it13"
+                                          label="#{menu.resourceLabelMap['ArcDocumentAttachment.DisplayDocumentAttachTypeFk']}"
+                                          maximumLength="#{bindings.ArcClassificationPVO1.hints.DisplayDocumentAttachTypeFk.precision}"
+                                          partialTriggers="documentAttachTypeFkId" readOnly="true"
+                                          required="#{bindings.ArcClassificationPVO1.hints.DisplayDocumentAttachTypeFk.mandatory}"
+                                          value="#{row.bindings.DisplayDocumentAttachTypeFk.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayDocumentAttachTypeFk.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}"
+                                     id="FileLocation" sortProperty="FileLocation" sortable="false" width="400">
+                            <af:panelGroupLayout id="pgl8" layout="horizontal">
+                              <af:inputText columns="#{bindings.ArcClassificationPVO1.hints.FileLocation.displayWidth}"
+                                            disabled="true" id="it14"
+                                            label="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}"
+                                            maximumLength="#{bindings.ArcClassificationPVO1.hints.FileLocation.precision}"
+                                            partialTriggers=":::updateFilesLocationFkDialog"
+                                            required="#{bindings.ArcClassificationPVO1.hints.FileLocation.mandatory}"
+                                            value="#{row.bindings.FileLocation.inputValue}">
+                                <f:validator binding="#{row.bindings.FileLocation.validator}"/>
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.ArcClassificationPVO1.hints.FileLocation.format}"/>
+                              </af:inputText>
+                              <af:spacer width="5"/>
+                              <af:commandButton icon="#{menu.createInsertIcon}" id="createInsert" immediate="true"
+                                                partialSubmit="true"
+                                                shortDesc="#{menu.resourceLabelMap['label.updateFilesLocationFkPopup']}"
+                                                styleClass="printButton"
+                                                text="#{menu.resourceLabelMap['label.updateFilesLocationFkPopup']}">
+                                <af:showPopupBehavior popupId=":::updateFilesLocationFkPopup" triggerType="action"/>
+                              </af:commandButton>
+                            </af:panelGroupLayout>
+                          </af:column>
+                          <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                     headerText="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"
+                                     id="DisplayFileLocation" sortProperty="DisplayFileLocation" sortable="false"
+                                     width="150">
+                            <af:inputText columns="#{bindings.ArcClassificationPVO1.hints.DisplayFileLocation.displayWidth}"
+                                          id="it15"
+                                          label="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"
+                                          maximumLength="#{bindings.ArcClassificationPVO1.hints.DisplayFileLocation.precision}"
+                                          readOnly="true"
+                                          required="#{bindings.ArcClassificationPVO1.hints.DisplayFileLocation.mandatory}"
+                                          value="#{row.bindings.DisplayFileLocation.inputValue}">
+                              <f:validator binding="#{row.bindings.DisplayFileLocation.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:popup autoCancel="disabled" childCreation="deferred" contentDelivery="lazyUncached"
+                        id="updateFilesLocationFkPopup" popupCanceledListener="#{scan.cancelTranslation}">
+                <af:dialog dialogListener="#{scan.updateFilesLocationFk}" id="updateFilesLocationFkDialog"
+                           type="okCancel">
+                  <af:region id="r1" value="#{bindings.FilesLocationTF1.regionModel}"/>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

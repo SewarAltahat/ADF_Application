@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject BindingStyle="JDBC"
+    CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED"
+    InheritPersonalization="merge" Name="ArcFlStandardsView"
+    PageIterMode="Full"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j"
+    RowClass="arc.model.vo.ArcFlStandardsViewRowImpl"
+    ComponentClass="gen.common.BaseViewObjectImpl"
+    SelectListFlags="1"
+    FromListFlags="1"
+    WhereFlags="1"
+    SelectAllAttributes="false">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable
+        Kind="where"
+        Name="p_lang"
+        Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+        </AttrArray>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT
+                    Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <TransientExpression
+            Name="VariableScript">gen.common.GenLib.getLanguageNo()</TransientExpression>
+    </Variable>
+    <EntityUsage Entity="arc.model.eo.ArcFlStandards" Name="ArcFlStandards"/>
+    <ViewAttribute AliasName="FL_STANDARDS_PK"
+        EntityAttrName="FlStandardsPk" EntityUsage="ArcFlStandards"
+        IsNotNull="true" Name="FlStandardsPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFlStandards.FlStandardsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FL_STATUS_FL" EntityAttrName="FlStatusFl"
+        EntityUsage="ArcFlStandards" Name="FlStatusFl" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFlStandards.FlStatusFl']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="ArcFlStandards" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="ArcFlStandards"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="ArcFlStandards" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="ArcFlStandards"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk" EntityUsage="ArcFlStandards"
+        Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayStandardDesc"
+        EntityAttrName="DisplayStandardDesc"
+        EntityUsage="ArcFlStandards"
+        Expression="get_FL_STANDARDS_STANDARD_DESC(FL_STANDARDS_PK, ?)"
+        Name="DisplayStandardDesc"
+        PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['ArcFlStandardsTl.StandardDesc']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayNotes"
+        EntityAttrName="DisplayNotes"
+        EntityUsage="ArcFlStandards"
+        Expression="get_FL_STANDARDS_NOTES(FL_STANDARDS_PK, ?)"
+        Name="DisplayNotes"
+        PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['ArcFlStandardsTl.Notes']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayStandardDescSearch"
+        ColumnType="CHAR"
+        IsPersistent="false"
+        IsSelected="false"
+        Name="DisplayStandardDescSearch"
+        PrecisionRule="true"
+        SQLType="VARCHAR"
+        Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['ArcFlStandardsTl.StandardDesc']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayNotesSearch"
+        ColumnType="CHAR"
+        IsPersistent="false"
+        IsSelected="false"
+        Name="DisplayNotesSearch"
+        PrecisionRule="true"
+        SQLType="VARCHAR"
+        Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['ArcFlStandardsTl.Notes']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewCriteria
+        Name="ArcFlStandardsViewLovSearch"
+        ViewObjectName="arc.model.vo.ArcFlStandardsView"
+        Conjunction="AND">
+        <Properties Name="_Props">
+            <CustomProperties>
+                <Property
+                    Name="autoExecute"
+                    Value="false"/>
+                <Property
+                    Name="mode"
+                    Value="Basic"/>
+                <Property
+                    Name="allowConjunctionOverride"
+                    Value="false"/>
+                <Property
+                    Name="showInList"
+                    Value="true"/>
+                <Property
+                    Name="displayOperators"
+                    Value="InAdvancedMode"/>
+            </CustomProperties>
+        </Properties>
+        <ViewCriteriaRow
+            Name="ArcFlStandardsViewCriteria_row_0"
+            UpperColumns="1">
+            <ViewCriteriaItem
+                Name="FlStandardsPk"
+                ViewAttribute="FlStandardsPk"
+                Operator="="
+                Conjunction="AND"
+                Value=""
+                Required="Optional"/>
+            <ViewCriteriaItem
+                Name="DisplayStandardDesc"
+                ViewAttribute="DisplayStandardDesc"
+                Operator="CONTAINS"
+                Conjunction="AND"
+                Value=""
+                Required="Optional"/>
+        </ViewCriteriaRow>
+    </ViewCriteria>
+    <ViewLinkAccessor IsUpdateable="false" Name="ArcFlsLocationsView"
+        Type="oracle.jbo.RowIterator" ViewLink="arc.model.vl.ArcFlsLocationsFkLink"/>
+    <ViewLinkAccessor IsUpdateable="false" Name="ArcFlStandardsTlView"
+        Type="oracle.jbo.RowIterator" ViewLink="arc.model.vl.ArcFlStandardsTlFk1Link"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="arc.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

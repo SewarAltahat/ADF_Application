@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelTabbed styleClass="AFStretchWidth" id="pt21">
+    <af:showDetailItem styleClass="AFStretchWidth" id="sdi31" text="#{menu.resourceLabelMap['menu.fileLocations']}">
+      <af:panelGroupLayout layout="scroll" id="pgl1">
+        <af:panelSplitter id="ps1" partialTriggers="t1 pc21:ArcFilesLocationView">
+          <f:facet name="first">
+            <af:tree value="#{bindings.ArcFilesLocationMasterRVO.treeModel}" var="node"
+                     selectionListener="#{filesLocationTree.selectFileLocation}" rowSelection="single" id="t1"
+                     partialTriggers="::pc21:ArcFilesLocationView">
+              <f:facet name="nodeStamp">
+                <af:outputText value="#{node}" id="ot1"/>
+              </f:facet>
+            </af:tree>
+          </f:facet>
+          <f:facet name="second">
+            <af:panelCollection id="pc21" styleClass="AFStretchWidth"
+                                featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+              <f:facet name="secondaryToolbar">
+                <af:toolbar id="t111">
+                  <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="cb11"
+                                    styleClass="printButton" immediate="true" disabled="#{!menu.selectAllowed}"
+                                    partialSubmit="true" icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                    <af:showPrintablePageBehavior/>
+                  </af:commandButton>
+                  <af:spacer width="5" id="s101"/>
+                  <af:commandButton text="#{menu.resourceLabelMap['label.excel']}" id="cb31"
+                                    styleClass="excelButton" immediate="true" disabled="#{!menu.selectAllowed}"
+                                    partialSubmit="true" icon="#{menu.excelIcon}" visible="#{menu.excelVisible}">
+                    <af:setPropertyListener from="ArcFilesLocationView" to="#{sessionScope.tableId}" type="action"/>
+                    <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                  </af:commandButton>
+                  <af:spacer width="5" id="s111"/>
+                </af:toolbar>
+              </f:facet>
+              <af:table value="#{bindings.ArcFilesLocationDepartmentRVO.collectionModel}" var="row"
+                        rows="#{bindings.ArcFilesLocationDepartmentRVO.rangeSize}"
+                        emptyText="#{bindings.ArcFilesLocationDepartmentRVO.viewable ? menu.emptyText : menu.accessDeniedText}"
+                        rowBandingInterval="0"
+                        selectionListener="#{filesLocationTree.selectFileLocationTable}"
+                        rowSelection="single" fetchSize="#{bindings.ArcFilesLocationDepartmentRVO.rangeSize}"
+                        filterModel="#{bindings.ArcFilesLocationDepartmentRVOQuery.queryDescriptor}" filterVisible="false"
+                        queryListener="#{bindings.ArcFilesLocationDepartmentRVOQuery.processQuery}" varStatus="vs"
+                        id="ArcFilesLocationView" columnStretching="last" styleClass="AFStretchWidth"
+                        columnSelection="multiple" verticalGridVisible="false" scrollPolicy="page" displayRow="selected"
+                        editingMode="editAll" autoHeightRows="5" blockRowNavigationOnError="always"
+                        partialTriggers=":::t1">
+                <af:column sortProperty="FilesLocationPk" filterable="true" sortable="true"
+                           headerText="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}" id="c1" width="150"
+                           align="center">
+                  <af:inputText value="#{row.bindings.FilesLocationPk.inputValue}"
+                                label="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}"
+                                required="#{bindings.ArcFilesLocationDepartmentRVO.hints.FilesLocationPk.mandatory}"
+                                columns="#{bindings.ArcFilesLocationDepartmentRVO.hints.FilesLocationPk.displayWidth}"
+                                maximumLength="#{bindings.ArcFilesLocationDepartmentRVO.hints.FilesLocationPk.precision}"
+                                id="it1" readOnly="true">
+                    <f:validator binding="#{row.bindings.FilesLocationPk.validator}"/>
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.ArcFilesLocationDepartmentRVO.hints.FilesLocationPk.format}"/>
+                  </af:inputText>
+                </af:column>
+                <af:column sortProperty="DisplayFilesLocationPkSearch" filterable="true" sortable="true"
+                           headerText="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}" id="c2">
+                  <af:inputText value="#{row.bindings.DisplayFilesLocationPk.inputValue}"
+                                label="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"
+                                required="#{bindings.ArcFilesLocationDepartmentRVO.hints.DisplayFilesLocationPk.mandatory}"
+                                columns="#{bindings.ArcFilesLocationDepartmentRVO.hints.DisplayFilesLocationPk.displayWidth}"
+                                maximumLength="#{bindings.ArcFilesLocationDepartmentRVO.hints.DisplayFilesLocationPk.precision}"
+                                id="it2" readOnly="true">
+                    <f:validator binding="#{row.bindings.DisplayFilesLocationPk.validator}"/>
+                  </af:inputText>
+                </af:column>
+              </af:table>
+            </af:panelCollection>
+          </f:facet>
+        </af:panelSplitter>
+      </af:panelGroupLayout>
+    </af:showDetailItem>
+  </af:panelTabbed>
+</jsp:root>

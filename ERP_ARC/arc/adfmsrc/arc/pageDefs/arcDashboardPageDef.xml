@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="arcDashboardPageDef"
+                Package="arc.pageDefs">
+  <executables>
+    <iterator Binds="ArcOldDocumentView1" RangeSize="10" DataControl="AppModuleDataControl" id="ArcOldDocumentView1Iterator" ChangeEventPolicy="none"/>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator Binds="ReportParametersRVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ReportParametersRVO1Iterator"/>
+    <iterator Binds="ArcOldDocumentDashboardRVO" RangeSize="-1" DataControl="AppModuleDataControl"
+              id="ArcOldDocumentDashboardRVOIterator"/>
+    <searchRegion Binds="ArcOldDocumentDashboardRVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArcOldDocumentDashboardRVOQuery"/>
+    <iterator Binds="ArcFileLocationWithNoDocumentRVO" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFileLocationWithNoDocumentRVOIterator"/>
+    <searchRegion Binds="ArcFileLocationWithNoDocumentRVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ArcFileLocationWithNoDocumentRVOQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ArcOldDocumentView1Iterator" id="ArcOldDocumentCreatedBy">
+      <AttrNames>
+        <Item Value="CreatedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArcOldDocumentView1Iterator" id="ArcOldDocumentCreationDate">
+      <AttrNames>
+        <Item Value="CreationDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArcOldDocumentView1Iterator" id="ArcOldDocumentModifiedBy">
+      <AttrNames>
+        <Item Value="ModifiedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArcOldDocumentView1Iterator" id="ArcOldDocumentModifiedDate">
+      <AttrNames>
+        <Item Value="ModifiedDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArcOldDocumentView1Iterator" id="ArcOldDocumentUserDepartmentFk">
+      <AttrNames>
+        <Item Value="UserDepartmentFk"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DateFrom">
+      <AttrNames>
+        <Item Value="DateFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DateTo">
+      <AttrNames>
+        <Item Value="DateTo"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_DepartmentFrom"
+                  id="DepartmentFrom"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayDepartmentFrom">
+      <AttrNames>
+        <Item Value="DisplayDepartmentFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_EmployeesFk"
+                  id="EmployeesFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayEmployeesFk">
+      <AttrNames>
+        <Item Value="DisplayEmployeesFk"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_FilesLocationFk"
+                  id="FilesLocationFk"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayFilesLocationFk">
+      <AttrNames>
+        <Item Value="DisplayFilesLocationFk"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ArcOldDocumentDashboardRVOIterator" id="ArcOldDocumentDashboardRVO">
+      <nodeDefinition DefName="arc.model.ro.ArcOldDocumentDashboardRVO" Name="ArcOldDocumentDashboardRVO0">
+        <AttrNames>
+          <Item Value="FilesLocationFk"/>
+          <Item Value="DocumentCount"/>
+          <Item Value="DisplayFilesLocationPk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArcOldDocumentDashboardRVOIterator" id="ArcOldDocumentDashboardRVO1" ChangeEventPolicy="ppr">
+      <nodeDefinition DefName="arc.model.ro.ArcOldDocumentDashboardRVO" Name="ArcOldDocumentDashboardRVO1">
+        <AttrNames>
+          <Item Value="DocumentCount"/>
+          <Item Value="DisplayFilesLocationPk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="YearFrom">
+      <AttrNames>
+        <Item Value="YearFrom"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ArcFileLocationWithNoDocumentRVOIterator" id="ArcFileLocationWithNoDocumentRVO">
+      <nodeDefinition DefName="arc.model.ro.ArcFileLocationWithNoDocumentRVO" Name="ArcFileLocationWithNoDocumentRVO0">
+        <AttrNames>
+          <Item Value="FilesLocationPk"/>
+          <Item Value="DisplayFilesLocationPk"/>
+          <Item Value="DisplayFilesLocationPkSearch"/>
+          <Item Value="DepartmentsFk"/>
+          <Item Value="DisplayDepartmentsFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

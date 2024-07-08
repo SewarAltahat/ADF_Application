@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArcDocBorrowReqTlFk1Link"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge"
+  EntityAssociation="arc.model.assoc.ArcDocBorrowReqTlFk1Assoc">
+  <ViewLinkDefEnd
+    Name="ArcBorrowRequestsView"
+    Cardinality="1"
+    Source="true"
+    Owner="arc.model.vo.ArcBorrowRequestsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcBorrowRequestsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcBorrowRequestsView.BorrowRequestsPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ArcBorrowRequestsTlView"
+    Cardinality="-1"
+    Owner="arc.model.vo.ArcBorrowRequestsTlView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcBorrowRequestsTlView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcBorrowRequestsTlView.BorrowRequestsFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

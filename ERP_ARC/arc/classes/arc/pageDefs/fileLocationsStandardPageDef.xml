@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="fileLocationsStandardPageDef"
+                Package="arc.pageDefs">
+  <executables>
+    <iterator Binds="ArcFlStandardsView1" RangeSize="10" DataControl="AppModuleDataControl" id="ArcFlStandardsView1Iterator"/>
+    <searchRegion Criteria="" Binds="ArcFlStandardsView1Iterator" id="ArcFlStandardsView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="ArcFlStandardsTlView2" RangeSize="10" DataControl="AppModuleDataControl" id="ArcFlStandardsTlView1Iterator"/>
+    <searchRegion Criteria="" Binds="ArcFlStandardsTlView1Iterator" id="ArcFlStandardsTlView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="ArcFlsLocationsView3" RangeSize="10" DataControl="AppModuleDataControl" id="ArcFlsLocationsView1Iterator"/>
+    <searchRegion Criteria="" Binds="ArcFlsLocationsView1Iterator" id="ArcFlsLocationsView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator Binds="ArcFlsLocationsTlView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFlsLocationsTlView3Iterator"/>
+    <searchRegion Binds="ArcFlsLocationsTlView3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArcFlsLocationsTlView3Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ArcFlStandardsView1Iterator" id="ArcFlStandardsView1">
+      <nodeDefinition DefName="arc.model.vo.ArcFlStandardsView" Name="ArcFlStandardsView10">
+        <AttrNames>
+          <Item Value="FlStandardsPk"/>
+          <Item Value="FlStatusFl"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="DisplayStandardDesc"/>
+          <Item Value="DisplayNotes"/>
+          <Item Value="DisplayNotesSearch"/>
+          <Item Value="DisplayStandardDescSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArcFlStandardsTlView1Iterator" id="ArcFlStandardsTlView1">
+      <nodeDefinition DefName="arc.model.vo.ArcFlStandardsTlView" Name="ArcFlStandardsTlView10">
+        <AttrNames>
+          <Item Value="FlStandardsTlPk"/>
+          <Item Value="StandardDesc"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="FlStandardsFk"/>
+          <Item Value="Notes"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="NotesSearch"/>
+          <Item Value="StandardDescSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArcFlsLocationsView1Iterator" id="ArcFlsLocationsView1">
+      <nodeDefinition DefName="arc.model.vo.ArcFlsLocationsView" Name="ArcFlsLocationsView10">
+        <AttrNames>
+          <Item Value="FlsLocationsPk"/>
+          <Item Value="MainLocationFk"/>
+          <Item Value="DisplayMainLocationFk"/>
+          <Item Value="FlStandardsFk"/>
+          <Item Value="DisplayFileLocationDesc"/>
+          <Item Value="DisplayNotes"/>
+          <Item Value="MainLocationFkSearch"/>
+          <Item Value="DisplayFileLocationDescSearch"/>
+          <Item Value="DisplayMainLocationFkSearch"/>
+          <Item Value="DisplayNotesSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ArcFlStandardsView1Iterator" id="FlStandardsPk">
+      <AttrNames>
+        <Item Value="FlStandardsPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArcFlStandardsTlView1Iterator" id="FlStandardsTlPk">
+      <AttrNames>
+        <Item Value="FlStandardsTlPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArcFlsLocationsView1Iterator" id="FlsLocationsPk">
+      <AttrNames>
+        <Item Value="FlsLocationsPk"/>
+      </AttrNames>
+    </attributeValues>
+   
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="ArcFlStandardsView1Iterator"/>
+    <action id="CreateInsert1" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="ArcFlStandardsView1Iterator"/>
+    <action id="Next1" RequiresUpdateModel="true" Action="next" IterBinding="ArcFlStandardsView1Iterator"/>
+    <action id="Previous1" RequiresUpdateModel="true" Action="previous" IterBinding="ArcFlStandardsView1Iterator"/>
+    <action id="First1" RequiresUpdateModel="true" Action="first" IterBinding="ArcFlStandardsView1Iterator"/>
+    <action id="Last1" RequiresUpdateModel="true" Action="last" IterBinding="ArcFlStandardsView1Iterator"/>
+    <action id="Find1" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="ArcFlStandardsView1Iterator"/>
+    <action id="Execute1" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="ArcFlStandardsView1Iterator"/>
+    <action id="Delete2" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="ArcFlStandardsTlView1Iterator"/>
+    <action id="CreateInsert2" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="ArcFlStandardsTlView1Iterator"/>
+    <action id="Next2" RequiresUpdateModel="true" Action="next" IterBinding="ArcFlStandardsTlView1Iterator"/>
+    <action id="Previous2" RequiresUpdateModel="true" Action="previous" IterBinding="ArcFlStandardsTlView1Iterator"/>
+    <action id="First2" RequiresUpdateModel="true" Action="first" IterBinding="ArcFlStandardsTlView1Iterator"/>
+    <action id="Last2" RequiresUpdateModel="true" Action="last" IterBinding="ArcFlStandardsTlView1Iterator"/>
+    <action id="Find2" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="ArcFlStandardsTlView1Iterator"/>
+    <action id="Execute2" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="ArcFlStandardsTlView1Iterator"/>
+    <action id="Delete3" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="ArcFlsLocationsView1Iterator"/>
+    <action id="CreateInsert3" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="ArcFlsLocationsView1Iterator"/>
+    <action id="Next3" RequiresUpdateModel="true" Action="next" IterBinding="ArcFlsLocationsView1Iterator"/>
+    <action id="Previous3" RequiresUpdateModel="true" Action="previous" IterBinding="ArcFlsLocationsView1Iterator"/>
+    <action id="First3" RequiresUpdateModel="true" Action="first" IterBinding="ArcFlsLocationsView1Iterator"/>
+    <action id="Last3" RequiresUpdateModel="true" Action="last" IterBinding="ArcFlsLocationsView1Iterator"/>
+    <action id="Find3" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="ArcFlsLocationsView1Iterator"/>
+    <action id="Execute3" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="ArcFlsLocationsView1Iterator"/>
+    <tree IterBinding="ArcFlsLocationsTlView3Iterator" id="ArcFlsLocationsTlView3">
+      <nodeDefinition DefName="arc.model.vo.ArcFlsLocationsTlView" Name="ArcFlsLocationsTlView30">
+        <AttrNames>
+          <Item Value="FlsLocationsTlPk"/>
+          <Item Value="FileLocationDesc"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="FlsLocationsFk"/>
+          <Item Value="Notes"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="NotesSearch"/>
+          <Item Value="FileLocationDescSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

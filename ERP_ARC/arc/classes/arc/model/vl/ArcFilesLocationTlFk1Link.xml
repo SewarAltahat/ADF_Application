@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArcFilesLocationTlFk1Link"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge"
+  EntityAssociation="arc.model.assoc.ArcFilesLocationTlFk1Assoc">
+  <ViewLinkDefEnd
+    Name="ArcFilesLocationView"
+    Cardinality="1"
+    Source="true"
+    Owner="arc.model.vo.ArcFilesLocationView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcFilesLocationView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcFilesLocationView.FilesLocationPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ArcFilesLocationTlView"
+    Cardinality="-1"
+    Owner="arc.model.vo.ArcFilesLocationTlView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcFilesLocationTlView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcFilesLocationTlView.FilesLocationFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

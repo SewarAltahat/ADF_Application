@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArcDocumentTlFkLink"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="arc.model.assoc.ArcDocumentTlFkAssoc">
+  <ViewLinkDefEnd
+    Name="ArcOldDocumentView"
+    Cardinality="1"
+    Source="true"
+    Owner="arc.model.vo.ArcOldDocumentView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcOldDocumentView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcOldDocumentView.OldDocumentPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ArcOldDocumentTlView"
+    Cardinality="-1"
+    Owner="arc.model.vo.ArcOldDocumentTlView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcOldDocumentTlView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcOldDocumentTlView.OldDocumentFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

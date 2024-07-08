@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document styleClass="sidebar-mini" id="Doc1" title="#{menu.resourceLabelMap['menu.arcTaskList']}"
+                 uncommittedDataWarning="on" binding="#{arcTaskList.doc1}">
+      <af:messages id="m1"/>
+      <af:form id="form1" usesUpload="true">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute value="#{menu.resourceLabelMap['menu.arcTaskList']}" name="pageTitle"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1" layout="scroll">
+              <af:panelBox text="#{menu.resourceLabelMap['menu.arcTaskList']}" id="pb2" styleClass="AFStretchWidth">
+                <af:panelGroupLayout id="pgl15">
+                  <af:panelStretchLayout dimensionsFrom="children" id="psl16" styleClass="AFStretchWidth">
+                    <f:facet name="center">
+                      <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem" id="pc1"
+                                          styleClass="AFStretchWidth">
+                        <f:facet name="secondaryToolbar">
+                          <af:toolbar id="tb1">
+                             <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print1"
+                                              styleClass="printButton" immediate="true"
+                                              disabled="#{!menu.selectAllowed}" partialSubmit="true"
+                                              icon="#{menu.printIcon}" visible="#{menu.printVisible}">
+                              <af:showPrintablePageBehavior/>
+                            </af:commandButton>
+                            <af:spacer width="5"/>
+                            <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel1"
+                                  immediate="true" partialSubmit="true" rendered="true"
+                                  text="#{menu.resourceLabelMap['label.excel']}"
+                                  styleClass="excelButton" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="t1" to="#{sessionScope.tableId}"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                            <af:spacer width="5"/>
+                            <af:commandButton text="#{menu.resourceLabelMap['label.history']}" id="cb1"
+                                              actionListener="#{arcTaskList.viewRequestHistory}" partialSubmit="true"
+                                              disabled="#{bindings.RequestPk.inputValue == null}"
+                                              icon="/images/log.png">
+                              <!--<af:setActionListener from="#{bindings.Processinstanceid.inputValue}"
+                                              to="#{sessionScope.Processinstanceid}"/>
+                              <af:setActionListener from="borrowRequestHistoryTF" to="#{sessionScope.TaskflowId}"/>-->
+                            </af:commandButton>
+                            <af:spacer width="5"/>
+                          </af:toolbar>
+                        </f:facet>
+                        <af:table value="#{bindings.BPMProcessTaskRVO1.collectionModel}" var="row"
+                                  rows="#{bindings.BPMProcessTaskRVO1.rangeSize}"
+                                  emptyText="#{bindings.BPMProcessTaskRVO1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                  rowBandingInterval="0" selectionListener="#{arcTaskList.inboxSelectionLSNR}"
+                                  rowSelection="single" fetchSize="#{bindings.BPMProcessTaskRVO1.rangeSize}"
+                                  filterModel="#{bindings.BPMProcessTaskRVO1Query.queryDescriptor}"
+                                  filterVisible="false" queryListener="#{bindings.BPMProcessTaskRVO1Query.processQuery}"
+                                  varStatus="vs" id="t1" autoHeightRows="5" scrollPolicy="page"
+                                  columnStretching="column:c3" 
+                                  blockRowNavigationOnError="always" columnSelection="multiple" displayRow="selected"
+                                  editingMode="editAll"
+                                  styleClass="AFStretchWidth t50" verticalGridVisible="false">
+                          <af:column sortProperty="#{bindings.BPMProcessTaskRVO1.hints.RequestPk.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.BPMProcessTaskRVO1.hints.RequestPk.label}" id="c16"
+                                     width="70" align="center">
+                            <af:inputText value="#{row.bindings.RequestPk.inputValue}"
+                                          label="#{bindings.BPMProcessTaskRVO1.hints.RequestPk.label}"
+                                          required="#{bindings.BPMProcessTaskRVO1.hints.RequestPk.mandatory}"
+                                          columns="#{bindings.BPMProcessTaskRVO1.hints.RequestPk.displayWidth}"
+                                          maximumLength="#{bindings.BPMProcessTaskRVO1.hints.RequestPk.precision}"
+                                          id="it14">
+                              <f:validator binding="#{row.bindings.RequestPk.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.BPMProcessTaskRVO1.hints.RequestPk.format}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.BPMProcessTaskRVO1.hints.TaskId.name}" filterable="true"
+                                     sortable="true" headerText="#{bindings.BPMProcessTaskRVO1.hints.TaskId.label}"
+                                     id="c1" align="center" width="100">
+                            <af:inputText value="#{row.bindings.TaskId.inputValue}"
+                                          label="#{bindings.BPMProcessTaskRVO1.hints.TaskId.label}"
+                                          required="#{bindings.BPMProcessTaskRVO1.hints.TaskId.mandatory}"
+                                          columns="#{bindings.BPMProcessTaskRVO1.hints.TaskId.displayWidth}"
+                                          maximumLength="#{bindings.BPMProcessTaskRVO1.hints.TaskId.precision}"
+                                          id="it1">
+                              <f:validator binding="#{row.bindings.TaskId.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.BPMProcessTaskRVO1.hints.TaskId.format}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.BPMProcessTaskRVO1.hints.Processinstanceid.name}"
+                                     filterable="true" sortable="true"
+                                     headerText="#{bindings.BPMProcessTaskRVO1.hints.Processinstanceid.label}" id="c4"
+                                     align="center" width="100">
+                            <af:inputText value="#{row.bindings.Processinstanceid.inputValue}"
+                                          label="#{bindings.BPMProcessTaskRVO1.hints.Processinstanceid.label}"
+                                          required="#{bindings.BPMProcessTaskRVO1.hints.Processinstanceid.mandatory}"
+                                          columns="#{bindings.BPMProcessTaskRVO1.hints.Processinstanceid.displayWidth}"
+                                          maximumLength="#{bindings.BPMProcessTaskRVO1.hints.Processinstanceid.precision}"
+                                          id="it4">
+                              <f:validator binding="#{row.bindings.Processinstanceid.validator}"/>
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{bindings.BPMProcessTaskRVO1.hints.Processinstanceid.format}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column filterable="true" sortable="true" sortProperty="Status"
+                                     headerText="#{bindings.BPMProcessTaskRVO1.hints.Status.label}" id="c5" width="150"
+                                     rendered="false">
+                            <af:selectOneChoice value="#{row.bindings.Status.inputValue}"
+                                                label="#{row.bindings.Status.label}"
+                                                required="#{bindings.BPMProcessTaskRVO1.hints.Status.mandatory}"
+                                                id="soc2" disabled="true">
+                              <f:selectItems value="#{row.bindings.Status.items}" id="si2"/>
+                              <f:validator binding="#{row.bindings.Status.validator}"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                          <af:column filterable="true" sortable="true" sortProperty="TaskName"
+                                     headerText="#{bindings.BPMProcessTaskRVO1.hints.TaskName.label}" id="c3"
+                                     width="200" align="center">
+                            <af:selectOneChoice value="#{row.bindings.TaskName.inputValue}"
+                                                label="#{row.bindings.TaskName.label}"
+                                                required="#{bindings.BPMProcessTaskRVO1.hints.TaskName.mandatory}"
+                                                id="soc1" disabled="true">
+                              <f:selectItems value="#{row.bindings.TaskName.items}" id="si1"/>
+                              <f:validator binding="#{row.bindings.TaskName.validator}"/>
+                            </af:selectOneChoice>
+                          </af:column>
+                          <af:column filterable="true" sortable="true" sortProperty="UserDesc"
+                                     headerText="#{bindings.BPMProcessTaskRVO1.hints.UserDesc.label}" id="c2"
+                                     width="150" align="center">
+                            <af:inputText value="#{row.bindings.UserDesc.inputValue}"
+                                          label="#{bindings.BPMProcessTaskRVO1.hints.UserDesc.label}"
+                                          required="#{bindings.BPMProcessTaskRVO1.hints.UserDesc.mandatory}"
+                                          columns="#{bindings.BPMProcessTaskRVO1.hints.UserDesc.displayWidth}"
+                                          maximumLength="#{bindings.BPMProcessTaskRVO1.hints.UserDesc.precision}"
+                                          id="it2">
+                              <f:validator binding="#{row.bindings.UserDesc.validator}"/>
+                            </af:inputText>
+                          </af:column>
+                          <af:column sortProperty="#{bindings.BPMProcessTaskRVO1.hints.Activationtime.name}"
+                                     filterable="false" sortable="true"
+                                     headerText="#{bindings.BPMProcessTaskRVO1.hints.Activationtime.label}" id="c8"
+                                     width="150" align="center">
+                            <f:facet name="filter">
+                              <af:inputDate value="#{bindings.BPMProcessTaskRVO1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.Activationtime.value}"
+                                            id="id1">
+                                 <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+                              </af:inputDate>
+                            </f:facet>
+                            <af:inputDate value="#{row.bindings.Activationtime.inputValue}"
+                                          label="#{bindings.BPMProcessTaskRVO1.hints.Activationtime.label}"
+                                          required="#{bindings.BPMProcessTaskRVO1.hints.Activationtime.mandatory}"
+                                          columns="#{bindings.BPMProcessTaskRVO1.hints.Activationtime.displayWidth}"
+                                          id="id2">
+                              <f:validator binding="#{row.bindings.Activationtime.validator}"/>
+                               <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+                            </af:inputDate>
+                          </af:column>
+                          <af:column filterable="true" sortable="true" sortProperty="TaskComment"
+                                     headerText="#{bindings.BPMProcessTaskRVO1.hints.TaskComment.label}" id="c6"
+                                     width="300" align="center">
+                            <af:outputText value="#{row.TaskComment}"
+                                           id="ot1"/>
+                          </af:column>
+                        </af:table>
+                      </af:panelCollection>
+                    </f:facet>
+                  </af:panelStretchLayout>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r3" />
+              <!--<af:region value="#{bindings.dynamicRegion2.regionModel}" id="r1"/>-->
+              <af:popup id="RequestHistoryPopup" contentDelivery="lazyUncached">
+                <af:dialog id="RequestHistoryDialog" type="cancel" 
+                           styleClass="AFStretchWidth">
+                  <af:panelGroupLayout id="pgl1" styleClass="AFStretchWidth">
+                    <af:region value="#{bindings.borrowRequestHistoryTF1.regionModel}" id="r2"/>
+                  </af:panelGroupLayout>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

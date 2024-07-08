@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="scanPageDef"
+                Package="arc.pageDefs">
+  <parameters/>
+  <executables>
+      <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator id="ReportParametersRVO1Iterator" Binds="ReportParametersRVO1" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+    <iterator Binds="ArcClassificationPVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcClassificationPVO1Iterator"/>
+    <taskFlow id="FilesLocationTF1" taskFlowId="/WEB-INF/FilesLocationTreeTF.xml#FilesLocationTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator Binds="ArcFilesLocationView4" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesLocationView4Iterator"/>
+    <iterator id="ArcOldDocumentView1Iterator" Binds="ArcOldDocumentView1" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="FilePath">
+      <AttrNames>
+        <Item Value="FilePath"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Rollback" DataControl="AppModuleDataControl" RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <action id="Commit" DataControl="AppModuleDataControl" RequiresUpdateModel="true" Action="commitTransaction"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="PageNumber">
+      <AttrNames>
+        <Item Value="PageNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="OrderPageNumber">
+      <AttrNames>
+        <Item Value="OrderPageNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ArcClassificationPVO1Iterator" id="ArcClassificationPVO1">
+      <nodeDefinition DefName="arc.model.ro.ArcClassificationPVO" Name="ArcClassificationPVO10">
+        <AttrNames>
+          <Item Value="StartPage"/>
+          <Item Value="EndPage"/>
+          <Item Value="RowUpdateFl"/>
+          <Item Value="DisplayDocumentSubject"/>
+          <Item Value="DocReceiveDate"/>
+          <Item Value="DocumentNumber"/>
+          <Item Value="DocumentSecurityFk"/>
+          <Item Value="DisplayDocumentSecurityFk"/>
+          <Item Value="DocumentTypeFk"/>
+          <Item Value="DisplayDocumentTypeFk"/>
+          <Item Value="DisplayDocumentSubject"/>
+          <Item Value="DisplayDocumentSecurityFkSearch"/>
+          <Item Value="DisplayDocumentTypeFkSearch"/>
+          <Item Value="DocumentSecurityFkSearch"/>
+          <Item Value="DocumentTypeFkSearch"/>
+          <Item Value="EmployeesFk"/>
+          <Item Value="DisplayEmployeesFk"/>
+          <Item Value="DocumentAttachTypeFk"/>
+          <Item Value="DisplayDocumentAttachTypeFk"/>
+          <Item Value="FileLocation"/>
+          <Item Value="DisplayFileLocation"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ArcClassificationPVO1Iterator" id="CreateInsert"
+            InstanceName="AppModuleDataControl.ArcClassificationPVO1" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="ArcClassificationPVO1Iterator" id="RowUpdateFl">
+      <AttrNames>
+        <Item Value="DisplayDocumentSubject"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="OrderPageEndRange">
+      <AttrNames>
+        <Item Value="OrderPageEndRange"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="OCRText">
+      <AttrNames>
+        <Item Value="OCRText"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_LangISOCode" id="LangISOCode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <tree IterBinding="ArcFilesLocationView4Iterator" id="ArcFilesLocationView4">
+      <nodeDefinition DefName="arc.model.vo.ArcFilesLocationView" Name="ArcFilesLocationView40">
+        <AttrNames>
+          <Item Value="FilesLocationPk"/>
+          <Item Value="MainLocationFk"/>
+          <Item Value="DepartmentsFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="DisplayMainLocationFk"/>
+          <Item Value="DisplayMainLocationFkSearch"/>
+          <Item Value="DisplayFileLocationDesc"/>
+          <Item Value="DisplayFileLocationDescSearch"/>
+          <Item Value="MainLocationFkSearch"/>
+          <Item Value="FlStandardsFK"/>
+          <Item Value="DisplayFlStandardsFK"/>
+          <Item Value="FlStandardsName"/>
+          <Item Value="EmployeesFk"/>
+          <Item Value="DisplayEmployeesFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

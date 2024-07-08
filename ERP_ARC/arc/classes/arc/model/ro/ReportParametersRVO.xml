@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ReportParametersRVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  PageIterMode="Full"
+  ComponentClass="gen.common.BaseViewObjectImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="arc.model.ro.ReportParametersRVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="SsoLanguagesLangISOCode"
+    ViewObjectName="arc.model.ro.SsoLanguagesVwView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ArcFlStandardsView"
+    ViewObjectName="arc.model.vo.ArcFlStandardsView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HcmEmployeesRVO"
+    ViewObjectName="arc.model.ro.HcmEmployeesRVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ArcFlStandardsRVO"
+    ViewObjectName="arc.model.ro.ArcFlStandardsRVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ArcFilesLocationRVO"
+    ViewObjectName="arc.model.ro.ArcFilesLocationRVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="HcmDepartmentsVwView"
+    ViewObjectName="arc.model.ro.HcmDepartmentsVwView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="ArcFilesLocationDepartmentRVO"
+    ViewObjectName="arc.model.ro.ArcFilesLocationDepartmentRVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_LangISOCode"
+    ListVOName="SsoLanguagesLangISOCode"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="LangISOCode"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Iso6393Code"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LangName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_EmployeesFk"
+    ListVOName="HcmEmployeesRVO"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="EmployeesFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DisplayEmployeesFk"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="EmployeesPk"/>
+      <Item Value="DisplayEmployeesPk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="EmployeesPk"/>
+      <Item Value="DisplayEmployeesPk"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="HcmEmployeesLovSearch"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_FlStandardsFK"
+    ListVOName="ArcFlStandardsRVO"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="FlStandardsFK"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DisplayFlStandardsFK"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FlStandardsPk"/>
+      <Item Value="DisplayFlStandardsPk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FlStandardsPk"/>
+      <Item Value="DisplayFlStandardsPk"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="ArcFlStandardsLovSearch"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DepartmentFrom"
+    ListVOName="HcmDepartmentsVwView"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DepartmentFrom"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DisplayDepartmentFrom"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DepartmentsPk"/>
+      <Item Value="DisplayDepartmentsPk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DepartmentsPk"/>
+      <Item Value="DisplayDepartmentsPk"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="HcmDepartmentsVwViewLOVSearch"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_FilesLocationFk"
+    ListVOName="ArcFilesLocationDepartmentRVO"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="FilesLocationFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DisplayFilesLocationFk"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="FilesLocationPk"/>
+      <Item Value="DisplayFilesLocationPk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="FilesLocationPk"/>
+      <Item Value="DisplayFilesLocationPk"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"
+      Name="ArcFilesLocationDepartmentLovSearch"/>
+  </ListBinding>
+  <SQLQuery><![CDATA[select 1 from SSO_SYSTEM_SETTINGS]]></SQLQuery>
+  <ViewAttribute
+    Name="J1"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName='"1"'
+    Expression='"1"'
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="FilePath"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="FilePath"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="PageNumber"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="PageNumber"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['label.pageNumber']}"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:RegExpValidationBean
+      Name="PageNumberRule0"
+      ResId="#{menu.resourceLabelMap['error.positiveIntegers']}"
+      OnAttribute="PageNumber"
+      Pattern="^[1-9][0-9]*$"
+      Inverse="false"/>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrderPageNumber"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="OrderPageNumber"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['label.orderPageNumber']}"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:RegExpValidationBean
+      Name="OrderPageNumberRule0"
+      ResId="#{menu.resourceLabelMap['error.positiveIntegers']}"
+      OnAttribute="OrderPageNumber"
+      Pattern="^[1-9][0-9]*$"
+      Inverse="false"/>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="NoOfPages"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="FileName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="OrderPageEndRange"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="OrderPageEndRange"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="OCRText"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="LangISOCode"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_LangISOCode">
+    <Properties>
+      <SchemaBasedProperties>
+      <LABEL
+          ResId="#{menu.resourceLabelMap['label.LangISOCode']}"/>
+        <CONTROLTYPE
+          Value="combo"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FlStandardsFK"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_FlStandardsFK">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DisplayFlStandardsFK"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="FlStandardsName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="EmployeesFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_EmployeesFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DisplayEmployeesFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="FilesLocationFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_FilesLocationFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DisplayFilesLocationFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="DateFrom"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="VIEW_ATTR"
+    SQLType="TIMESTAMP"/>
+  <ViewAttribute
+    Name="DateTo"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="VIEW_ATTR"
+    SQLType="TIMESTAMP"/>
+  <ViewAttribute
+    Name="YearFrom"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DepartmentFrom"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"
+    LOVName="LOV_DepartmentFrom">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DisplayDepartmentFrom"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="J1"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</ViewObject>

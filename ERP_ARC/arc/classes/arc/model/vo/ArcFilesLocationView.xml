@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject BindingStyle="JDBC"
+    ComponentClass="gen.common.BaseViewObjectImpl" CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="ArcFilesLocationView"
+    PageIterMode="Full"
+    RowClass="arc.model.vo.ArcFilesLocationViewRowImpl"
+    SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.16.48" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+            <Item Value="2"/>
+            <Item Value="3"/>
+            <Item Value="4"/>
+            <Item Value="5"/>
+        </AttrArray>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <TransientExpression Name="VariableScript">gen.common.GenLib.getLanguageNo()</TransientExpression>
+    </Variable>
+    <Variable Kind="viewcriteria" Name="p_departments_fk" Type="java.math.BigDecimal">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+        </AttrArray>
+        <TransientExpression Name="expression"><![CDATA[gen.common.GenLib.getUserLoginDepartment()]]></TransientExpression>
+    </Variable>
+    <ViewAccessor Name="ArcFilesLocationMainLocationFk"
+        RowLevelBinds="false" ViewObjectName="arc.model.vo.ArcFilesLocationView"/>
+    <ViewAccessor Name="ArcFilesLocationRVO" RowLevelBinds="true" ViewObjectName="arc.model.ro.ArcFilesLocationRVO">
+        <ParameterMap>
+            <PIMap Variable="p_departments_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[DepartmentsFk]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="ArcFlStandardsView" RowLevelBinds="true" ViewObjectName="arc.model.vo.ArcFlStandardsView"/>
+    <ViewAccessor Name="HcmEmployeesRVO" RowLevelBinds="true" ViewObjectName="arc.model.ro.HcmEmployeesRVO"/>
+    <ViewAccessor Name="ArcFilesColumnsLockersFilesColumnsLockersFk"
+        RowLevelBinds="false" ViewObjectName="arc.model.vo.ArcFilesColumnsLockersView">
+        <ViewCriteriaUsage
+            FullName="arc.model.vo.ArcFilesColumnsLockersView.ArcFilesColumnsLockersFilterByFilesLockersFkCriteria" Name="ArcFilesColumnsLockersFilterByFilesLockersFkCriteria"/>
+        <ParameterMap>
+            <PIMap Variable="p_files_loackers_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[FilesLockersFk]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="ArcFilesLockersFilesLockersFk"
+        RowLevelBinds="false" ViewObjectName="arc.model.vo.ArcFilesLockersView">
+        <ViewCriteriaUsage
+            FullName="arc.model.vo.ArcFilesLockersView.ArcFilesLockersFilterByDepartmentFkCriteria" Name="ArcFilesLockersFilterByDepartmentFkCriteria"/>
+        <ParameterMap>
+            <PIMap Variable="p_department_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[DepartmentsFk]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor
+        Name="ArcFilesRowsColumnsLockersFilesRowsColumnsLockersFk"
+        RowLevelBinds="false" ViewObjectName="arc.model.vo.ArcFilesRowsColumnsLockersView">
+        <ViewCriteriaUsage
+            FullName="arc.model.vo.ArcFilesRowsColumnsLockersView.ArcFilesRowsColumnsLockersFilterByFilesCloumnLockersCriteria" Name="ArcFilesRowsColumnsLockersFilterByFilesCloumnLockersCriteria"/>
+        <ParameterMap>
+            <PIMap Variable="p_file_column_locker">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[FilesColumnsLockersFk]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="SsoActiveLookupValuesTagsFk"
+        RowLevelBinds="true" ViewObjectName="arc.model.ro.SsoActiveLookupValuesVwView">
+        <ViewCriteriaUsage
+            FullName="arc.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter" Name="SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[106]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="ArcFilesLockersRVO" RowLevelBinds="true" ViewObjectName="arc.model.ro.ArcFilesLockersRVO">
+        <ParameterMap>
+            <PIMap Variable="p_departments_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[DepartmentsFk]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="ArcFilesRowsColumnsLockersRVO"
+        RowLevelBinds="true" ViewObjectName="arc.model.ro.ArcFilesRowsColumnsLockersRVO">
+        <ParameterMap>
+            <PIMap Variable="p_files_columns_lockers_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[FilesColumnsLockersFk]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="ArcFilesColumnsLockersRVO" RowLevelBinds="true" ViewObjectName="arc.model.ro.ArcFilesColumnsLockersRVO">
+        <ParameterMap>
+            <PIMap Variable="p_files_lockers_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[FilesLockersFk]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ListBinding ComboRowCountHint="10" ListVOName="ArcFilesLocationRVO"
+        MRUCount="0" Name="LOV_MainLocationFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="MainLocationFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayMainLocationFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="FilesLocationPk"/>
+            <Item Value="DisplayFilesLocationPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="FilesLocationPk"/>
+            <Item Value="DisplayFilesLocationPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="ArcFilesLocationLovSearch"/>
+    </ListBinding>
+    <ListBinding ComboRowCountHint="10" ListVOName="ArcFlStandardsView"
+        MRUCount="0" Name="LOV_FlStandardsFK" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="FlStandardsFK"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayFlStandardsFK"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="FlStandardsPk"/>
+            <Item Value="DisplayStandardDesc"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="FlStandardsPk"/>
+            <Item Value="DisplayStandardDesc"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="ArcFlStandardsViewLovSearch"/>
+    </ListBinding>
+    <ListBinding ComboRowCountHint="10" ListVOName="HcmEmployeesRVO"
+        MRUCount="0" Name="LOV_EmployeesFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="EmployeesFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayEmployeesFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="EmployeesPk"/>
+            <Item Value="DisplayEmployeesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="EmployeesPk"/>
+            <Item Value="DisplayEmployeesPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="HcmEmployeesLovSearch"/>
+    </ListBinding>
+    <ListBinding ListRangeSize="10"
+        ListVOName="SsoActiveLookupValuesTagsFk" MRUCount="0"
+        Name="LOV_TagsFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="TagsFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayTagsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="SsoSystemLookupValuesLOVSearch"/>
+    </ListBinding>
+    <ListBinding ComboRowCountHint="10" ListVOName="ArcFilesLockersRVO"
+        MRUCount="0" Name="LOV_FilesLockersFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="FilesLockersFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayFilesLockersFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="FilesLockersPk"/>
+            <Item Value="DisplayFilesLockersPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="FilesLockersPk"/>
+            <Item Value="DisplayFilesLockersPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="ArcFilesLockersLovSearch"/>
+    </ListBinding>
+    <ListBinding ComboRowCountHint="10"
+        ListVOName="ArcFilesRowsColumnsLockersRVO" MRUCount="0"
+        Name="LOV_FilesRowsColumnsLockersFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="FilesRowsColumnsLockersFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayFilesRowsColumnsLockersFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="FilesRowsColumnsLockersPk"/>
+            <Item Value="DisplayFilesRowsColLockers"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="FilesRowsColumnsLockersPk"/>
+            <Item Value="DisplayFilesRowsColLockers"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="ArcFilesRowsColumnsLockersLovSearch"/>
+    </ListBinding>
+    <ListBinding ComboRowCountHint="10"
+        ListVOName="ArcFilesColumnsLockersRVO" MRUCount="0"
+        Name="LOV_FilesColumnsLockersFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="FilesColumnsLockersFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayFilesColumnsLockersFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="FilesColumnsLockersPk"/>
+            <Item Value="DisplayFilesColumnsLockers"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="FilesColumnsLockersPk"/>
+            <Item Value="DisplayFilesColumnsLockers"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="ArcFilesColumnsLockersLovSearch"/>
+    </ListBinding>
+    <EntityUsage Entity="arc.model.eo.ArcFilesLocation" Name="ArcFilesLocation"/>
+    <ViewAttribute AliasName="FILES_LOCATION_PK"
+        EntityAttrName="FilesLocationPk" EntityUsage="ArcFilesLocation"
+        IsNotNull="true" Name="FilesLocationPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MAIN_LOCATION_FK"
+        EntityAttrName="MainLocationFk" EntityUsage="ArcFilesLocation"
+        LOVName="LOV_MainLocationFk" Name="MainLocationFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.MainLocationFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DEPARTMENTS_FK"
+        EntityAttrName="DepartmentsFk" EntityUsage="ArcFilesLocation"
+        Name="DepartmentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.DepartmentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="ArcFilesLocation" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="ArcFilesLocation"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="ArcFilesLocation" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="ArcFilesLocation"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk" EntityUsage="ArcFilesLocation"
+        Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayMainLocationFk"
+        ColumnType="VARCHAR2"
+        Expression="get_FILES_LOCATION_FILE_LOCATI(MAIN_LOCATION_FK,  ?)"
+        IsPersistent="false" IsQueriable="false"
+        Name="DisplayMainLocationFk" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <AUTOSUBMIT Value="true"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayMainLocationFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayMainLocationFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.MainLocationFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayFileLocationDesc"
+        EntityAttrName="DisplayFileLocationDesc"
+        EntityUsage="ArcFilesLocation"
+        Expression="get_FILES_LOCATION_FILE_LOCATI(FILES_LOCATION_PK, ?)"
+        Name="DisplayFileLocationDesc" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"/>
+                <DISPLAYWIDTH Value="40"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayFileLocationDescSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayFileLocationDescSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="MainLocationFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        LOVName="LOV_FlStandardsFK" Name="FlStandardsFK"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayFlStandardsFK" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayFlStandardsFK" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="FlStandardsName" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false" Name="FlStandardsName"
+        PrecisionRule="true" SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        LOVName="LOV_EmployeesFk" Name="EmployeesFk"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayEmployeesFk" PrecisionRule="true" SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="APPENDIX_FL" EntityAttrName="AppendixFl"
+        EntityUsage="ArcFilesLocation" Name="AppendixFl" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.AppendixFl']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FILES_COLUMNS_LOCKERS_FK"
+        EntityAttrName="FilesColumnsLockersFk"
+        EntityUsage="ArcFilesLocation"
+        LOVName="LOV_FilesColumnsLockersFk" Name="FilesColumnsLockersFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.FilesColumnsLockersFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <Dependencies>
+            <Item Value="FilesLockersFk"/>
+        </Dependencies>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FILES_LOCKERS_FK"
+        EntityAttrName="FilesLockersFk" EntityUsage="ArcFilesLocation"
+        LOVName="LOV_FilesLockersFk" Name="FilesLockersFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.FilesLockersFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FILES_ROWS_COLUMNS_LOCKERS_FK"
+        EntityAttrName="FilesRowsColumnsLockersFk"
+        EntityUsage="ArcFilesLocation"
+        LOVName="LOV_FilesRowsColumnsLockersFk"
+        Name="FilesRowsColumnsLockersFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.FilesRowsColumnsLockersFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <Dependencies>
+            <Item Value="FilesColumnsLockersFk"/>
+        </Dependencies>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MILITARY_FILE_FL"
+        EntityAttrName="MilitaryFileFl" EntityUsage="ArcFilesLocation"
+        Name="MilitaryFileFl" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.MilitaryFileFl']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OPEN_FL" EntityAttrName="OpenFl"
+        EntityUsage="ArcFilesLocation" Name="OpenFl" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.OpenFl']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="TAGS_FK" EntityAttrName="TagsFk"
+        EntityUsage="ArcFilesLocation" LOVName="LOV_TagsFk"
+        Name="TagsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.TagsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayFilesColumnsLockersFk"
+        ColumnType="VARCHAR2"
+        Expression="get_FILES_COLUMNS_LOCKERS_FILE (FILES_COLUMNS_LOCKERS_FK,?)"
+        IsPersistent="false" Name="DisplayFilesColumnsLockersFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockers.FilesColumnsLockersPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <Dependencies>
+            <Item Value="FilesLockersFk"/>
+        </Dependencies>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayFilesLockersFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_FILES_LOCKERS_NAME(FILES_LOCKERS_FK,?)"
+        IsPersistent="false" Name="DisplayFilesLockersFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLockers.FilesLockersPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayFilesRowsColumnsLockersFk"
+        ColumnType="VARCHAR2"
+        Expression="get_FILES_ROWS_COLUMNS_LOCKERS(FILES_ROWS_COLUMNS_LOCKERS_FK,?)"
+        IsPersistent="false" Name="DisplayFilesRowsColumnsLockersFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockers.FilesRowsColumnsLockersPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <Dependencies>
+            <Item Value="FilesColumnsLockersFk"/>
+        </Dependencies>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayTagsFk" ColumnType="VARCHAR2"
+        Expression="GET_LOOKUP_DESC(TAGS_FK,  ?)" IsPersistent="false"
+        Name="DisplayTagsFk" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoSystemLookupValues.SystemLookupValuesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false" Name="TagsFkSearch"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayTagsFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayFilesLockersFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="FilesLockersFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="FilesRowsColumnsLockersFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayFilesRowsColumnsLockersFkSearch"
+        PrecisionRule="true" SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayFilesColumnsLockersFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="FilesColumnsLockersFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="APPENDIX_MAIN_FK"
+        EntityAttrName="AppendixMainFk" EntityUsage="ArcFilesLocation"
+        Name="AppendixMainFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.AppendixMainFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="LIMITED_ACCESS_FL"
+        EntityAttrName="LimitedAccessFl" EntityUsage="ArcFilesLocation"
+        Name="LimitedAccessFl" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.LimitedAccessFl']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="PUBLIC_ACCESS_FL"
+        EntityAttrName="PublicAccessFl" EntityUsage="ArcFilesLocation"
+        Name="PublicAccessFl" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocation.PublicAccessFl']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewCriteria Conjunction="AND" Name="ArcFilesLocationViewLovSearch" ViewObjectName="arc.model.vo.ArcFilesLocationView">
+        <Properties Name="_Props">
+            <CustomProperties>
+                <Property Name="autoExecute" Value="false"/>
+                <Property Name="mode" Value="Basic"/>
+                <Property Name="allowConjunctionOverride" Value="false"/>
+                <Property Name="showInList" Value="true"/>
+                <Property Name="displayOperators" Value="InAdvancedMode"/>
+            </CustomProperties>
+        </Properties>
+        <ViewCriteriaRow Name="ArcFilesLocationViewCriteria_row_0" UpperColumns="1">
+            <ViewCriteriaItem Conjunction="AND" Name="FilesLocationPk"
+                Operator="=" Required="Optional" ViewAttribute="FilesLocationPk"/>
+            <ViewCriteriaItem Conjunction="AND"
+                Name="DisplayFileLocationDesc" Operator="CONTAINS"
+                Required="Optional" ViewAttribute="DisplayFileLocationDesc"/>
+        </ViewCriteriaRow>
+    </ViewCriteria>
+    <ViewCriteria Conjunction="AND"
+        Name="ArcFilesLocationViewFilterByDepartmentsFkCriteria" ViewObjectName="arc.model.vo.ArcFilesLocationView">
+        <Properties Name="_Props">
+            <CustomProperties>
+                <Property Name="autoExecute" Value="false"/>
+                <Property Name="mode" Value="Basic"/>
+                <Property Name="allowConjunctionOverride" Value="true"/>
+                <Property Name="showInList" Value="true"/>
+                <Property Name="displayOperators" Value="InAdvancedMode"/>
+            </CustomProperties>
+        </Properties>
+        <ViewCriteriaRow Name="ArcFilesLocationViewCriteria_row_0" UpperColumns="1">
+            <ViewCriteriaItem Conjunction="AND" IsBindVarValue="true"
+                Name="DepartmentsFk" Operator="=" Required="Optional"
+                Value=":p_departments_fk" ViewAttribute="DepartmentsFk"/>
+        </ViewCriteriaRow>
+    </ViewCriteria>
+    <ViewLinkAccessor IsUpdateable="false" Name="ArcFilesLocationView"
+        Type="oracle.jbo.RowIterator" ViewLink="arc.model.vl.ArcFilesLocationFk1Link"/>
+    <ViewLinkAccessor IsUpdateable="false" Name="ArcFilesLocationTlView"
+        Type="oracle.jbo.RowIterator" ViewLink="arc.model.vl.ArcFilesLocationTlFk1Link"/>
+    <ViewLinkAccessor IsUpdateable="false"
+        Name="ArcFilesLocationPrivilegeView"
+        Type="oracle.jbo.RowIterator" ViewLink="arc.model.vl.FilesLocationsPrivVl"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="arc.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

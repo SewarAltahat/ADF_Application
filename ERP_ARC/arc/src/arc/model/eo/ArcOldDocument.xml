@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="ArcOldDocument" BindingStyle="JDBC"
+    DBObjectName="ARC_OLD_DOCUMENT" DBObjectType="table"
+    InheritPersonalization="merge" Name="ArcOldDocument"
+    RowClass="arc.model.eo.ArcOldDocumentImpl"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Init|Delete|Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="OLD_DOCUMENT_PK" ColumnType="NUMBER" Name="OldDocumentPk" PrimaryKey="true"
+        SQLType="NUMERIC" TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DOCUMENT_NUMBER" ColumnType="VARCHAR2"
+        Name="DocumentNumber" Precision="20" SQLType="VARCHAR"
+        TableName="ARC_OLD_DOCUMENT" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="20"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="DOCUMENT_TYPE_FK" ColumnType="NUMBER"
+        Name="DocumentTypeFk" SQLType="NUMERIC"
+        TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DOCUMENT_PRIORITY_FK" ColumnType="NUMBER"
+        Name="DocumentPriorityFk" SQLType="NUMERIC"
+        TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DOCUMENT_SECURITY_FK" ColumnType="NUMBER"
+        Name="DocumentSecurityFk" SQLType="NUMERIC"
+        TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="FROM_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="FromDepartmentFk" SQLType="NUMERIC"
+        TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="TO_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="ToDepartmentFk" SQLType="NUMERIC"
+        TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DOC_RECEIVE_DATE" ColumnType="TIMESTAMP"
+        Name="DocReceiveDate" SQLType="TIMESTAMP"
+        TableName="ARC_OLD_DOCUMENT" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="ROOM" ColumnType="VARCHAR2" Name="Room"
+        Precision="100" SQLType="VARCHAR" TableName="ARC_OLD_DOCUMENT" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="100"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="CUPBOARD" ColumnType="VARCHAR2"
+        Name="Cupboard" Precision="100" SQLType="VARCHAR"
+        TableName="ARC_OLD_DOCUMENT" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="100"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="SHELVE" ColumnType="VARCHAR2" Name="Shelve"
+        Precision="100" SQLType="VARCHAR" TableName="ARC_OLD_DOCUMENT" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="100"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="RACK" ColumnType="VARCHAR2" Name="Rack"
+        Precision="100" SQLType="VARCHAR" TableName="ARC_OLD_DOCUMENT" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="100"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="DOC_EXPIRY_DATE" ColumnType="Timestamp"
+        Name="DocExpiryDate" SQLType="Timestamp"
+        TableName="ARC_OLD_DOCUMENT" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="KEYWORDS" ColumnType="VARCHAR2"
+        Name="Keywords" Precision="200" SQLType="VARCHAR"
+        TableName="ARC_OLD_DOCUMENT" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="200"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute ColumnName="ORG_CODE_FK" ColumnType="NUMBER"
+        Name="OrgCodeFk" SQLType="NUMERIC" TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC" TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="ARC_OLD_DOCUMENT" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC" TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="ARC_OLD_DOCUMENT" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DISPOSED_BY" ColumnType="NUMBER"
+        Name="DisposedBy" SQLType="NUMERIC" TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DISPOSAL_DATE" ColumnType="Timestamp"
+        Name="DisposalDate" SQLType="Timestamp"
+        TableName="ARC_OLD_DOCUMENT" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="ORIGINAL_DOCUMENT_DISPOSED_FL"
+        ColumnType="NUMBER" Name="OriginalDocumentDisposedFl"
+        Precision="1" SQLType="NUMERIC" Scale="0"
+        TableName="ARC_OLD_DOCUMENT" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="$none$" ColumnType="CHAR"
+        IsPersistent="false" Name="DisplayDocumentSubject"
+        Precision="500" SQLType="VARCHAR" Type="java.lang.String"/>
+    <Attribute ColumnName="$none$" ColumnType="CHAR"
+        IsPersistent="false" Name="DisplayDocumentDescription"
+        Precision="2000" SQLType="VARCHAR" Type="java.lang.String"/>
+    <Attribute ColumnName="$none$" ColumnType="CHAR"
+        IsPersistent="false" Name="DisplayDocumentComment"
+        Precision="1000" SQLType="VARCHAR" Type="java.lang.String"/>
+    <Attribute
+        Name="DisposedCommitteMembers"
+        Precision="2000"
+        ColumnName="DISPOSED_COMMITTE_MEMBERS"
+        SQLType="VARCHAR"
+        Type="java.lang.String"
+        ColumnType="VARCHAR2"
+        TableName="ARC_OLD_DOCUMENT">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="2000"/>
+        </DesignTime>
+    </Attribute>
+    <Attribute
+        Name="DisposedDecisionDateG"
+        ColumnName="DISPOSED_DECISION_DATE_G"
+        SQLType="TIMESTAMP"
+        Type="java.sql.Timestamp"
+        ColumnType="TIMESTAMP"
+        TableName="ARC_OLD_DOCUMENT"/>
+    <Attribute
+        Name="DisposedDecisionDateH"
+        ColumnName="DISPOSED_DECISION_DATE_H"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        TableName="ARC_OLD_DOCUMENT"/>
+    <Attribute
+        Name="DisposedDecisionNo"
+        ColumnName="DISPOSED_DECISION_NO"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        TableName="ARC_OLD_DOCUMENT"/>
+    <Attribute
+        Name="EmployeesFk"
+        ColumnName="EMPLOYEES_FK"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        TableName="ARC_OLD_DOCUMENT"/>
+    <Attribute
+        Name="FilesLocationFk"
+        ColumnName="FILES_LOCATION_FK"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        TableName="ARC_OLD_DOCUMENT"/>
+    <Attribute
+        Name="DocYear"
+        ColumnName="DOC_YEAR"
+        SQLType="NUMERIC"
+        Type="java.math.BigDecimal"
+        ColumnType="NUMBER"
+        TableName="ARC_OLD_DOCUMENT"/>
+    <AccessorAttribute
+        Association="arc.model.assoc.ArcDocumentAttachmentFkAssoc"
+        AssociationEnd="arc.model.assoc.ArcDocumentAttachmentFkAssoc.ArcDocumentAttachment"
+        AssociationOtherEnd="arc.model.assoc.ArcDocumentAttachmentFkAssoc.ArcOldDocument"
+        IsUpdateable="false" Name="ArcDocumentAttachment" Type="oracle.jbo.RowIterator"/>
+    <AccessorAttribute
+        Association="arc.model.assoc.ArcDocumentTlFkAssoc"
+        AssociationEnd="arc.model.assoc.ArcDocumentTlFkAssoc.ArcOldDocumentTl"
+        AssociationOtherEnd="arc.model.assoc.ArcDocumentTlFkAssoc.ArcOldDocument"
+        IsUpdateable="false" Name="ArcOldDocumentTl" Type="oracle.jbo.RowIterator"/>
+    <Key Name="ArcDocumentPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="ARC_DOCUMENT_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcOldDocument.OldDocumentPk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcDocumentFk">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_DOCUMENT_FK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcOldDocument.DocumentTypeFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcDocumentFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_DOCUMENT_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcOldDocument.DocumentPriorityFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcDocumentFk2">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_DOCUMENT_FK2"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcOldDocument.DocumentSecurityFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcOldDocumentFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="HCM_DEPARTMENTS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_OLD_DOCUMENT_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcOldDocument.FromDepartmentFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcOldDocumentFk2">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="HCM_DEPARTMENTS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_OLD_DOCUMENT_FK2"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcOldDocument.ToDepartmentFk"/>
+        </AttrArray>
+    </Key>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="arc.view.scrlabels"/>
+    </ResourceBundle>
+</Entity>
+<!---->

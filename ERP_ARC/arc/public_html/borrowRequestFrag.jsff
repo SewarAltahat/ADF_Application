@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <af:panelGroupLayout id="pg1" layout="scroll">
+    <!--<af:commandButton id="cb1" actionListener="#{borrowRequests.testSearch}" partialSubmit="true"/>-->
+    <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.borrowRequests']}" id="pb2">
+      <af:panelGroupLayout id="pgl2" layout="horizontal" halign="center">
+        <af:commandButton  id="approveButton"
+                          styleClass="commitButton"
+                          disabled="#{bindings.BorrowRequestsPk.inputValue == null or !menu.updateAllowed}"
+                          text="#{menu.resourceLabelMap['label.approve']}" partialSubmit="true"
+                          icon="/images/approve.png" actionListener="#{borrowRequests.completeProcess}">
+          <f:attribute name="processId" value="ARC.Request_Original_Document"/>
+          <f:attribute name="taskInstanceId" value="#{sessionScope.TaskId}"/>
+          <f:attribute name="requestIterator" value="ArcBorrowRequestsView1Iterator"/>
+          <f:attribute name="commentAttribute" value="TaskComment"/>
+          <af:setActionListener from="true" to="#{sessionScope.approveStatus}"/>
+        </af:commandButton>
+        <af:spacer width="5" id="s1"/>
+        <af:commandButton text="#{menu.resourceLabelMap['label.reject']}" id="rejectButton"
+                          rendered="#{sessionScope.taskName ne 'Doc_return'}" styleClass="commitButton"
+                          disabled="#{bindings.BorrowRequestsPk.inputValue == null or !menu.updateAllowed}"
+                           partialSubmit="true" icon="/images/reject.png"
+                          actionListener="#{borrowRequests.completeProcess}">
+          <f:attribute name="processId" value="ARC.Request_Original_Document"/>
+          <f:attribute name="taskInstanceId" value="#{sessionScope.TaskId}"/>
+          <f:attribute name="requestIterator" value="ArcBorrowRequestsView1Iterator"/>
+          <f:attribute name="commentAttribute" value="TaskComment"/>
+          <af:setActionListener from="false" to="#{sessionScope.approveStatus}"/>
+        </af:commandButton>
+      </af:panelGroupLayout>
+      <div class="card-body">
+        <div class="form-group row">
+          <div class="col-md-3">
+            <label class="col-form-label">
+              <af:outputLabel value="#{menu.resourceLabelMap['ArcBorrowRequests.BorrowRequestsPk']}"
+                              id="arcBorrowRequestsBorrowrequestspkL"/>
+            </label>
+             
+            <af:inputText value="#{bindings.ArcBorrowRequestsBorrowRequestsPk.inputValue}"
+                          label="#{menu.resourceLabelMap['ArcBorrowRequests.BorrowRequestsPk']}"
+                          required="#{bindings.ArcBorrowRequestsBorrowRequestsPk.hints.mandatory}"
+                          columns="#{bindings.ArcBorrowRequestsBorrowRequestsPk.hints.displayWidth}"
+                          maximumLength="#{bindings.ArcBorrowRequestsBorrowRequestsPk.hints.precision}"
+                          id="arcBorrowRequestsBorrowrequestspk" simple="true" styleClass="form-control"
+                          disabled="true">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.ArcBorrowRequestsBorrowRequestsPk.format}"/>
+              <f:validator binding="#{bindings.ArcBorrowRequestsBorrowRequestsPk.validator}"/>
+            </af:inputText>
+          </div>
+          <div class="col-md-3">
+            <label class="col-form-label">
+              <af:outputLabel value="#{menu.resourceLabelMap['ArcBorrowRequestsTl.RequestReason']}"
+                              id="arcBorrowRequestsDisplayrequestreasonL" />
+            </label>
+             
+            <af:inputText value="#{bindings.ArcBorrowRequestsDisplayRequestReason.inputValue}"
+                          label="#{menu.resourceLabelMap['ArcBorrowRequestsTl.RequestReason']}" required="true"
+                          columns="#{bindings.ArcBorrowRequestsDisplayRequestReason.hints.displayWidth}"
+                          maximumLength="#{bindings.ArcBorrowRequestsDisplayRequestReason.hints.precision}"
+                          id="arcBorrowRequestsDisplayrequestreason" autoSubmit="true" simple="true"
+                          styleClass="form-control" disabled="true">
+              <f:validator binding="#{bindings.ArcBorrowRequestsDisplayRequestReason.validator}"/>
+            </af:inputText>
+          </div>
+          <div class="col-md-3">
+            <label class="col-form-label">
+              <af:outputLabel value="#{menu.resourceLabelMap['ArcBorrowRequests.OldDocumentFk']}"
+                              id="arcBorrowRequestsOlddocumentfkL" />
+            </label>
+             
+            <af:inputListOfValues id="oldDocumentFkId"
+                                  popupTitle="#{menu.resourceLabelMap['ArcBorrowRequests.OldDocumentFk']}"
+                                  value="#{bindings.OldDocumentFk.inputValue}" simple="true"
+                                  label="#{menu.resourceLabelMap['ArcBorrowRequests.OldDocumentFk']}"
+                                  model="#{bindings.OldDocumentFk.listOfValuesModel}" required="true" autoSubmit="true"
+                                  styleClass="form-control" columns="#{bindings.OldDocumentFk.hints.displayWidth}"
+                                  disabled="true">
+              <f:validator binding="#{bindings.OldDocumentFk.validator}"/>
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.OldDocumentFk.format}"/>
+            </af:inputListOfValues>
+          </div>
+          <div class="col-md-3">
+            <label class="col-form-label">
+              <af:outputLabel value="#{menu.resourceLabelMap['ArcBorrowRequests.RequestPeriod']}"
+                              id="arcBorrowRequestsRequestperiodL" />
+            </label>
+             
+            <af:inputText value="#{bindings.ArcBorrowRequestsRequestPeriod.inputValue}"
+                          label="#{menu.resourceLabelMap['ArcBorrowRequests.RequestPeriod']}" required="true"
+                          autoSubmit="true" columns="#{bindings.ArcBorrowRequestsRequestPeriod.hints.displayWidth}"
+                          maximumLength="#{bindings.ArcBorrowRequestsRequestPeriod.hints.precision}"
+                          id="arcBorrowRequestsRequestperiod" simple="true" styleClass="form-control" disabled="true">
+              <af:convertNumber groupingUsed="false" pattern="#{bindings.ArcBorrowRequestsRequestPeriod.format}"/>
+              <f:validator binding="#{bindings.ArcBorrowRequestsRequestPeriod.validator}"/>
+            </af:inputText>
+          </div>
+          <div class="col-md-3">
+            <label class="col-form-label">
+              <af:outputLabel value="#{menu.resourceLabelMap['ArcBorrowRequestsTl.Notes']}"
+                              id="arcBorrowRequestsDisplaynotesL"/>
+            </label>
+             
+            <af:inputText value="#{bindings.ArcBorrowRequestsDisplayNotes.inputValue}"
+                          label="#{menu.resourceLabelMap['ArcBorrowRequests.DisplayNotes']}"
+                          required="#{bindings.ArcBorrowRequestsDisplayNotes.hints.mandatory}"
+                          columns="#{bindings.ArcBorrowRequestsDisplayNotes.hints.displayWidth}"
+                          maximumLength="#{bindings.ArcBorrowRequestsDisplayNotes.hints.precision}"
+                          id="arcBorrowRequestsDisplaynotes" autoSubmit="true" simple="true" styleClass="form-control"
+                          disabled="true">
+              <f:validator binding="#{bindings.ArcBorrowRequestsDisplayNotes.validator}"/>
+            </af:inputText>
+          </div>
+          <div class="col-md-3">
+            <label class="col-form-label">
+              <af:outputLabel value="#{menu.resourceLabelMap['ArcBorrowRequests.ReturnDate']}"
+                              id="arcBorrowRequestsReturnDate"/>
+            </label>
+            <af:inputDate value="#{bindings.ReturnDate.inputValue}" label="#{menu.resourceLabelMap['ArcBorrowRequests.ReturnDate']}"
+                                  required="#{bindings.ReturnDate.hints.mandatory}"
+                                  columns="#{bindings.ReturnDate.hints.displayWidth}" id="id15" simple="true"
+                                  disabled="#{!sessionScope.ReturnDate}" autoSubmit="true"   styleClass="form-control">
+              <f:validator binding="#{bindings.ReturnDate.validator}"/>
+              <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+            </af:inputDate>
+          </div>
+          <div class="col-md-3">
+            <label class="col-form-label">
+              <af:outputLabel value="#{menu.resourceLabelMap['BPMProcessTaskRVO.TaskComment']}"
+                              id="arcBorrowRequestsTaskComment"/>
+            </label><af:inputText value="#{bindings.TaskComment.inputValue}" label="#{bindings.TaskComment.hints.label}"
+                                  required="#{bindings.TaskComment.hints.mandatory}"
+                                   styleClass="form-control"
+                                  columns="#{bindings.TaskComment.hints.displayWidth}"
+                                  maximumLength="#{bindings.TaskComment.hints.precision}"
+                                   id="it1"  simple="true">
+              <f:validator binding="#{bindings.TaskComment.validator}"/>
+            </af:inputText>
+          </div>
+        </div>
+      </div>
+    </af:panelBox>
+  </af:panelGroupLayout>
+</jsp:root>

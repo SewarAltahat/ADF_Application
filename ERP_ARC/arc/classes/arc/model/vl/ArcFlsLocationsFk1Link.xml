@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArcFlsLocationsFk1Link"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  EntityAssociation="arc.model.assoc.ArcFlsLocationsFk1Assoc">
+  <ViewLinkDefEnd
+    Name="MainLocationFkArcFlsLocationsView"
+    Cardinality="1"
+    Source="true"
+    Owner="arc.model.vo.ArcFlsLocationsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="MainLocationFkArcFlsLocationsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcFlsLocationsView.FlsLocationsPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ArcFlsLocationsView"
+    Cardinality="-1"
+    Owner="arc.model.vo.ArcFlsLocationsView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcFlsLocationsView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcFlsLocationsView.MainLocationFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArcFilesColumnsLockersRVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  RowClass="arc.model.ro.ArcFilesColumnsLockersRVORowImpl"
+  ComponentClass="arc.model.ro.ArcFilesColumnsLockersRVOImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="arc.model.ro.ArcFilesColumnsLockersRVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+   <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="0"/>
+    </AttrArray>
+    <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <TransientExpression Name="VariableScript">gen.common.GenLib.getLanguageNo()</TransientExpression>
+    </Variable>
+  <Variable
+    Name="p_files_lockers_fk"
+    Kind="where"
+    Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="1"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[select FILES_COLUMNS_LOCKERS_PK    ,GET_FILES_COLUMNS_LOCKERS_FILE(FILES_COLUMNS_LOCKERS_PK, ?)DISPLAY_FILES_COLUMNS_LOCKERS 
+from ARC_FILES_COLUMNS_LOCKERS      
+WHERE files_lockers_fk = ?]]></SQLQuery>
+  <ViewAttribute
+    Name="FilesColumnsLockersPk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="FILES_COLUMNS_LOCKERS_PK"
+    Expression="FILES_COLUMNS_LOCKERS_PK"
+    SQLType="NUMERIC">
+      <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockers.FilesColumnsLockersPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+        </ViewAttribute>
+  <ViewAttribute
+    Name="DisplayFilesColumnsLockers"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DISPLAY_FILES_COLUMNS_LOCKERS"
+    Expression="DISPLAY_FILES_COLUMNS_LOCKERS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+      <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockersTl.FilesColumnsLockersName']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="ArcFilesColumnsLockersLovSearch"
+    ViewObjectName="arc.model.ro.ArcFilesColumnsLockersRVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="ArcFilesColumnsLockersRVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="FilesColumnsLockersPk"
+        ViewAttribute="FilesColumnsLockersPk"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ArcFilesColumnsLockersRVOCriteria_ArcFilesColumnsLockersRVOCriteria_row_0_DisplayFilesColumnsLockers"
+        ViewAttribute="DisplayFilesColumnsLockers"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="FilesColumnsLockersPk"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48"
+                id="borrowRequestTF_borrowRequestTF_SetCurrentRowWithKeyValuePageDef" Package="arc.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="ArcBorrowRequestsView2" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcBorrowRequestsView1Iterator" ChangeEventPolicy="none"/>
+  </executables>
+  <bindings>
+    <action IterBinding="ArcBorrowRequestsView1Iterator" id="setCurrentRowWithKeyValue" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey" NDValue="#{sessionScope.BPMRequestsPk}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

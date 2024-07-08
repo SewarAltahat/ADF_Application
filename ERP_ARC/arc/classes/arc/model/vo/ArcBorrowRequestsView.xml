@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject BindingStyle="JDBC"
+    ComponentClass="gen.common.BaseViewObjectImpl" CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="ArcBorrowRequestsView"
+    PageIterMode="Full"
+    RowClass="arc.model.vo.ArcBorrowRequestsViewRowImpl"
+    SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.16.48" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+            <Item Value="2"/>
+        </AttrArray>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <TransientExpression Name="VariableScript">gen.common.GenLib.getLanguageNo()</TransientExpression>
+    </Variable>
+    <ViewAccessor Name="ArcOldDocumentRVO" RowLevelBinds="true" ViewObjectName="arc.model.ro.ArcOldDocumentRVO"/>
+    <ListBinding ComboRowCountHint="10" ListVOName="ArcOldDocumentRVO"
+        MRUCount="0" Name="LOV_OldDocumentFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="OldDocumentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="OldDocumentPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="OldDocumentPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="ArcOldDocumentLovSearch"/>
+    </ListBinding>
+    <EntityUsage Entity="arc.model.eo.ArcBorrowRequests" Name="ArcBorrowRequests"/>
+    <ViewAttribute AliasName="BORROW_REQUESTS_PK"
+        EntityAttrName="BorrowRequestsPk"
+        EntityUsage="ArcBorrowRequests" IsNotNull="true"
+        Name="BorrowRequestsPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequests.BorrowRequestsPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OLD_DOCUMENT_FK"
+        EntityAttrName="OldDocumentFk" EntityUsage="ArcBorrowRequests"
+        LOVName="LOV_OldDocumentFk" Name="OldDocumentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequests.OldDocumentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="REQUEST_PERIOD"
+        EntityAttrName="RequestPeriod" EntityUsage="ArcBorrowRequests"
+        Name="RequestPeriod" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequests.RequestPeriod']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="ArcBorrowRequests" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="ArcBorrowRequests"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="ArcBorrowRequests" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="ArcBorrowRequests"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="ArcBorrowRequests" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="REQUEST_STATUS_FK"
+        EntityAttrName="RequestStatusFk" EntityUsage="ArcBorrowRequests"
+        Name="RequestStatusFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequests.RequestStatusFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayOldDocumentFk" ColumnType="CHAR"
+        Expression="GET_DOCUMENT_SUBJECT(Old_Document_Fk, ?)"
+        Name="DisplayOldDocumentFk" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequests.OldDocumentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayOldDocumentFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayOldDocumentFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequests.OldDocumentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayRequestReason"
+        EntityAttrName="DisplayRequestReason"
+        EntityUsage="ArcBorrowRequests"
+        Expression="get_BORROW_REQUESTS_REQUEST_RE(BORROW_REQUESTS_PK, ?)"
+        Name="DisplayRequestReason" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequestsTl.RequestReason']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayRequestReasonSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayRequestReasonSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequestsTl.RequestReason']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayNotes"
+        EntityAttrName="DisplayNotes" EntityUsage="ArcBorrowRequests"
+        Expression="get_BORROW_REQUESTS_NOTES(BORROW_REQUESTS_PK, ?)"
+        Name="DisplayNotes" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequestsTl.Notes']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayNotesSearch" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayNotesSearch" PrecisionRule="true" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequestsTl.Notes']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="OldDocumentFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="PROCESSINSTANCEID"
+        EntityAttrName="Processinstanceid"
+        EntityUsage="ArcBorrowRequests" Name="Processinstanceid" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequests.Processinstanceid']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="BPMTASKID" EntityAttrName="BpmTaskId"
+        EntityUsage="ArcBorrowRequests" Name="BpmTaskId" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequests.BpmTaskId']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="RETURN_DATE" EntityAttrName="ReturnDate"
+        EntityUsage="ArcBorrowRequests" Name="ReturnDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequests.ReturnDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <FMT_FORMAT ResId="#{menu.dateTimeWithSecondsFormat}"/>
+                <FMT_FORMATTER ResId="arc.model.vo.ArcOldDocumentView.DocReceiveDate_FMT_FORMATTER"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="TaskComment" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false" Name="TaskComment"
+        PrecisionRule="true" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYWIDTH Value="30"/>
+                <LABEL ResId="#{menu.resourceLabelMap['BPMProcessTaskRVO.TaskComment']}"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DocumentSecurityFk" ColumnType="BIGINT"
+        Expression="(SELECT DOCUMENT_SECURITY_FK FROM ARC_OLD_DOCUMENT WHERE  OLD_DOCUMENT_PK = Old_Document_Fk)"
+        IsPersistent="false" Name="DocumentSecurityFk"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="EMPLOYEES_FK" EntityAttrName="EmployeesFk"
+        EntityUsage="ArcBorrowRequests" Name="EmployeesFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcBorrowRequests.EmployeesFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewLinkAccessor IsUpdateable="false"
+        Name="ArcBorrowRequestsTlView" Type="oracle.jbo.RowIterator" ViewLink="arc.model.vl.ArcDocBorrowReqTlFk1Link"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="arc.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

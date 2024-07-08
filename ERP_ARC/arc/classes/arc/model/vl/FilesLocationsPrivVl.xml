@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FilesLocationsPrivVl"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="arc.model.vl.FilesLocationsPrivVl_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="ArcFilesLocationView"
+    Cardinality="1"
+    Source="true"
+    Owner="arc.model.vo.ArcFilesLocationView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcFilesLocationView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcFilesLocationView.FilesLocationPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ArcFilesLocationPrivilegeView"
+    Cardinality="-1"
+    Owner="arc.model.vo.ArcFilesLocationPrivilegeView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcFilesLocationPrivilegeView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcFilesLocationPrivilegeView.FilesLocationFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</ViewLink>

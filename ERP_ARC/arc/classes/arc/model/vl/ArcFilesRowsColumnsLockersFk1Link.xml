@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArcFilesRowsColumnsLockersFk1Link"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge"
+  EntityAssociation="arc.model.assoc.ArcFilesRowsColumnsLockersFk1Assoc">
+  <ViewLinkDefEnd
+    Name="ArcFilesColumnsLockersView"
+    Cardinality="1"
+    Source="true"
+    Owner="arc.model.vo.ArcFilesColumnsLockersView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcFilesColumnsLockersView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcFilesColumnsLockersView.FilesColumnsLockersPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ArcFilesRowsColumnsLockersView"
+    Cardinality="-1"
+    Owner="arc.model.vo.ArcFilesRowsColumnsLockersView">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcFilesRowsColumnsLockersView"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.vo.ArcFilesRowsColumnsLockersView.FilesColumnsLockersFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

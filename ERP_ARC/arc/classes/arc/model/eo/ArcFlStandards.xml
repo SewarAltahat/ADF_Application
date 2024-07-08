@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity
+    AliasName="ArcFlStandards"
+    BindingStyle="JDBC"
+    DBObjectName="ARC_FL_STANDARDS"
+    DBObjectType="table"
+    InheritPersonalization="merge"
+    Name="ArcFlStandards"
+    RowClass="arc.model.eo.ArcFlStandardsImpl"
+    Version="12.2.1.12.24"
+    xmlns="http://xmlns.oracle.com/bc4j"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+      ColumnName="FL_STANDARDS_PK"
+      ColumnType="NUMBER"
+      Name="FlStandardsPk"
+      PrimaryKey="true"
+      SQLType="NUMERIC"
+      TableName="ARC_FL_STANDARDS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="FL_STATUS_FL"
+      ColumnType="NUMBER"
+      Name="FlStatusFl"
+      SQLType="NUMERIC"
+      TableName="ARC_FL_STANDARDS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATED_BY"
+      ColumnType="NUMBER"
+      Name="CreatedBy"
+      SQLType="NUMERIC"
+      TableName="ARC_FL_STANDARDS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATION_DATE"
+      ColumnType="TIMESTAMP"
+      Name="CreationDate"
+      SQLType="TIMESTAMP"
+      TableName="ARC_FL_STANDARDS"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="MODIFIED_BY"
+      ColumnType="NUMBER"
+      Name="ModifiedBy"
+      SQLType="NUMERIC"
+      TableName="ARC_FL_STANDARDS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="MODIFIED_DATE"
+      ColumnType="TIMESTAMP"
+      Name="ModifiedDate"
+      SQLType="TIMESTAMP"
+      TableName="ARC_FL_STANDARDS"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="USER_DEPARTMENT_FK"
+      ColumnType="NUMBER"
+      Name="UserDepartmentFk"
+      SQLType="NUMERIC"
+      TableName="ARC_FL_STANDARDS"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="$none$"
+      ColumnType="CHAR"
+      IsPersistent="false"
+      Name="DisplayStandardDesc"
+      Precision="200"
+      SQLType="VARCHAR"
+      Type="java.lang.String"/>
+  <Attribute
+      ColumnName="$none$"
+      ColumnType="CHAR"
+      IsPersistent="false"
+      Name="DisplayNotes"
+      Precision="300"
+      SQLType="VARCHAR"
+      Type="java.lang.String"/>
+  <AccessorAttribute
+      Association="arc.model.assoc.ArcFlsLocationsFkAssoc"
+      AssociationEnd="arc.model.assoc.ArcFlsLocationsFkAssoc.ArcFlsLocations"
+      AssociationOtherEnd="arc.model.assoc.ArcFlsLocationsFkAssoc.ArcFlStandards"
+      IsUpdateable="false"
+      Name="ArcFlsLocations"
+      Type="oracle.jbo.RowIterator"/>
+  <AccessorAttribute
+      Association="arc.model.assoc.ArcFlStandardsTlFk1Assoc"
+      AssociationEnd="arc.model.assoc.ArcFlStandardsTlFk1Assoc.ArcFlStandardsTl"
+      AssociationOtherEnd="arc.model.assoc.ArcFlStandardsTlFk1Assoc.ArcFlStandards"
+      IsUpdateable="false"
+      Name="ArcFlStandardsTl"
+      Type="oracle.jbo.RowIterator"/>
+  <Key
+    Name="AltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="ARC_FL_STANDARDS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.eo.ArcFlStandards.DisplayStandardDesc"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="ArcFlStandardsPk"
+      PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="ARC_FL_STANDARDS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.eo.ArcFlStandards.FlStandardsPk"/>
+    </AttrArray>
+  </Key>
+  <validation:UniqueKeyValidationBean
+    Name="ArcFlStandardsRule0"
+    KeyName="AltKey" ResId="#{menu.getResourceLabel('error.DuplicateCode')}">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="DisplayStandardDesc"/>
+    </validation:OnAttributes>
+  </validation:UniqueKeyValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</Entity>
+<!---->

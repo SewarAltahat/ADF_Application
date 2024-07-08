@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="borrowRequestsSearchPageDef"
+                Package="arc.pageDefs">
+  <executables>
+    <iterator Binds="ArcBorrowRequestsView1" RangeSize="10" DataControl="AppModuleDataControl" id="ArcBorrowRequestsView1Iterator"/>
+    <searchRegion Criteria="" Binds="ArcBorrowRequestsView1Iterator" id="ArcBorrowRequestsView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator Binds="ArcBorrowRequestsTlView2" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcBorrowRequestsTlView2Iterator"/>
+    <searchRegion Binds="ArcBorrowRequestsTlView2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArcBorrowRequestsTlView2Query"/>
+  <taskFlow id="borrowRequestHistoryTF1" taskFlowId="/WEB-INF/requestHistoryTF.xml#requestHistoryTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ArcBorrowRequestsView1Iterator" id="ArcBorrowRequestsView1">
+      <nodeDefinition DefName="arc.model.vo.ArcBorrowRequestsView" Name="ArcBorrowRequestsView10">
+        <AttrNames>
+          <Item Value="BorrowRequestsPk"/>
+          <Item Value="OldDocumentFk"/>
+          <Item Value="RequestPeriod"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="RequestStatusFk"/>
+          <Item Value="DisplayOldDocumentFk"/>
+          <Item Value="DisplayRequestReason"/>
+          <Item Value="DisplayNotes"/>
+          <Item Value="DisplayOldDocumentFkSearch"/>
+          <Item Value="OldDocumentFkSearch"/>
+          <Item Value="DisplayRequestReasonSearch"/>
+          <Item Value="DisplayNotesSearch"/>
+          <Item Value="Processinstanceid"/>
+          <Item Value="ReturnDate"/>
+          <Item Value="BpmTaskId"/>
+          <Item Value="TaskComment"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ArcBorrowRequestsView1Iterator" id="BorrowRequestsPk">
+      <AttrNames>
+        <Item Value="BorrowRequestsPk"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="Next1" RequiresUpdateModel="true" Action="next" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="Previous1" RequiresUpdateModel="true" Action="previous" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="First1" RequiresUpdateModel="true" Action="first" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="Last1" RequiresUpdateModel="true" Action="last" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="Find1" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="Execute1" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="Delete2" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="CreateInsert2" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="Next2" RequiresUpdateModel="true" Action="next" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="Previous2" RequiresUpdateModel="true" Action="previous" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="First2" RequiresUpdateModel="true" Action="first" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="Last2" RequiresUpdateModel="true" Action="last" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="Find2" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <action id="Execute2" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="ArcBorrowRequestsView1Iterator"/>
+    <tree IterBinding="ArcBorrowRequestsTlView2Iterator" id="ArcBorrowRequestsTlView2">
+      <nodeDefinition DefName="arc.model.vo.ArcBorrowRequestsTlView" Name="ArcBorrowRequestsTlView20">
+        <AttrNames>
+          <Item Value="BorrowRequestsTlPk"/>
+          <Item Value="RequestReason"/>
+          <Item Value="Notes"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="BorrowRequestsFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="RequestReasonSearch"/>
+          <Item Value="NotesSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ArcBorrowRequestsView1Iterator" id="BpmTaskId">
+      <AttrNames>
+        <Item Value="BpmTaskId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

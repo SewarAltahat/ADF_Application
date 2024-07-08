@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="11.1.1.52.5" id="fileLocationsPageDef"
+                Package="arc.pageDefs">
+  <executables>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel"
+                  RefreshCondition="#{!adfFacesContext.postback}"/>
+    <iterator Binds="HcmFileLocationDepartmentsView" RangeSize="25" DataControl="AppModuleDataControl"
+              id="HcmFileLocationDepartmentsViewIterator"/>
+    <searchRegion Binds="HcmFileLocationDepartmentsViewIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="HcmFileLocationDepartmentsViewQuery"/>
+    <iterator Binds="ArcFilesLocationView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesLocationView3Iterator"/>
+    <searchRegion Binds="ArcFilesLocationView3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArcFilesLocationView3Query"/>
+    <iterator Binds="ArcFilesLocationTlView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesLocationTlView3Iterator"/>
+    <searchRegion Binds="ArcFilesLocationTlView3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArcFilesLocationTlView3Query"/>
+    <iterator Binds="ArcFilesLocationView1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesLocationView1Iterator"/>
+    <iterator id="ArcFlsLocationsView1Iterator" Binds="ArcFlsLocationsView1" DataControl="AppModuleDataControl"
+              RangeSize="25"/>
+    <iterator Binds="ReportParametersRVO1" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ReportParametersRVO1Iterator"/>
+    <iterator Binds="ArcFilesLockersTlView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesLockersTlView3Iterator"/>
+    <searchRegion Binds="ArcFilesLockersTlView3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArcFilesLockersTlView3Query"/>
+     <iterator Binds="ArcFilesLockersView2" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesLockersView2Iterator"/>
+    <searchRegion Binds="ArcFilesLockersView2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArcFilesLockersView2Query"/>
+    <iterator Binds="ArcFilesColumnsLockersView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesColumnsLockersView3Iterator"/>
+    <searchRegion Binds="ArcFilesColumnsLockersView3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ArcFilesColumnsLockersView3Query"/>
+    <iterator Binds="ArcFilesColumnsLockersTlView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesColumnsLockersTlView3Iterator"/>
+    <searchRegion Binds="ArcFilesColumnsLockersTlView3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ArcFilesColumnsLockersTlView3Query"/>
+    <iterator Binds="ArcFilesRowsColumnsLockersView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesRowsColumnsLockersView3Iterator"/>
+    <searchRegion Binds="ArcFilesRowsColumnsLockersView3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ArcFilesRowsColumnsLockersView3Query"/>
+    <iterator Binds="ArcFilesRowsColumnsLockersTlView3" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesRowsColumnsLockersTlView3Iterator"/>
+    <searchRegion Binds="ArcFilesRowsColumnsLockersTlView3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ArcFilesRowsColumnsLockersTlView3Query"/>
+  </executables>
+  <bindings>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Next1" RequiresUpdateModel="true" Action="next" IterBinding="ArcFilesLocationView1Iterator"/>
+    <action id="Previous1" RequiresUpdateModel="true" Action="previous" IterBinding="ArcFilesLocationView1Iterator"/>
+    <action id="First1" RequiresUpdateModel="true" Action="first" IterBinding="ArcFilesLocationView1Iterator"/>
+    <action id="Last1" RequiresUpdateModel="true" Action="last" IterBinding="ArcFilesLocationView1Iterator"/>
+    <action id="Find1" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="ArcFilesLocationView1Iterator"/>
+    <action id="Execute1" RequiresUpdateModel="true" Action="iteratorExecute"
+            IterBinding="ArcFilesLocationView1Iterator"/>
+    <tree IterBinding="HcmFileLocationDepartmentsViewIterator" id="HcmFileLocationDepartmentsView">
+      <nodeDefinition DefName="arc.model.ro.HcmDepartmentsVwView" Name="HcmFileLocationDepartmentsView0">
+        <AttrNames>
+          <Item Value="DepartmentsPk"/>
+          <Item Value="DisplayDepartmentsPk"/>
+          <Item Value="DisplayDepartmentsPkSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArcFilesLocationView3Iterator" id="ArcFilesLocationView3">
+      <nodeDefinition DefName="arc.model.vo.ArcFilesLocationView" Name="ArcFilesLocationView30">
+        <AttrNames>
+          <Item Value="FilesLocationPk"/>
+          <Item Value="MainLocationFk"/>
+          <Item Value="DepartmentsFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="DisplayMainLocationFk"/>
+          <Item Value="DisplayMainLocationFkSearch"/>
+          <Item Value="DisplayFileLocationDesc"/>
+          <Item Value="DisplayFileLocationDescSearch"/>
+          <Item Value="MainLocationFkSearch"/>
+          <Item Value="AppendixFl"/>
+          <Item Value="DisplayFilesColumnsLockersFk"/>
+          <Item Value="DisplayFilesColumnsLockersFkSearch"/>
+          <Item Value="DisplayFilesLockersFk"/>
+          <Item Value="DisplayFilesLockersFkSearch"/>
+          <Item Value="DisplayFilesRowsColumnsLockersFk"/>
+          <Item Value="DisplayFilesRowsColumnsLockersFkSearch"/>
+          <Item Value="DisplayTagsFk"/>
+          <Item Value="DisplayTagsFkSearch"/>
+          <Item Value="FilesColumnsLockersFk"/>
+          <Item Value="FilesColumnsLockersFkSearch"/>
+          <Item Value="FilesLockersFk"/>
+          <Item Value="FilesLockersFkSearch"/>
+          <Item Value="FilesRowsColumnsLockersFk"/>
+          <Item Value="FilesRowsColumnsLockersFkSearch"/>
+          <Item Value="MilitaryFileFl"/>
+          <Item Value="OpenFl"/>
+          <Item Value="TagsFk"/>
+          <Item Value="TagsFkSearch"/>
+          <Item Value="DisplayEmployeesFk"/>
+          <Item Value="DisplayFlStandardsFK"/>
+          <Item Value="EmployeesFk"/>
+          <Item Value="FlStandardsFK"/>
+          <Item Value="FlStandardsName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ArcFilesLocationView3Iterator" id="CreateInsert"
+            InstanceName="AppModuleDataControl.ArcFilesLocationView3" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ArcFilesLocationView3Iterator" id="Delete"
+            InstanceName="AppModuleDataControl.ArcFilesLocationView3" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="ArcFilesLocationTlView3Iterator" id="ArcFilesLocationTlView3">
+      <nodeDefinition DefName="arc.model.vo.ArcFilesLocationTlView" Name="ArcFilesLocationTlView30">
+        <AttrNames>
+          <Item Value="LanguagesFk"/>
+          <Item Value="FileLocationDesc"/>
+          <Item Value="FileLocationDescSearch"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="FilesLocationFk"/>
+          <Item Value="FilesLocationTlPk"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ArcFilesLocationView3Iterator" id="FilesLocationPk">
+      <AttrNames>
+        <Item Value="FilesLocationPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArcFilesLocationTlView3Iterator" id="FilesLocationTlPk">
+      <AttrNames>
+        <Item Value="FilesLocationTlPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HcmFileLocationDepartmentsViewIterator" id="DepartmentsPk">
+      <AttrNames>
+        <Item Value="DepartmentsPk"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ArcFilesLocationView1Iterator" StaticList="false" Uses="LOV_FlStandardsFK"
+                  id="FlStandardsFK"/>
+    <attributeValues IterBinding="ArcFilesLocationView1Iterator" id="DisplayFlStandardsFK">
+      <AttrNames>
+        <Item Value="DisplayFlStandardsFK"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArcFilesLocationView1Iterator" id="FlStandardsName">
+      <AttrNames>
+        <Item Value="FlStandardsName"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ArcFilesLocationView1Iterator" StaticList="false" Uses="LOV_EmployeesFk"
+                  id="EmployeesFk"/>
+    <attributeValues IterBinding="ArcFilesLocationView1Iterator" id="DisplayEmployeesFk">
+      <AttrNames>
+        <Item Value="DisplayEmployeesFk"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ArcFilesLocationView1Iterator" id="CreateInsert1"
+            InstanceName="AppModuleDataControl.ArcFilesLocationView1" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="FlStandardsName1">
+      <AttrNames>
+        <Item Value="FlStandardsName"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_FlStandardsFK"
+                  id="FlStandardsFK1"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayFlStandardsFK1">
+      <AttrNames>
+        <Item Value="DisplayFlStandardsFK"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ReportParametersRVO1Iterator" StaticList="false" Uses="LOV_EmployeesFk"
+                  id="EmployeesFk1"/>
+    <attributeValues IterBinding="ReportParametersRVO1Iterator" id="DisplayEmployeesFk1">
+      <AttrNames>
+        <Item Value="DisplayEmployeesFk"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ArcFilesLockersTlView3Iterator" id="ArcFilesLockersTlView3">
+      <nodeDefinition DefName="arc.model.vo.ArcFilesLockersTlView" Name="ArcFilesLockersTlView30">
+        <AttrNames>
+          <Item Value="FilesLockersTlPk"/>
+          <Item Value="FilesLockersName"/>
+          <Item Value="FilesLockersDesc"/>
+          <Item Value="FilesLockersLocation"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="FilesLockersFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArcFilesLockersView2Iterator" id="ArcFilesLockersView2">
+      <nodeDefinition DefName="arc.model.vo.ArcFilesLockersView" Name="ArcFilesLockersView20">
+        <AttrNames>
+          <Item Value="FilesLockersPk"/>
+          <Item Value="DepartmentsFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="DisplayFilesLockersName"/>
+          <Item Value="DisplayFilesLockersNameSearch"/>
+          <Item Value="DisplayFilesLockersDesc"/>
+          <Item Value="DisplayFilesLockersDescSearch"/>
+          <Item Value="DisplayFilesLockersLocation"/>
+          <Item Value="DisplayFilesLockersLocationSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ArcFilesLockersView2Iterator" id="CreateInsert2"
+            InstanceName="AppModuleDataControl.ArcFilesLockersView2" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ArcFilesLockersView2Iterator" id="Delete1"
+            InstanceName="AppModuleDataControl.ArcFilesLockersView2" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="ArcFilesLockersView2Iterator" id="FilesLockersPk">
+      <AttrNames>
+        <Item Value="FilesLockersPk"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ArcFilesColumnsLockersView3Iterator" id="ArcFilesColumnsLockersView3">
+      <nodeDefinition DefName="arc.model.vo.ArcFilesColumnsLockersView" Name="ArcFilesColumnsLockersView30">
+        <AttrNames>
+          <Item Value="FilesColumnsLockersPk"/>
+          <Item Value="FilesLockersFk"/>
+          <Item Value="LockersYear"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="DisplayFilesColumnsLockersName"/>
+          <Item Value="DisplayFilesColumnsLockersNameSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ArcFilesColumnsLockersView3Iterator" id="CreateInsert3"
+            InstanceName="AppModuleDataControl.ArcFilesColumnsLockersView3" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ArcFilesColumnsLockersView3Iterator" id="Delete2"
+            InstanceName="AppModuleDataControl.ArcFilesColumnsLockersView3" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="ArcFilesColumnsLockersView3Iterator" id="FilesColumnsLockersPk">
+      <AttrNames>
+        <Item Value="FilesColumnsLockersPk"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="ArcFilesColumnsLockersTlView3Iterator" id="ArcFilesColumnsLockersTlView3">
+      <nodeDefinition DefName="arc.model.vo.ArcFilesColumnsLockersTlView" Name="ArcFilesColumnsLockersTlView30">
+        <AttrNames>
+          <Item Value="FilesColumnsLockersTlPk"/>
+          <Item Value="FilesColumnsLockersName"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="FilesColumnsLockersFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArcFilesRowsColumnsLockersView3Iterator" id="ArcFilesRowsColumnsLockersView3">
+      <nodeDefinition DefName="arc.model.vo.ArcFilesRowsColumnsLockersView" Name="ArcFilesRowsColumnsLockersView30">
+        <AttrNames>
+          <Item Value="FilesRowsColumnsLockersPk"/>
+          <Item Value="FilesColumnsLockersFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+          <Item Value="DisplayFilesRowsColumnsLockerName"/>
+          <Item Value="DisplayFilesRowsColumnsLockerNameSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArcFilesRowsColumnsLockersTlView3Iterator" id="ArcFilesRowsColumnsLockersTlView3">
+      <nodeDefinition DefName="arc.model.vo.ArcFilesRowsColumnsLockersTlView" Name="ArcFilesRowsColumnsLockersTlView30">
+        <AttrNames>
+          <Item Value="FilesRowsColumnsLockersTlPk"/>
+          <Item Value="FilesRowsColumnsLockerName"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="FilesRowsColumnsLockersFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ArcFilesRowsColumnsLockersView3Iterator" id="CreateInsert4"
+            InstanceName="AppModuleDataControl.ArcFilesRowsColumnsLockersView3" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ArcFilesRowsColumnsLockersView3Iterator" id="Delete3"
+            InstanceName="AppModuleDataControl.ArcFilesRowsColumnsLockersView3" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="ArcFilesRowsColumnsLockersView3Iterator" id="FilesRowsColumnsLockersPk">
+      <AttrNames>
+        <Item Value="FilesRowsColumnsLockersPk"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="ArcFilesRowsColumnsLockersTlView3Iterator" id="CreateInsert5"
+            InstanceName="AppModuleDataControl.ArcFilesRowsColumnsLockersTlView3" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="ArcFilesRowsColumnsLockersTlView3Iterator" id="Delete4"
+            InstanceName="AppModuleDataControl.ArcFilesRowsColumnsLockersTlView3" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="HcmFileLocationDepartmentsViewIterator" id="Delete5"
+            InstanceName="AppModuleDataControl.HcmFileLocationDepartmentsView" DataControl="AppModuleDataControl"
+            RequiresUpdateModel="false" Action="removeCurrentRow"/>
+  </bindings>
+</pageDefinition>

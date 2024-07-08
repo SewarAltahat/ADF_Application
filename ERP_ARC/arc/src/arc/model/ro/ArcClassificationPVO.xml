@@ -1,0 +1,484 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArcClassificationPVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isProgrammatic" Value="true"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|Prog"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="arc.model.ro.ArcClassificationPVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewAccessor
+    Name="SsoActiveLookupValuesDocumentTypeFk"
+    ViewObjectName="arc.model.ro.SsoActiveLookupValuesVwView"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SsoSystemLookupValuesFilter"
+      FullName="arc.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter"/>
+    <ParameterMap>
+      <PIMap Variable="p_system_lookups_fk">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[3]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="SsoActiveLookupValuesDocumentSecurityFk"
+    ViewObjectName="arc.model.ro.SsoActiveLookupValuesVwView"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SsoSystemLookupValuesFilter"
+      FullName="arc.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter"/>
+    <ParameterMap>
+      <PIMap Variable="p_system_lookups_fk">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[112]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="HcmEmployeesRVO"
+    ViewObjectName="arc.model.ro.HcmEmployeesRVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SsoActiveLookupValuesDocumentAttachTypeFk"
+    ViewObjectName="arc.model.ro.SsoActiveLookupValuesVwView"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SsoSystemLookupValuesFilter"
+      FullName="arc.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter"/>
+    <ParameterMap>
+      <PIMap Variable="p_system_lookups_fk">
+        <TransientExpression
+          trustMode="untrusted"
+          Name="ExpressionScript"><![CDATA[13]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_DocumentTypeFk"
+    ListVOName="SsoActiveLookupValuesDocumentTypeFk"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DocumentTypeFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DisplayDocumentTypeFk"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SystemLookupValuesPk"/>
+      <Item Value="DisplaySystemLookupsFk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SystemLookupValuesPk"/>
+      <Item Value="DisplaySystemLookupsFk"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SsoSystemLookupValuesLOVSearch"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DocumentSecurityFk"
+    ListVOName="SsoActiveLookupValuesDocumentSecurityFk"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DocumentSecurityFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DisplayDocumentSecurityFk"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SystemLookupValuesPk"/>
+      <Item Value="DisplaySystemLookupsFk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SystemLookupValuesPk"/>
+      <Item Value="DisplaySystemLookupsFk"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SsoSystemLookupValuesLOVSearch"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_EmployeesFk"
+    ListVOName="HcmEmployeesRVO"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="EmployeesFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DisplayEmployeesFk"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="EmployeesPk"/>
+      <Item Value="DisplayEmployeesPk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="EmployeesPk"/>
+      <Item Value="DisplayEmployeesPk"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="HcmEmployeesLovSearch"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_DocumentAttachTypeFk"
+    ListVOName="SsoActiveLookupValuesDocumentAttachTypeFk"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DocumentAttachTypeFk"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DisplayDocumentAttachTypeFk"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SystemLookupValuesPk"/>
+      <Item Value="DisplaySystemLookupsFk"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SystemLookupValuesPk"/>
+      <Item Value="DisplaySystemLookupsFk"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SsoSystemLookupValuesLOVSearch"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ViewAttribute
+    Name="StartPage"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="$none$"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcClassificationPVO.StartPage']}"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EndPage"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcClassificationPVO.EndPage']}"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RowUpdateFl"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="VIEW_ATTR"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DisplayDocumentSubject"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="DisplayDocumentSubject"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentSubject']}"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocReceiveDate"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="TIMESTAMP"
+    AliasName="DocReceiveDate"
+    SQLType="TIMESTAMP">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcOldDocument.DocReceiveDate']}"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <FMT_FORMAT
+          ResId="#{menu.dateTimeWithSecondsFormat}"/>
+        <FMT_FORMATTER
+          ResId="arc.model.vo.ArcOldDocumentView.DocReceiveDate_FMT_FORMATTER"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocumentTypeFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="DocumentTypeFk"
+    SQLType="NUMERIC"
+    LOVName="LOV_DocumentTypeFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcOldDocument.DocumentTypeFk']}"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    AliasName="DisplayDocumentTypeFk"
+    ColumnType="VARCHAR2"
+    Expression="GET_LOOKUP_DESC(DOCUMENT_TYPE_FK,  ?)"
+    IsPersistent="false"
+    Name="DisplayDocumentTypeFk"
+    SQLType="VARCHAR"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentTypeFk']}"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocumentSecurityFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="DocumentSecurityFk"
+    SQLType="NUMERIC"
+    LOVName="LOV_DocumentSecurityFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcOldDocument.DocumentSecurityFk']}"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    AliasName="DisplayDocumentSecurityFk"
+    ColumnType="VARCHAR2"
+    Expression="GET_LOOKUP_DESC(DOCUMENT_SECURITY_FK,  ?)"
+    IsPersistent="false"
+    Name="DisplayDocumentSecurityFk"
+    SQLType="VARCHAR"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentSecurityFk']}"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <AUTOSUBMIT
+          Value="true"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocumentNumber"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="DocumentNumber"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcOldDocument.DocumentNumber']}"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocumentTypeFkSearch"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="DocumentTypeFkSearch"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DisplayDocumentTypeFkSearch"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="DisplayDocumentTypeFkSearch"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="DocumentSecurityFkSearch"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="DocumentSecurityFkSearch"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DisplayDocumentSecurityFkSearch"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="DisplayDocumentSecurityFkSearch"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="EmployeesFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="EmployeesFk"
+    SQLType="NUMERIC"
+    LOVName="LOV_EmployeesFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesPk']}"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DisplayEmployeesFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="DisplayEmployeesFk"
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesName']}"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocumentAttachTypeFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="DocumentAttachTypeFk"
+    SQLType="NUMERIC"
+    LOVName="LOV_DocumentAttachTypeFk">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentAttachTypeFk']}"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DisplayDocumentAttachTypeFk"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="DisplayDocumentAttachTypeFk"
+    SQLType="VARCHAR">
+      <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+            ResId="#{menu.resourceLabelMap['ArcDocumentAttachment.DisplayDocumentAttachTypeFk']}"/>
+        <DISPLAYWIDTH
+            Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+    </ViewAttribute>
+  <ViewAttribute
+    Name="FileLocation"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="FileLocation"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DisplayFileLocation"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="DisplayFileLocation"
+    SQLType="VARCHAR"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="StartPage"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject BindingStyle="JDBC" CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FromListFlags="1"
+    InheritPersonalization="merge" Name="ArcFilesRowsColumnsLockersView"
+    ComponentClass="gen.common.BaseViewObjectImpl"
+    PageIterMode="Full" SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.16.48" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j"
+    RowClass="arc.model.vo.ArcFilesRowsColumnsLockersViewRowImpl">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable
+        Kind="where"
+        Name="p_lang"
+        Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+        </AttrArray>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT
+                    Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <TransientExpression
+            Name="VariableScript">gen.common.GenLib.getLanguageNo()</TransientExpression>
+    </Variable>
+    <EntityUsage Entity="arc.model.eo.ArcFilesRowsColumnsLockers" Name="ArcFilesRowsColumnsLockers"/>
+    <ViewAttribute AliasName="FILES_ROWS_COLUMNS_LOCKERS_PK"
+        EntityAttrName="FilesRowsColumnsLockersPk"
+        EntityUsage="ArcFilesRowsColumnsLockers" IsNotNull="true"
+        Name="FilesRowsColumnsLockersPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockers.FilesRowsColumnsLockersPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FILES_COLUMNS_LOCKERS_FK"
+        EntityAttrName="FilesColumnsLockersFk"
+        EntityUsage="ArcFilesRowsColumnsLockers"
+        Name="FilesColumnsLockersFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockers.FilesColumnsLockersFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="ArcFilesRowsColumnsLockers" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate"
+        EntityUsage="ArcFilesRowsColumnsLockers" Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="ArcFilesRowsColumnsLockers" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate"
+        EntityUsage="ArcFilesRowsColumnsLockers" Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="ArcFilesRowsColumnsLockers" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayFilesRowsColumnsLockerName"
+        EntityAttrName="DisplayFilesRowsColumnsLockerName"
+        EntityUsage="ArcFilesRowsColumnsLockers"
+        Expression="get_FILES_ROWS_COLUMNS_LOCKERS(FILES_ROWS_COLUMNS_LOCKERS_PK, ?)"
+        Name="DisplayFilesRowsColumnsLockerName"
+        PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockersTl.FilesRowsColumnsLockerName']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute
+        AliasName="DisplayFilesRowsColumnsLockerNameSearch"
+        ColumnType="CHAR"
+        IsPersistent="false"
+        IsSelected="false"
+        Name="DisplayFilesRowsColumnsLockerNameSearch"
+        PrecisionRule="true"
+        SQLType="VARCHAR"
+        Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL
+                    ResId="#{menu.resourceLabelMap['ArcFilesRowsColumnsLockersTl.FilesRowsColumnsLockerName']}"/>
+                <DISPLAYWIDTH
+                    Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewLinkAccessor IsUpdateable="false"
+        Name="ArcFilesRowsColumnsLockersTlView"
+        Type="oracle.jbo.RowIterator" ViewLink="arc.model.vl.ArcFilesRowsColumnsLockersTlFk2Link"/>
+    <ViewLinkAccessor
+        Name="ArcFilesRCLockPrivView"
+        ViewLink="arc.model.vl.FilesRowsLockPrivVl"
+        Type="oracle.jbo.RowIterator"
+        IsUpdateable="false"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="arc.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

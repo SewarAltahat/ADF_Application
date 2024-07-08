@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="HcmEmployeesRVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  RowClass="arc.model.ro.HcmEmployeesRVORowImpl"
+  ComponentClass="arc.model.ro.HcmEmployeesRVOImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="arc.model.ro.HcmEmployeesRVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+        Kind="where"
+        Name="p_lang"
+        Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="0"/>
+    </AttrArray>
+    <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT
+                    Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <TransientExpression
+            Name="VariableScript">gen.common.GenLib.getLanguageNo()</TransientExpression>
+    </Variable>
+  <SQLQuery><![CDATA[select GET_EMPLOYEES_EMPLOYEE_NAME(EMPLOYEES_PK , ?) DISPLAY_EMPLOYEES_PK , EMPLOYEES_PK   from HCM_EMP_BASIC_DATA_VW]]></SQLQuery>
+  <ViewAttribute
+    Name="DisplayEmployeesPk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="CHAR"
+    AliasName="DISPLAY_EMPLOYEES_PK"
+    Expression="DISPLAY_EMPLOYEES_PK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+    
+    
+      <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesName']}"/>
+                <DISPLAYWIDTH Value="40"/>
+            </SchemaBasedProperties>
+        </Properties>
+   
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EmployeesPk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="EMPLOYEES_PK"
+    Expression="EMPLOYEES_PK"
+    SQLType="NUMERIC">
+      <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+        </ViewAttribute>
+  <ViewCriteria
+    Name="HcmEmployeesLovSearch"
+    ViewObjectName="arc.model.ro.HcmEmployeesRVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="HcmEmployeesRVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="HcmEmployeesRVOCriteria_HcmEmployeesRVOCriteria_row_0_DisplayEmployeesPk"
+        ViewAttribute="DisplayEmployeesPk"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="HcmEmployeesRVOCriteria_HcmEmployeesRVOCriteria_row_0_EmployeesPk"
+        ViewAttribute="EmployeesPk"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="EmployeesPk"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</ViewObject>

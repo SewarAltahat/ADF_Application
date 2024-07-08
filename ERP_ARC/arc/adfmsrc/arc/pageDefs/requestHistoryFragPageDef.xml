@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.16.48" id="requestHistoryFragPageDef"
+                Package="arc.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BPMProcessTaskRVO2" RangeSize="25" DataControl="AppModuleDataControl"
+              id="BPMProcessTaskRVO2Iterator"/>
+    <searchRegion Binds="BPMProcessTaskRVO2Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="BPMProcessTaskRVO2Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="BPMProcessTaskRVO2Iterator" id="BPMProcessTaskRVO2">
+      <nodeDefinition DefName="arc.model.ro.BPMProcessTaskRVO" Name="BPMProcessTaskRVO20">
+        <AttrNames>
+          <Item Value="TaskId"/>
+          <Item Value="Deploymentid"/>
+          <Item Value="Processid"/>
+          <Item Value="Processinstanceid"/>
+          <Item Value="Status"/>
+          <Item Value="Formname"/>
+          <Item Value="TaskName"/>
+          <Item Value="Activationtime"/>
+          <Item Value="Createdon"/>
+          <Item Value="ActualownerId"/>
+          <Item Value="LastType"/>
+          <Item Value="LastUserid"/>
+          <Item Value="LastOwner"/>
+          <Item Value="EntityId"/>
+          <Item Value="Password"/>
+          <Item Value="RequestPk"/>
+          <Item Value="UserDesc"/>
+          <Item Value="TaskComment"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

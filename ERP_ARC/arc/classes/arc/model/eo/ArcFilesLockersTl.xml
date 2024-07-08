@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity
+    AliasName="ArcFilesLockersTl"
+    BindingStyle="JDBC"
+    DBObjectName="ARC_FILES_LOCKERS_TL"
+    DBObjectType="table"
+    InheritPersonalization="merge"
+    Name="ArcFilesLockersTl"
+    RowClass="arc.model.eo.ArcFilesLockersTlImpl"
+    Version="12.2.1.12.24"
+    xmlns="http://xmlns.oracle.com/bc4j"
+    xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+      ColumnName="FILES_LOCKERS_TL_PK"
+      ColumnType="NUMBER"
+      Name="FilesLockersTlPk"
+      PrimaryKey="true"
+      SQLType="NUMERIC"
+      TableName="ARC_FILES_LOCKERS_TL"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="FILES_LOCKERS_NAME"
+      ColumnType="VARCHAR2"
+      Name="FilesLockersName"
+      Precision="200"
+      SQLType="VARCHAR"
+      TableName="ARC_FILES_LOCKERS_TL"
+      Type="java.lang.String">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+      ColumnName="FILES_LOCKERS_DESC"
+      ColumnType="VARCHAR2"
+      Name="FilesLockersDesc"
+      Precision="200"
+      SQLType="VARCHAR"
+      TableName="ARC_FILES_LOCKERS_TL"
+      Type="java.lang.String">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+      ColumnName="FILES_LOCKERS_LOCATION"
+      ColumnType="VARCHAR2"
+      Name="FilesLockersLocation"
+      Precision="200"
+      SQLType="VARCHAR"
+      TableName="ARC_FILES_LOCKERS_TL"
+      Type="java.lang.String">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+      ColumnName="LANGUAGES_FK"
+      ColumnType="NUMBER"
+      Name="LanguagesFk"
+      SQLType="NUMERIC"
+      TableName="ARC_FILES_LOCKERS_TL"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="FILES_LOCKERS_FK"
+      ColumnType="NUMBER"
+      Name="FilesLockersFk"
+      SQLType="NUMERIC"
+      TableName="ARC_FILES_LOCKERS_TL"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATED_BY"
+      ColumnType="NUMBER"
+      Name="CreatedBy"
+      SQLType="NUMERIC"
+      TableName="ARC_FILES_LOCKERS_TL"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="CREATION_DATE"
+      ColumnType="TIMESTAMP"
+      Name="CreationDate"
+      SQLType="TIMESTAMP"
+      TableName="ARC_FILES_LOCKERS_TL"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="MODIFIED_BY"
+      ColumnType="NUMBER"
+      Name="ModifiedBy"
+      SQLType="NUMERIC"
+      TableName="ARC_FILES_LOCKERS_TL"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      ColumnName="MODIFIED_DATE"
+      ColumnType="TIMESTAMP"
+      Name="ModifiedDate"
+      SQLType="TIMESTAMP"
+      TableName="ARC_FILES_LOCKERS_TL"
+      Type="java.sql.Timestamp"/>
+  <Attribute
+      ColumnName="USER_DEPARTMENT_FK"
+      ColumnType="NUMBER"
+      Name="UserDepartmentFk"
+      SQLType="NUMERIC"
+      TableName="ARC_FILES_LOCKERS_TL"
+      Type="java.math.BigDecimal"/>
+  <Attribute
+      Name="DisplayDepartmentsFk"
+      ColumnName="DISPLAYDEPARTMENTSFK"
+      SQLType="NUMERIC"
+      Type="java.math.BigDecimal"
+      ColumnType="BIGINT"
+      IsQueriable="false"
+      IsPersistent="false"
+      Expression="GET_FILES_LOCKERS_DEPARTMENTS_FK(FILES_LOCKERS_FK)"/>
+  <AccessorAttribute
+      Association="arc.model.assoc.ArcFilesLockersTlFk2Assoc"
+      AssociationEnd="arc.model.assoc.ArcFilesLockersTlFk2Assoc.ArcFilesLockers"
+      AssociationOtherEnd="arc.model.assoc.ArcFilesLockersTlFk2Assoc.ArcFilesLockersTl"
+      IsUpdateable="true"
+      Name="ArcFilesLockers"
+      Type="arc.model.eo.ArcFilesLockersImpl"/>
+  <Key
+      Name="AltKey"
+      AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="ARC_FILES_LOCKERS_TL"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.eo.ArcFilesLockersTl.FilesLockersName"/>
+      <Item Value="arc.model.eo.ArcFilesLockersTl.LanguagesFk"/>
+      <Item Value="arc.model.eo.ArcFilesLockersTl.DisplayDepartmentsFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="ArcFilesLockersTlPk"
+      PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="ARC_FILES_LOCKERS_TL_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.eo.ArcFilesLockersTl.FilesLockersTlPk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="ArcFilesLockersTlFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SSO_LANGUAGES_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="ARC_FILES_LOCKERS_TL_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.eo.ArcFilesLockersTl.LanguagesFk"/>
+    </AttrArray>
+  </Key>
+  <Key
+      Name="ArcFilesLockersTlFk2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="ARC_FILES_LOCKERS_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="ARC_FILES_LOCKERS_TL_FK2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.eo.ArcFilesLockersTl.FilesLockersFk"/>
+    </AttrArray>
+  </Key>
+  <validation:UniqueKeyValidationBean
+      Name="ArcFilesLockersTlRule0"
+      KeyName="AltKey"
+      ResId="#{menu.resourceLabelMap['error.DuplicateCode']}">
+    <validation:OnAttributes>
+      <validation:Item
+          Value="FilesLockersName"/>
+      <validation:Item
+          Value="LanguagesFk"/>
+      <validation:Item
+        Value="DisplayDepartmentsFk"/>
+    </validation:OnAttributes>
+  </validation:UniqueKeyValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+        PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</Entity>
+<!---->

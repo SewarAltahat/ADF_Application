@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" version="2.1">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document binding="#{borrowRequests.doc1}" id="Doc1" title="#{menu.resourceLabelMap['menu.borrowRequests']}"
+                 uncommittedDataWarning="on">
+      <af:messages id="m1"/>
+      <af:form id="form1">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute name="pageTitle" value="#{menu.resourceLabelMap['menu.borrowRequests']}"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1" layout="scroll">
+              <af:panelBox id="pb2"
+                           partialTriggers="Del1 ci1 Commit1 rb1 print1 translation1 ArcBorrowRequestsDialog deleteDocDialog"
+                           styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.borrowRequests']}">
+                <af:panelGroupLayout id="pgl3"
+                                     partialTriggers="Del1 ci1 Commit1 rb1 print1 translation1 ArcBorrowRequestsDialog b3">
+                  <af:panelGroupLayout halign="center" id="tb1" layout="horizontal">
+                    <af:commandButton actionListener="#{borrowRequests.showConfirmDelete}"
+                                      disabled="#{!menu.deleteAllowed or !bindings.Delete1.enabled}"
+                                      icon="#{menu.deleteIcon}" id="Del1" immediate="true" partialSubmit="true"
+                                      rendered="false" text="#{menu.resourceLabelMap['label.delete']}"
+                                      styleClass="deleteButton">
+                      <af:setPropertyListener from="Delete1" to="#{sessionScope.deleteParam}" type="action"/>
+                      <af:setPropertyListener from="pb2" to="#{sessionScope.refreshParam}" type="action"/>
+                      <af:setPropertyListener from="ArcBorrowRequestsView1" to="#{sessionScope.viewParam}"
+                                              type="action"/>
+                    </af:commandButton>
+                    <af:spacer width="5"/>
+                    <af:commandButton actionListener="#{bindings.CreateInsert1.execute}"
+                                      disabled="#{!menu.insertAllowed or bindings.BpmTaskId.inputValue == null or bindings.BorrowRequestsPk.inputValue == null}"
+                                      icon="#{menu.createInsertIcon}" id="ci1" partialSubmit="true"
+                                      text="#{menu.resourceLabelMap['label.createInsert']}"
+                                      styleClass="insertButton" partialTriggers="b3"/>
+                    <af:spacer width="5"/>
+                    <af:commandButton actionListener="#{bindings.Commit.execute}" disabled="#{!menu.updateAllowed}"
+                                      icon="#{menu.commitIcon}" id="Commit1" partialSubmit="true"
+                                      text="#{menu.resourceLabelMap['label.commit']}" styleClass="commitButton"/>
+                    <af:spacer width="5"/>
+                    <af:commandButton action="#{borrowRequests.rollbackAction}" icon="#{menu.rollbackIcon}" id="rb1"
+                                      immediate="true" partialSubmit="true"
+                                      text="#{menu.resourceLabelMap['label.rollback']}" styleClass="rollbackButton"
+                                      visible="#{menu.rollbackVisible}">
+                      <af:resetActionListener/>
+                    </af:commandButton>
+                    <af:spacer width="5"/>
+                    <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print1"
+                                      immediate="true" partialSubmit="true"
+                                      text="#{menu.resourceLabelMap['label.print']}" styleClass="printButton"
+                                      visible="#{menu.printVisible}">
+                      <af:showPrintablePageBehavior/>
+                    </af:commandButton>
+                    <af:spacer width="5"/>
+                    <af:commandButton disabled="#{!bindings.Delete1.enabled  or bindings.BorrowRequestsPk.inputValue == null}"
+                                      icon="#{menu.translationIcon}" id="translation1" immediate="true"
+                                      partialSubmit="true" partialTriggers="Commit1 rb1"
+                                      text="#{menu.resourceLabelMap['label.translation']}"
+                                      styleClass="printButton">
+                      <af:showPopupBehavior popupId="ArcBorrowRequestsTlPopup" triggerType="action"/>
+                    </af:commandButton>
+                    <af:spacer width="5"/>
+                    <!--<af:commandButton styleClass="printButton" disabled="#{bindings.BorrowRequestsPk.inputValue == null}"
+                    text="#{menu.resourceLabelMap['label.send']}" action="#{borrowRequests.CreateNewProgress}" id="b3"/>-->
+                    <af:commandButton action="#{borrowRequests.sendAction}"
+                                      actionListener="#{borrowRequests.createNewProcess}"
+                                      disabled="#{!bindings.Delete1.enabled  or bindings.BorrowRequestsPk.inputValue == null}"
+                                      icon="/images/print.png" id="b3" partialSubmit="true" styleClass="printButton"
+                                      text="#{menu.resourceLabelMap['label.send']}">
+                      <f:attribute name="processId" value="ARC.Request_Original_Document"/>
+                      <f:attribute name="IteratorName" value="ArcBorrowRequestsView1Iterator"/>
+                      <f:attribute name="attributeName" value="BpmTaskId"/>
+                      <f:attribute name="commentAttribute" value="DisplayNotes"/>
+                    </af:commandButton>
+                    <af:spacer width="5"/>
+                  </af:panelGroupLayout>
+                </af:panelGroupLayout>
+                <div class="card-body">
+                  <div class="form-group row">
+                    <div class="col-md-3">
+                      <label class="col-form-label">
+                        <af:outputLabel id="arcBorrowRequestsBorrowrequestspkL"
+                                        value="#{menu.resourceLabelMap['ArcBorrowRequests.BorrowRequestsPk']}"/>
+                      </label>
+                       
+                      <af:inputText columns="#{bindings.ArcBorrowRequestsBorrowRequestsPk.hints.displayWidth}"
+                                    disabled="true" id="arcBorrowRequestsBorrowrequestspk"
+                                    label="#{menu.resourceLabelMap['ArcBorrowRequests.BorrowRequestsPk']}"
+                                    maximumLength="#{bindings.ArcBorrowRequestsBorrowRequestsPk.hints.precision}"
+                                    required="#{bindings.ArcBorrowRequestsBorrowRequestsPk.hints.mandatory}"
+                                    simple="true" styleClass="form-control"
+                                    value="#{bindings.ArcBorrowRequestsBorrowRequestsPk.inputValue}">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.ArcBorrowRequestsBorrowRequestsPk.format}"/>
+                        <f:validator binding="#{bindings.ArcBorrowRequestsBorrowRequestsPk.validator}"/>
+                      </af:inputText>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="col-form-label">
+                        <af:outputLabel id="arcBorrowRequestsDisplayrequestreasonL" showRequired="true"
+                                        value="#{menu.resourceLabelMap['ArcBorrowRequestsTl.RequestReason']}"/>
+                      </label>
+                       
+                      <af:inputText autoSubmit="true"
+                                    columns="#{bindings.ArcBorrowRequestsDisplayRequestReason.hints.displayWidth}"
+                                    id="arcBorrowRequestsDisplayrequestreason"
+                                    label="#{menu.resourceLabelMap['ArcBorrowRequestsTl.RequestReason']}"
+                                    maximumLength="#{bindings.ArcBorrowRequestsDisplayRequestReason.hints.precision}"
+                                    required="true" simple="true" styleClass="form-control"
+                                    value="#{bindings.ArcBorrowRequestsDisplayRequestReason.inputValue}"
+                                    valueChangeListener="#{borrowRequests.displayRequestReasonChanged}">
+                        <f:validator binding="#{bindings.ArcBorrowRequestsDisplayRequestReason.validator}"/>
+                      </af:inputText>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="col-form-label">
+                        <af:outputLabel id="arcBorrowRequestsOlddocumentfkL" showRequired="true"
+                                        value="#{menu.resourceLabelMap['ArcBorrowRequests.OldDocumentFk']}"/>
+                      </label>
+                       
+                      <af:inputListOfValues id="ilov1"
+                                            popupTitle="#{menu.resourceLabelMap['ArcBorrowRequests.OldDocumentFk']}"
+                                            value="#{bindings.OldDocumentFk.inputValue}"
+                                            label="#{menu.resourceLabelMap['ArcBorrowRequests.OldDocumentFk']}"
+                                            model="#{bindings.OldDocumentFk.listOfValuesModel}" 
+                                            required="true" simple="true" styleClass="form-control"
+                                            columns="#{bindings.OldDocumentFk.hints.displayWidth}"
+                                            autoSubmit="true">
+                        <f:validator binding="#{bindings.OldDocumentFk.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.OldDocumentFk.format}"/>
+                      </af:inputListOfValues>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="col-form-label">
+                        <af:outputLabel id="arcBorrowRequestsRequestperiodL" showRequired="true"
+                                        value="#{menu.resourceLabelMap['ArcBorrowRequests.RequestPeriod']}"/>
+                      </label>
+                       
+                      <af:inputText autoSubmit="true"
+                                    columns="#{bindings.ArcBorrowRequestsRequestPeriod.hints.displayWidth}"
+                                    id="arcBorrowRequestsRequestperiod"
+                                    label="#{menu.resourceLabelMap['ArcBorrowRequests.RequestPeriod']}"
+                                    maximumLength="#{bindings.ArcBorrowRequestsRequestPeriod.hints.precision}"
+                                    required="true" simple="true" styleClass="form-control"
+                                    value="#{bindings.ArcBorrowRequestsRequestPeriod.inputValue}">
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.ArcBorrowRequestsRequestPeriod.format}"/>
+                        <f:validator binding="#{bindings.ArcBorrowRequestsRequestPeriod.validator}"/>
+                        <af:validateDoubleRange minimum="1"/>
+                      </af:inputText>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="col-form-label">
+                        <af:outputLabel id="arcBorrowRequestsDisplaynotesL"
+                                        value="#{menu.resourceLabelMap['ArcBorrowRequestsTl.Notes']}"/>
+                      </label>
+                       
+                      <af:inputText autoSubmit="true"
+                                    columns="#{bindings.ArcBorrowRequestsDisplayNotes.hints.displayWidth}"
+                                    id="arcBorrowRequestsDisplaynotes"
+                                    label="#{menu.resourceLabelMap['ArcBorrowRequestsTl.Notes']}"
+                                    maximumLength="#{bindings.ArcBorrowRequestsDisplayNotes.hints.precision}"
+                                    required="#{bindings.ArcBorrowRequestsDisplayNotes.hints.mandatory}" simple="true"
+                                    styleClass="form-control"
+                                    value="#{bindings.ArcBorrowRequestsDisplayNotes.inputValue}"
+                                    valueChangeListener="#{borrowRequests.displayNotesChanged}">
+                        <f:validator binding="#{bindings.ArcBorrowRequestsDisplayNotes.validator}"/>
+                      </af:inputText>
+                    </div>
+                  </div>
+                </div>
+              </af:panelBox>
+              <af:popup contentDelivery="lazyUncached" id="ArcBorrowRequestsTlPopup"
+                        popupCanceledListener="#{borrowRequests.cancelArcBorrowRequestsTlTranslation}">
+                <af:dialog dialogListener="#{borrowRequests.commitArcBorrowRequestsTlTranslation}"
+                           id="ArcBorrowRequestsDialog" type="okCancel">
+                  <af:panelTabbed dimensionsFrom="disclosedChild" id="pt1" styleClass="AFStretchWidth">
+                    <af:showDetailItem id="sdi1" styleClass="AFStretchWidth"
+                                       text="#{menu.resourceLabelMap['label.translation']}">
+                      <af:panelStretchLayout dimensionsFrom="children" id="psl20" styleClass="AFStretchWidth">
+                        <f:facet name="center">
+                          <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                              id="pc4" styleClass="AFStretchWidth">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="tb2">
+                                <af:commandButton actionListener="#{bindings.Commit.execute}"
+                                                  disabled="#{!menu.updateAllowed}" icon="#{menu.commitIcon}"
+                                                  id="Commit2" partialSubmit="true" rendered="false"
+                                                  shortDesc="#{menu.resourceLabelMap['label.commit']}"
+                                                  styleClass="commitButton"/>
+                                <af:spacer id="s3" width="5"/>
+                                <af:commandButton actionListener="#{bindings.Rollback.execute}"
+                                                  icon="#{menu.rollbackIcon}" id="rb2" immediate="true"
+                                                  partialSubmit="true" rendered="false"
+                                                  text="#{menu.resourceLabelMap['label.rollback']}"
+                                                  styleClass="rollbackButton" visible="#{menu.rollbackVisible}">
+                                  <af:resetActionListener/>
+                                </af:commandButton>
+                                <af:spacer id="s4" width="5"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print2"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.print']}"
+                                                  styleClass="printButton" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer id="s5" width="5"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel2"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.excel']}"
+                                                  styleClass="excelButton" visible="#{menu.excelVisible}">
+                                  <af:setPropertyListener from="ArcBorrowRequestsTlView" to="#{sessionScope.tableId}"
+                                                          type="action"/>
+                                  <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                </af:commandButton>
+                                <af:spacer id="s6" width="5"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                      columnStretching="column:RequestReason" displayRow="selected"
+                                      editingMode="editAll"
+                                      emptyText="#{bindings.ArcBorrowRequestsTlView2.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                      fetchSize="#{bindings.ArcBorrowRequestsTlView2.rangeSize}"
+                                      filterModel="#{bindings.ArcBorrowRequestsTlView2Query.queryDescriptor}"
+                                      filterVisible="false" id="ArcBorrowRequestsTlView"
+                                      queryListener="#{bindings.ArcBorrowRequestsTlView2Query.processQuery}"
+                                      rowBandingInterval="1" rowSelection="single"
+                                      rows="#{bindings.ArcBorrowRequestsTlView2.rangeSize}" scrollPolicy="page"
+                                      selectedRowKeys="#{bindings.ArcBorrowRequestsTlView2.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.ArcBorrowRequestsTlView2.collectionModel.makeCurrent}"
+                                      styleClass="AFStretchWidth"
+                                      value="#{bindings.ArcBorrowRequestsTlView2.collectionModel}" var="row"
+                                      varStatus="vs" verticalGridVisible="false">
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcBorrowRequestsTl.LanguagesFk']}"
+                                         id="LanguagesFk" sortProperty="LanguagesFk" sortable="true" width="150">
+                                <af:selectOneChoice autoSubmit="true" id="soc1"
+                                                    label="#{menu.resourceLabelMap['ArcBorrowRequestsTl.LanguagesFk']}"
+                                                    readOnly="true"
+                                                    required="#{bindings.ArcBorrowRequestsTlView2.hints.LanguagesFk.mandatory}"
+                                                    value="#{row.bindings.LanguagesFk.inputValue}">
+                                  <f:selectItems id="si1" value="#{row.bindings.LanguagesFk.items}"/>
+                                  <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcBorrowRequestsTl.RequestReason']}"
+                                         id="RequestReason" showRequired="true" sortProperty="RequestReasonSearch"
+                                         sortable="true" width="300">
+                                <af:inputText autoSubmit="true"
+                                              columns="#{bindings.ArcBorrowRequestsTlView2.hints.RequestReason.displayWidth}"
+                                              id="it2"
+                                              label="#{menu.resourceLabelMap['ArcBorrowRequestsTl.RequestReason']}"
+                                              maximumLength="#{bindings.ArcBorrowRequestsTlView2.hints.RequestReason.precision}"
+                                              required="true" value="#{row.bindings.RequestReason.inputValue}">
+                                  <f:validator binding="#{row.bindings.RequestReason.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcBorrowRequestsTl.Notes']}" id="Notes"
+                                         sortProperty="NotesSearch" sortable="true" width="400">
+                                <af:inputText columns="#{bindings.ArcBorrowRequestsTlView2.hints.Notes.displayWidth}"
+                                              id="it3" label="#{menu.resourceLabelMap['ArcBorrowRequestsTl.Notes']}"
+                                              maximumLength="#{bindings.ArcBorrowRequestsTlView2.hints.Notes.precision}"
+                                              required="#{bindings.ArcBorrowRequestsTlView2.hints.Notes.mandatory}"
+                                              value="#{row.bindings.Notes.inputValue}">
+                                  <f:validator binding="#{row.bindings.Notes.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+              <af:popup id="deleteDocPopup">
+                <af:dialog dialogListener="#{borrowRequests.deleteDocDialogListener}" id="deleteDocDialog"
+                           title="#{menu.resourceLabelMap['label.areYouSure']}" type="okCancel">
+                  <af:panelGroupLayout layout="scroll">
+                    <af:outputText value="#{menu.resourceLabelMap['label.deleteSure']}"/>
+                  </af:panelGroupLayout>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

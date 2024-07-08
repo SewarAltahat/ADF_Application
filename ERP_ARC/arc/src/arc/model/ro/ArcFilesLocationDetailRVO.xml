@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArcFilesLocationDetailRVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  RowClass="arc.model.ro.ArcFilesLocationDetailRVORowImpl"
+  ComponentClass="arc.model.ro.ArcFilesLocationDetailRVOImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="arc.model.ro.ArcFilesLocationDetailRVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_departments_fk"
+    Kind="where"
+    Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="1"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserLoginDepartment()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_lang"
+    Kind="where"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="0"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[select   FILES_LOCATION_PK  ,     
+GET_FILES_LOCATION_FILE_LOCATI(FILES_LOCATION_PK, ?) DISPLAY_FILES_LOCATION_PK    , 
+main_location_fk 
+from ARC_FILES_LOCATION    
+ where  OPEN_FL  = 1 and     main_location_fk  is  not null and       departments_fk  =  ?]]></SQLQuery>
+  <ViewAttribute
+    Name="FilesLocationPk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="FILES_LOCATION_PK"
+    Expression="FILES_LOCATION_PK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DisplayFilesLocationPk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DISPLAY_FILES_LOCATION_PK"
+    Expression="DISPLAY_FILES_LOCATION_PK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MainLocationFk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="MAIN_LOCATION_FK"
+    Expression="MAIN_LOCATION_FK"
+    SQLType="NUMERIC"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="FilesLocationPk"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="FilesLocationPkArcFilesLocationDetailRVO"
+    ViewLink="arc.model.vl.ArcFilesLocationDetailArcFilesLocationDetailLink"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</ViewObject>

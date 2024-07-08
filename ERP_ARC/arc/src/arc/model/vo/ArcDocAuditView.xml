@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject BindingStyle="JDBC" CustomQuery="false" FromListFlags="1"
+    InheritPersonalization="merge" Name="ArcDocAuditView"
+    PageIterMode="Full" SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.16.48" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+        </AttrArray>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <TransientExpression Name="VariableScript">gen.common.GenLib.getLanguageNo()</TransientExpression>
+    </Variable>
+    <ViewAccessor Name="SsoActiveLookupValuesVwView1"
+        RowLevelBinds="true" ViewObjectName="arc.model.ro.SsoActiveLookupValuesVwView"/>
+    <ListBinding ComboRowCountHint="10"
+        ListVOName="SsoActiveLookupValuesVwView1" MRUCount="0"
+        Name="LOV_OperationFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="OperationFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayOperationFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="SsoSystemLookupValuesLOVSearch"/>
+    </ListBinding>
+    <EntityUsage Entity="arc.model.eo.ArcDocAudit" Name="ArcDocAudit"/>
+    <ViewAttribute AliasName="DOC_AUDIT_PK" EntityAttrName="DocAuditPk"
+        EntityUsage="ArcDocAudit" IsNotNull="true" Name="DocAuditPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcDocAudit.DocAuditPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OLD_DOCUMENT_FK"
+        EntityAttrName="OldDocumentFk" EntityUsage="ArcDocAudit"
+        Name="OldDocumentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcDocAudit.OldDocumentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="OPERATION_FK" EntityAttrName="OperationFk"
+        EntityUsage="ArcDocAudit" LOVName="LOV_OperationFk"
+        Name="OperationFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE Value="input_text_lov"/>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcDocAudit.OperationFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="ArcDocAudit" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="ArcDocAudit"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="ArcDocAudit" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="ArcDocAudit"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk" EntityUsage="ArcDocAudit"
+        Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayOperationFk" ColumnType="CHAR"
+        Expression="get_lookup_desc(OPERATION_FK, ?)"
+        Name="DisplayOperationFk" PrecisionRule="true" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcDocAudit.OperationFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayOperationFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayOperationFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcDocAudit.OperationFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="arc.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

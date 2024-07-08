@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.52.5" id="arcDocumentSearchPageDef"
+                Package="arc.pageDefs">
+  <executables>
+    <iterator Binds="ArcOldDocumentView1" RangeSize="10" DataControl="AppModuleDataControl" id="ArcOldDocumentView1Iterator"/>
+    <searchRegion Criteria="" Binds="ArcOldDocumentView1Iterator" id="ArcOldDocumentView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="ArcDocumentAttachmentView2" RangeSize="10" DataControl="AppModuleDataControl" id="ArcDocumentAttachmentView1Iterator"/>
+    <searchRegion Criteria="" Binds="ArcDocumentAttachmentView1Iterator" id="ArcDocumentAttachmentView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <iterator Binds="ArcOldDocumentTlView2" RangeSize="10" DataControl="AppModuleDataControl" id="ArcOldDocumentTlView1Iterator"/>
+    <searchRegion Criteria="" Binds="ArcOldDocumentTlView1Iterator" id="ArcOldDocumentTlView1CriteriaQuery"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"/>
+    <invokeAction id="invokeRollBack" Binds="Rollback" Refresh="prepareModel" RefreshCondition="#{!adfFacesContext.postback}"/>
+    <searchRegion Criteria="ArcOldDocumentSearch" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="ArcOldDocumentView1Iterator" id="ArcOldDocumentSearchQuery"/>
+    <iterator Binds="ArcDocumentAttachmentTlView3" RangeSize="10" DataControl="AppModuleDataControl"
+              id="ArcDocumentAttachmentTlView3Iterator"/>
+    <searchRegion Binds="ArcDocumentAttachmentTlView3Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ArcDocumentAttachmentTlView3Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ArcOldDocumentView1Iterator" id="ArcOldDocumentView1">
+      <nodeDefinition DefName="arc.model.vo.ArcOldDocumentView" Name="ArcOldDocumentView10">
+        <AttrNames>
+          <Item Value="OldDocumentPk"/>
+          <Item Value="DocumentNumber"/>
+          <Item Value="DisplayDocumentSubject"/>
+          <Item Value="DisplayDocumentDescription"/>
+          <Item Value="DisplayDocumentComment"/>
+          <Item Value="DocumentTypeFk"/>
+          <Item Value="DisplayDocumentTypeFk"/>
+          <Item Value="DocumentPriorityFk"/>
+          <Item Value="DisplayDocumentPriorityFk"/>
+          <Item Value="DocumentSecurityFk"/>
+          <Item Value="DisplayDocumentSecurityFk"/>
+          <Item Value="FromDepartmentFk"/>
+          <Item Value="DisplayFromDepartmentFk"/>
+          <Item Value="ToDepartmentFk"/>
+          <Item Value="DisplayToDepartmentFk"/>
+          <Item Value="DocReceiveDate"/>
+          <Item Value="DisplayCreatedBy"/>
+          <Item Value="Cupboard"/>
+          <Item Value="Shelve"/>
+          <Item Value="Rack"/>
+          <Item Value="DocExpiryDate"/>
+          <Item Value="Keywords"/>
+          <Item Value="OrgCodeFk"/>
+          <Item Value="DisplayDisposedBy"/>
+          <Item Value="DisposedBy"/>
+          <Item Value="DisposalDate"/>
+          <Item Value="DisposedCommitteMembers"/>
+          <Item Value="DisposedDecisionDateG"/>
+          <Item Value="DisposedDecisionNo"/>
+          <Item Value="EmployeesFk"/>
+          <Item Value="DisplayEmployeesFk"/>
+          <Item Value="Room"/>
+          <Item Value="DisplayCreatedBySearch"/>
+          <Item Value="DisplayDisposedBySearch"/>
+          <Item Value="DisplaydisposedCommitteMembers"/>
+          <Item Value="DisplaydisposedDecisionDateG"/>
+          <Item Value="DisplaydisposedDecisionNo"/>
+          <Item Value="DisplayDocumentCommentSearch"/>
+          <Item Value="DisplayDocumentDescriptionSearch"/>
+          <Item Value="DisplayDocumentPriorityFkSearch"/>
+          <Item Value="DisplayDocumentSecurityFkSearch"/>
+          <Item Value="DisplayDocumentSubjectSearch"/>
+          <Item Value="DisplayDocumentTypeFkSearch"/>
+          <Item Value="DisplayEmployeesFkSearch"/>
+          <Item Value="DisplayFilesLocationFk"/>
+          <Item Value="DisplayFromDepartmentFkSearch"/>
+          <Item Value="DisplayToDepartmentFkSearch"/>
+          <Item Value="DisposedCommitteMembersSearch"/>
+          <Item Value="FromDepartmentFkSearch"/>
+          <Item Value="ToDepartmentFkSearch"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="DisposedDecisionDateH"/>
+          <Item Value="DisposedFl"/>
+          <Item Value="DocumentPriorityFkSearch"/>
+          <Item Value="DocumentSecurityFkSearch"/>
+          <Item Value="DocumentTypeFkSearch"/>
+          <Item Value="EmployeesFkSearch"/>
+          <Item Value="FilesLocationFk"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="OriginalDocumentDisposedFl"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArcDocumentAttachmentView1Iterator" id="ArcDocumentAttachmentView1">
+      <nodeDefinition DefName="arc.model.vo.ArcDocumentAttachmentView" Name="ArcDocumentAttachmentView10">
+        <AttrNames>
+          <Item Value="DocumentAttachmentPk"/>
+          <Item Value="DocumentAttachTypeFk"/>
+          <Item Value="OldDocumentFk"/>
+          <Item Value="DocumentSecurityFk"/>
+          <Item Value="DisplayDocumentAttachTypeFk"/>
+          <Item Value="DisplayDocumentSecurityFk"/>
+          <Item Value="DisplayDocumentAttachDescription"/>
+          <Item Value="WaterMarkFl" />
+          <Item Value="FilePath"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArcOldDocumentTlView1Iterator" id="ArcOldDocumentTlView1">
+      <nodeDefinition DefName="arc.model.vo.ArcOldDocumentTlView" Name="ArcOldDocumentTlView10">
+        <AttrNames>
+          <Item Value="OldDocumentTlPk"/>
+          <Item Value="DocumentSubject"/>
+          <Item Value="DocumentComment"/>
+          <Item Value="DocumentDescription"/>
+          <Item Value="LanguagesFk"/>
+          <Item Value="OldDocumentFk"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="ModifiedBy"/>
+          <Item Value="ModifiedDate"/>
+          <Item Value="UserDepartmentFk"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <!--<button IterBinding="ArcOldDocumentView1Iterator" id="OriginalDocumentDisposedFl" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="OriginalDocumentDisposedFl"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="1"/>
+        <Item Value="0"/>
+      </ValueList>
+    </button>-->
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="AppModuleDataControl"/>
+    <action id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="ArcOldDocumentView1Iterator"/>
+    <action id="CreateInsert1" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="ArcOldDocumentView1Iterator"/>
+    <action id="Next1" RequiresUpdateModel="true" Action="next" IterBinding="ArcOldDocumentView1Iterator"/>
+    <action id="Previous1" RequiresUpdateModel="true" Action="previous" IterBinding="ArcOldDocumentView1Iterator"/>
+    <action id="First1" RequiresUpdateModel="true" Action="first" IterBinding="ArcOldDocumentView1Iterator"/>
+    <action id="Last1" RequiresUpdateModel="true" Action="last" IterBinding="ArcOldDocumentView1Iterator"/>
+    <action id="Find1" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="ArcOldDocumentView1Iterator"/>
+    <action id="Execute1" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="ArcOldDocumentView1Iterator"/>
+    <action id="Delete2" RequiresUpdateModel="false" Action="removeCurrentRow" IterBinding="ArcDocumentAttachmentView1Iterator"/>
+    <action id="CreateInsert2" RequiresUpdateModel="true" Action="createInsertRow" IterBinding="ArcDocumentAttachmentView1Iterator"/>
+    <action id="Next2" RequiresUpdateModel="true" Action="next" IterBinding="ArcDocumentAttachmentView1Iterator"/>
+    <action id="Previous2" RequiresUpdateModel="true" Action="previous" IterBinding="ArcDocumentAttachmentView1Iterator"/>
+    <action id="First2" RequiresUpdateModel="true" Action="first" IterBinding="ArcDocumentAttachmentView1Iterator"/>
+    <action id="Last2" RequiresUpdateModel="true" Action="last" IterBinding="ArcDocumentAttachmentView1Iterator"/>
+    <action id="Find2" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="ArcDocumentAttachmentView1Iterator"/>
+    <action id="Execute2" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="ArcDocumentAttachmentView1Iterator"/>
+    <action id="Next3" RequiresUpdateModel="true" Action="next" IterBinding="ArcOldDocumentTlView1Iterator"/>
+    <action id="Previous3" RequiresUpdateModel="true" Action="previous" IterBinding="ArcOldDocumentTlView1Iterator"/>
+    <action id="First3" RequiresUpdateModel="true" Action="first" IterBinding="ArcOldDocumentTlView1Iterator"/>
+    <action id="Last3" RequiresUpdateModel="true" Action="last" IterBinding="ArcOldDocumentTlView1Iterator"/>
+    <action id="Find3" RequiresUpdateModel="true" Action="iteratorFind" IterBinding="ArcOldDocumentTlView1Iterator"/>
+    <action id="Execute3" RequiresUpdateModel="true" Action="iteratorExecute" IterBinding="ArcOldDocumentTlView1Iterator"/>
+    <tree IterBinding="ArcDocumentAttachmentTlView3Iterator" id="ArcDocumentAttachmentTlView3">
+      <nodeDefinition DefName="arc.model.vo.ArcDocumentAttachmentTlView" Name="ArcDocumentAttachmentTlView30">
+        <AttrNames>
+          <Item Value="LanguagesFk"/>
+          <Item Value="DocumentAttachDescription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ArcOldDocumentView1Iterator" id="OldDocumentPk">
+      <AttrNames>
+        <Item Value="OldDocumentPk"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArcDocumentAttachmentView1Iterator" id="FilePath">
+      <AttrNames>
+        <Item Value="FilePath"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ArcDocumentAttachmentView1Iterator" id="WaterMarkFl">
+      <AttrNames>
+        <Item Value="WaterMarkFl"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

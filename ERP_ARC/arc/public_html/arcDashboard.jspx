@@ -1,0 +1,256 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="Doc1" title="#{menu.resourceLabelMap['menu.arcDashboard']}" uncommittedDataWarning="on"
+                >
+      <af:messages id="m1"/>
+      <af:form id="form1">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute value="#{menu.resourceLabelMap['menu.arcDashboard']}" name="pageTitle"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="pg1" layout="scroll">
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['arcDashboard.Search']}"
+                           partialTriggers="b2">
+                <div class="card-body">
+                  <div class="form-group row">
+                    <div class="col-md-3">
+                      <label class="col-form-label">
+                        <af:outputLabel id="DateFrom" value="#{menu.resourceLabelMap['arcDashboard.DateFrom']}"/>
+                      </label>
+                       
+                      <af:inputDate value="#{bindings.DateFrom.inputValue}"
+                                    required="#{bindings.DateFrom.hints.mandatory}"
+                                    columns="#{bindings.DateFrom.hints.displayWidth}" id="id1" simple="true"
+                                    styleClass="form-control">
+                        <f:validator binding="#{bindings.DateFrom.validator}"/>
+                        <af:convertDateTime pattern="#{menu.dateFormat}"/>
+                      </af:inputDate>
+                    </div>
+                    <div class="col-md-3 ">
+                      <label class="col-form-label">
+                        <af:outputLabel id="DateTo" value="#{menu.resourceLabelMap['arcDashboard.DateTo']}"/>
+                      </label><af:inputDate value="#{bindings.DateTo.inputValue}"
+                                            required="#{bindings.DateTo.hints.mandatory}"
+                                            columns="#{bindings.DateTo.hints.displayWidth}" simple="true"
+                                            styleClass="form-control" id="id2">
+                        <f:validator binding="#{bindings.DateTo.validator}"/>
+                        <af:convertDateTime pattern="#{menu.dateFormat}"/>
+                      </af:inputDate>
+                    </div>
+                    <div class="col-md-3">
+                      <label class="col-form-label">
+                        <af:outputLabel id="DepartmentsPk"
+                                        value="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentsPk']}"/>
+                      </label>
+                       
+                      <af:inputListOfValues id="departmentFromId" autoSubmit="true"
+                                            popupTitle="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentsPk']}"
+                                            value="#{bindings.DepartmentFrom.inputValue}"
+                                            label="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentsPk']}"
+                                            model="#{bindings.DepartmentFrom.listOfValuesModel}"
+                                            required="#{bindings.DepartmentFrom.hints.mandatory}"
+                                            columns="#{bindings.DepartmentFrom.hints.displayWidth}" simple="true"
+                                            styleClass="form-control">
+                        <f:validator binding="#{bindings.DepartmentFrom.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.DepartmentFrom.format}"/>
+                      </af:inputListOfValues>
+                    </div>
+                    <div class="col-md-3 ">
+                      <label class="col-form-label">
+                        <af:outputLabel id="DisplayDepartmentFrom"
+                                        value="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentName']}"/>
+                      </label>
+                       
+                      <af:inputText value="#{bindings.DisplayDepartmentFrom.inputValue}"
+                                    required="#{bindings.DisplayDepartmentFrom.hints.mandatory}"
+                                    columns="#{bindings.DisplayDepartmentFrom.hints.displayWidth}"
+                                    maximumLength="#{bindings.DisplayDepartmentFrom.hints.precision}" id="it1"
+                                    simple="true" readOnly="true" partialTriggers="departmentFromId"
+                                    styleClass="form-control">
+                        <f:validator binding="#{bindings.DisplayDepartmentFrom.validator}"/>
+                      </af:inputText>
+                    </div>
+                    <div class="col-md-3 ">
+                      <label class="col-form-label">
+                        <af:outputLabel id="DisplayDocumentCommentol1"
+                                        value="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesPk']}"/>
+                      </label><af:inputListOfValues id="employeesFkId" autoSubmit="true"
+                                                    popupTitle="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesPk']}"
+                                                    value="#{bindings.EmployeesFk.inputValue}"
+                                                    label="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesPk']}"
+                                                    model="#{bindings.EmployeesFk.listOfValuesModel}"
+                                                    required="#{bindings.EmployeesFk.hints.mandatory}"
+                                                    columns="#{bindings.EmployeesFk.hints.displayWidth}" simple="true"
+                                                    styleClass="form-control">
+                        <f:validator binding="#{bindings.EmployeesFk.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.EmployeesFk.format}"/>
+                      </af:inputListOfValues>
+                    </div>
+                    <div class="col-md-3 ">
+                      <label class="col-form-label">
+                        <af:outputLabel id="arcOldDocumentDocreceivedateL"
+                                        value="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesName']}"/>
+                      </label>
+                       
+                      <af:inputText value="#{bindings.DisplayEmployeesFk.inputValue}"
+                                    required="#{bindings.DisplayEmployeesFk.hints.mandatory}"
+                                    columns="#{bindings.DisplayEmployeesFk.hints.displayWidth}"
+                                    maximumLength="#{bindings.DisplayEmployeesFk.hints.precision}" simple="true"
+                                    readOnly="true" partialTriggers="employeesFkId" styleClass="form-control" id="it2">
+                        <f:validator binding="#{bindings.DisplayEmployeesFk.validator}"/>
+                      </af:inputText>
+                    </div>
+                    <div class="col-md-3 ">
+                      <label class="col-form-label">
+                        <af:outputLabel id="ol1" value="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}"/>
+                      </label><af:inputListOfValues id="filesLocationFkId" autoSubmit="true"
+                                                    popupTitle="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}"
+                                                    value="#{bindings.FilesLocationFk.inputValue}"
+                                                    label="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}"
+                                                    model="#{bindings.FilesLocationFk.listOfValuesModel}"
+                                                    required="#{bindings.FilesLocationFk.hints.mandatory}"
+                                                    columns="#{bindings.FilesLocationFk.hints.displayWidth}"
+                                                    simple="true" styleClass="form-control">
+                        <f:validator binding="#{bindings.FilesLocationFk.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.FilesLocationFk.format}"/>
+                      </af:inputListOfValues>
+                    </div>
+                    <div class="col-md-3 ">
+                      <label class="col-form-label">
+                        <af:outputLabel id="ol2"
+                                        value="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"/>
+                      </label><af:inputText value="#{bindings.DisplayFilesLocationFk.inputValue}"
+                                            required="#{bindings.DisplayFilesLocationFk.hints.mandatory}"
+                                            columns="#{bindings.DisplayFilesLocationFk.hints.displayWidth}"
+                                            maximumLength="#{bindings.DisplayFilesLocationFk.hints.precision}"
+                                            simple="true" styleClass="form-control" id="it3" readOnly="true"
+                                            partialTriggers="filesLocationFkId">
+                        <f:validator binding="#{bindings.DisplayFilesLocationFk.validator}"/>
+                      </af:inputText>
+                    </div>
+                    <div class="col-md-3 ">
+                      <label class="col-form-label">
+                        <af:outputLabel id="ol3" value="#{menu.resourceLabelMap['arcDashboard.Year']}"/>
+                      </label><af:inputText value="#{bindings.YearFrom.inputValue}"
+                                            required="#{bindings.YearFrom.hints.mandatory}"
+                                            columns="#{bindings.YearFrom.hints.displayWidth}"
+                                            maximumLength="#{bindings.YearFrom.hints.precision}" simple="true"
+                                            styleClass="form-control" id="it7">
+                        <f:validator binding="#{bindings.YearFrom.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.YearFrom.format}"/>
+                      </af:inputText>
+                    </div>
+                    <div class="col-md-3 ">
+                      <label class="col-form-label"></label>
+                    </div>
+                    <div class="col-md-3 ">
+                      <label class="col-form-label"></label>
+                    </div>
+                    <div class="col-md-3 ">
+                      <label class="col-form-label"></label>
+                    </div>
+                    <div class="col-md-3 ">
+                      <label class="col-form-label"></label>
+                    </div>
+                    <div class="col-md-3 ">
+                      <af:panelGroupLayout id="pgl1" layout="horizontal">
+                        <af:commandButton text="#{menu.resourceLabelMap['button.getData']}" partialSubmit="true"
+                                          icon="/images/refresh.png" id="b3" action="#{arcDashboard.GetData}"
+                                          partialTriggers="barChart1 t1"/>
+                        <af:spacer width="10" id="s10"/>
+                        <af:commandButton text="#{menu.resourceLabelMap['button.clearData']}" partialSubmit="true"
+                                          actionListener="#{bindings.Rollback.execute}" icon="/images/clear.png"
+                                          id="b2"/>
+                      </af:panelGroupLayout>
+                    </div>
+                  </div>
+                </div>
+              </af:panelBox>
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['arcDashboard.chart']}">
+                <dvt:barChart id="barChart1" var="row" value="#{bindings.ArcOldDocumentDashboardRVO1.collectionModel}"  
+                splitterPosition="1" styleClass="AFStretchWidth">
+                  <dvt:chartLegend id="cl1"/>
+                  <f:facet name="dataStamp">
+                    <dvt:chartDataItem id="di1"
+                                       series="#{menu.resourceLabelMap['arcDashboard.DocumentCount']}"
+                                       value="#{row.DocumentCount}" group="#{row.DisplayFilesLocationPk}"/>
+                  </f:facet>
+                </dvt:barChart>
+
+              </af:panelBox>
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['arcDashboard.NoDocument']}">
+                <af:table value="#{bindings.ArcFileLocationWithNoDocumentRVO.collectionModel}" var="row"
+                          rows="#{bindings.ArcFileLocationWithNoDocumentRVO.rangeSize}"
+                          emptyText="#{bindings.ArcFileLocationWithNoDocumentRVO.viewable ? menu.emptyText : menu.accessDeniedText}"
+                          rowBandingInterval="1"
+                          selectedRowKeys="#{bindings.ArcFileLocationWithNoDocumentRVO.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.ArcFileLocationWithNoDocumentRVO.collectionModel.makeCurrent}"
+                          rowSelection="single" fetchSize="#{bindings.ArcFileLocationWithNoDocumentRVO.rangeSize}"
+                          filterModel="#{bindings.ArcFileLocationWithNoDocumentRVOQuery.queryDescriptor}"
+                          filterVisible="false"
+                          queryListener="#{bindings.ArcFileLocationWithNoDocumentRVOQuery.processQuery}" varStatus="vs"
+                          id="t1" autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                          columnStretching="last" displayRow="selected" editingMode="editAll" scrollPolicy="page"
+                          styleClass="AFStretchWidth" verticalGridVisible="false" partialTriggers="::b3">
+                  <af:column sortProperty="FilesLocationPk" filterable="true" sortable="true"
+                             headerText="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}" id="c1"
+                             align="center" filterFeatures="caseInsensitive" width="200">
+                    <af:inputText value="#{row.bindings.FilesLocationPk.inputValue}"
+                                  label="#{menu.resourceLabelMap['ArcFilesLocation.FilesLocationPk']}"
+                                  required="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.FilesLocationPk.mandatory}"
+                                  columns="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.FilesLocationPk.displayWidth}"
+                                  maximumLength="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.FilesLocationPk.precision}"
+                                  readOnly="true" id="it4">
+                      <f:validator binding="#{row.bindings.FilesLocationPk.validator}"/>
+                      <af:convertNumber groupingUsed="false"
+                                        pattern="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.FilesLocationPk.format}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="DisplayFilesLocationPkSearch" filterable="true" sortable="true"
+                             align="center" headerText="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"
+                             id="c2" filterFeatures="caseInsensitive" width="200">
+                    <af:inputText value="#{row.bindings.DisplayFilesLocationPk.inputValue}"
+                                  label="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"
+                                  required="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.DisplayFilesLocationPk.mandatory}"
+                                  columns="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.DisplayFilesLocationPk.displayWidth}"
+                                  maximumLength="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.DisplayFilesLocationPk.precision}"
+                                  readOnly="true" id="it5">
+                      <f:validator binding="#{row.bindings.DisplayFilesLocationPk.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="DepartmentsFk" filterable="true" sortable="true" align="center"
+                             headerText="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentsPk']}"
+                             id="DepartmentsFkc2" filterFeatures="caseInsensitive" width="200">
+                    <af:inputText value="#{row.bindings.DepartmentsFk.inputValue}"
+                                  label="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentsPk']}"
+                                  required="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.DepartmentsFk.mandatory}"
+                                  columns="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.DepartmentsFk.displayWidth}"
+                                  maximumLength="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.DepartmentsFk.precision}"
+                                  readOnly="true" id="DepartmentsFkit5">
+                      <f:validator binding="#{row.bindings.DepartmentsFk.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                  <af:column sortProperty="DisplayDepartmentsFk" filterable="true" sortable="true" align="center"
+                             headerText="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentName']}"
+                             id="DisplayDepartmentsFkc2" filterFeatures="caseInsensitive" width="300">
+                    <af:inputText value="#{row.bindings.DisplayDepartmentsFk.inputValue}"
+                                  label="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentName']}"
+                                  required="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.DisplayDepartmentsFk.mandatory}"
+                                  columns="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.DisplayDepartmentsFk.displayWidth}"
+                                  maximumLength="#{bindings.ArcFileLocationWithNoDocumentRVO.hints.DisplayDepartmentsFk.precision}"
+                                  readOnly="true" id="DisplayDepartmentsFkit5">
+                      <f:validator binding="#{row.bindings.DisplayDepartmentsFk.validator}"/>
+                    </af:inputText>
+                  </af:column>
+                </af:table>
+              </af:panelBox>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

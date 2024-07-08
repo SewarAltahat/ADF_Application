@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="ArcFilesRCLockPriv" BindingStyle="JDBC"
+    DBObjectName="ARC_FILES_R_C_LOCK_PRIV" DBObjectType="table"
+    InheritPersonalization="merge" Name="ArcFilesRCLockPriv"
+    RowClass="arc.model.eo.ArcFilesRCLockPrivImpl"
+    Version="12.2.1.16.48" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="FILES_R_C_LOCK_PRIV_PK" ColumnType="NUMBER"
+        IsNotNull="false" Name="FilesRCLockPrivPk" PrimaryKey="true"
+        SQLType="NUMERIC" TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="FILES_ROWS_COLUMNS_LOCKERS_FK"
+        ColumnType="NUMBER" Name="FilesRowsColumnsLockersFk"
+        SQLType="NUMERIC" TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="PRIVILEGE_LEVEL_FK" ColumnType="NUMBER"
+        Name="PrivilegeLevelFk" SQLType="NUMERIC"
+        TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DEPARTMENTS_FK" ColumnType="NUMBER"
+        Name="DepartmentsFk" SQLType="NUMERIC"
+        TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="GROUPS_FK" ColumnType="NUMBER"
+        Name="GroupsFk" SQLType="NUMERIC"
+        TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="START_DATE" ColumnType="DATE"
+        Name="StartDate" SQLType="DATE"
+        TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.sql.Date"/>
+    <Attribute ColumnName="END_DATE" ColumnType="DATE" Name="EndDate"
+        SQLType="DATE" TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.sql.Date"/>
+    <Attribute ColumnName="USERS_FK" ColumnType="NUMBER" Name="UsersFk"
+        SQLType="NUMERIC" TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC"
+        TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC"
+        TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="ARC_FILES_R_C_LOCK_PRIV" Type="java.math.BigDecimal"/>
+    <Key Name="ArcFilesRowsColumnsLockersPrivilegePk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_ROWS_COLUMNS_LOCKERS_PRIVILEGE_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesRCLockPriv.FilesRCLockPrivPk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesRowsColumnsPrivilFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="ARC_FILES_ROWS_COLUMNS_LOCKERS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_ROWS_COLUMNS_PRIVIL_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesRCLockPriv.FilesRowsColumnsLockersFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesRowsColumnsPrivilFk2">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_ROWS_COLUMNS_PRIVIL_FK2"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesRCLockPriv.PrivilegeLevelFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesRowsColumnsPrivilFk3">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SSO_OPERATIONS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_ROWS_COLUMNS_PRIVIL_FK3"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesRCLockPriv.GroupsFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesRowsColumnsPrivilFk4">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SSO_USERS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_ROWS_COLUMNS_PRIVIL_FK4"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesRCLockPriv.UsersFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesRowsColumnsPrivilFk5">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="HCM_DEPARTMENTS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_ROWS_COLUMNS_PRIVIL_FK5"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesRCLockPriv.DepartmentsFk"/>
+        </AttrArray>
+    </Key>
+</Entity>
+<!---->

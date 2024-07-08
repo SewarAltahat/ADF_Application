@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArcOldDocumentDashboardRVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  RowClass="arc.model.ro.ArcOldDocumentDashboardRVORowImpl"
+  ComponentClass="gen.common.BaseViewObjectImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="arc.model.ro.ArcOldDocumentDashboardRVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+   <Variable
+      Name="p_lang"
+      Kind="where"
+      Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+        <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+            Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_doc_year"
+    Kind="where"
+    Type="java.math.BigDecimal">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="1"/>
+            <Item Value="2"/>
+            <Item Value="3"/>
+        </AttrArray>
+        <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_user_department_fk"
+    Kind="where"
+    Type="java.math.BigDecimal">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="4"/>
+            <Item Value="5"/>
+            <Item Value="6"/>
+        </AttrArray>
+        <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable Kind="where" Name="p_all_data" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="7"/>
+        </AttrArray>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <Variable Kind="where" Name="p_user_type_fk" Type="java.math.BigDecimal">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="8"/>
+            <Item Value="10"/>
+            <Item Value="13"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getUserType()]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <Variable Kind="where" Name="p_normal_user_type" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="11"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenConstants.ORDINARY_USER]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <Variable Kind="where" Name="p_admin_type" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="9"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenConstants.ADMINUSER]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <Variable Kind="where" Name="p_dept_manager_type" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="14"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenConstants.SUPERVISOR]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <Variable Kind="where" Name="p_departments_fk" Type="java.math.BigDecimal">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="12"/>
+            <Item Value="15"/>
+            <Item Value="16"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getUserLoginDepartment()]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+  <Variable
+    Name="p_employees_fk"
+    Kind="where"
+    Type="java.math.BigDecimal">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="17"/>
+            <Item Value="18"/>
+            <Item Value="19"/>
+        </AttrArray>
+        <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_files_location_fk"
+    Kind="where"
+    Type="java.math.BigDecimal">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="20"/>
+            <Item Value="21"/>
+            <Item Value="22"/>
+        </AttrArray>
+        <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_doc_receive_date_from"
+    Kind="where"
+    Type="java.sql.Timestamp">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="23"/>
+            <Item Value="24"/>
+        </AttrArray>
+        <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_doc_receive_date_to"
+    Kind="where"
+    Type="java.sql.Timestamp">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="25"/>
+            <Item Value="26"/>
+        </AttrArray>
+        <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[SELECT FILES_LOCATION_FK,   
+COUNT(*) DOCUMENT_COUNT,   
+GET_FILES_LOCATION_FILE_LOCATI(FILES_LOCATION_FK, ?) DISPLAY_FILES_LOCATION_PK      
+FROM ARC_OLD_DOCUMENT     
+WHERE FILES_LOCATION_FK IS NOT NULL    
+AND (DOC_YEAR = ? OR ? IS NULL OR ? = ''  ) 
+AND (USER_DEPARTMENT_FK = ? OR ? IS NULL  OR ? = '') 
+AND (? IS NOT NULL                   
+OR ( ? = ?                                
+OR (? = ? and  (USER_DEPARTMENT_FK = ? ) )      
+OR (? = ? and (USER_DEPARTMENT_FK = ?       
+OR USER_DEPARTMENT_FK IN (SELECT HIER.CHILD_DEPARTMENT FROM HCM_DEPARTMENTS_HIERARCHY HIER WHERE HIER.PARENT_DEPARTMENT = ?))) ))        
+AND (EMPLOYEES_FK  = ? OR ? IS NULL  OR ? = '')    
+AND (FILES_LOCATION_FK   = ? OR ? IS NULL  OR ? = '')    
+AND (DOC_RECEIVE_DATE >= ? OR ? IS NULL)     
+AND (DOC_RECEIVE_DATE <= ? OR ? IS NULL)         
+GROUP BY FILES_LOCATION_FK     
+ORDER BY FILES_LOCATION_FK]]></SQLQuery>
+  <ViewAttribute
+    Name="FilesLocationFk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="FILES_LOCATION_FK"
+    Expression="FILES_LOCATION_FK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DocumentCount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DOCUMENT_COUNT"
+    Expression="DOCUMENT_COUNT"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DisplayFilesLocationPk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DISPLAY_FILES_LOCATION_PK"
+    Expression="DISPLAY_FILES_LOCATION_PK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="FilesLocationFk"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</ViewObject>

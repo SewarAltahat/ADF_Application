@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArcOldDocumentRVO"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  RowClass="arc.model.ro.ArcOldDocumentRVORowImpl"
+  ComponentClass="arc.model.ro.ArcOldDocumentRVOImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Coll"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="arc.model.ro.ArcOldDocumentRVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="p_lang"
+    Kind="where"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="0"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression">gen.common.GenLib.getLanguageNo()</TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_admin_type"
+    Kind="where"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="3"/>
+      <Item Value="12"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.ADMINUSER]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_normal_user_type"
+    Kind="where"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="5"/>
+      <Item Value="14"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.ORDINARY_USER]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_dept_manager_type"
+    Kind="where"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="8"/>
+      <Item Value="17"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenConstants.SUPERVISOR]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_user_type_fk"
+    Kind="where"
+    Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="2"/>
+      <Item Value="4"/>
+      <Item Value="7"/>
+      <Item Value="11"/>
+      <Item Value="13"/>
+      <Item Value="16"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserType()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_departments_fk"
+    Kind="where"
+    Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="6"/>
+      <Item Value="9"/>
+      <Item Value="10"/>
+      <Item Value="15"/>
+      <Item Value="18"/>
+      <Item Value="19"/>
+      <Item Value="22"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserLoginDepartment()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_all_data"
+    Kind="where"
+    Type="java.lang.Integer">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="1"/>
+    </AttrArray>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_users_fk"
+    Kind="where"
+    Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="20"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getUserId()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="p_systems_fk"
+    Kind="where"
+    Type="java.math.BigDecimal">
+    <AttrArray Name="ExtendedDataInts">
+      <Item Value="21"/>
+    </AttrArray>
+    <TransientExpression
+      Name="expression"><![CDATA[gen.common.GenLib.getSystemId()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[select   OLD_DOCUMENT_PK   ,   
+GET_DOCUMENT_SUBJECT(OLD_DOCUMENT_PK, ?) DISPLAY_OLD_DOCUMENT_PK,  
+DOCUMENT_SECURITY_FK , 
+FROM_DEPARTMENT_FK, 
+TO_DEPARTMENT_FK 
+from Arc_Old_Document where          
+ (       
+  ? IS NOT NULL        
+  OR        
+  (
+  (        
+  ? = ?                       
+  or (? = ? and FROM_DEPARTMENT_FK= ?)                       
+  or (? = ? and (FROM_DEPARTMENT_FK= ? or FROM_DEPARTMENT_FK
+  IN (SELECT HIER.CHILD_DEPARTMENT FROM HCM_DEPARTMENTS_HIERARCHY HIER WHERE HIER.PARENT_DEPARTMENT = ?)))                            
+  )   
+  
+  OR
+    (        
+  ?= ?                       
+  or (? = ? and TO_DEPARTMENT_FK= ?)                       
+  or (?= ? and (TO_DEPARTMENT_FK= ? or TO_DEPARTMENT_FK
+  IN (SELECT HIER.CHILD_DEPARTMENT FROM HCM_DEPARTMENTS_HIERARCHY HIER WHERE HIER.PARENT_DEPARTMENT = ?)))                            
+  ) 
+  )
+  )       
+  AND       
+    (       
+    DOCUMENT_SECURITY_FK IS NULL OR       
+  DOCUMENT_SECURITY_FK IN        
+   (SELECT SECURITY_LEVELS_FK FROM SSO_USER_SECURITY_LEVELS_VW VW       
+    WHERE VW.USERS_PK = ?      
+    AND VW.SYSTEMS_FK = ?      
+    AND VW.DEPARTMENTS_FK = ?       
+  )         
+  )       ]]></SQLQuery>
+  <ViewAttribute
+    Name="OldDocumentPk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="OLD_DOCUMENT_PK"
+    Expression="OLD_DOCUMENT_PK"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcOldDocument.OldDocumentPk']}"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DisplayOldDocumentPk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="4000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DISPLAY_OLD_DOCUMENT_PK"
+    Expression="DISPLAY_OLD_DOCUMENT_PK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="4000"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentSubject']}"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocumentSecurityFk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DOCUMENT_SECURITY_FK"
+    Expression="DOCUMENT_SECURITY_FK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="FromDepartmentFk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="FROM_DEPARTMENT_FK"
+    Expression="FROM_DEPARTMENT_FK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ToDepartmentFk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="TO_DEPARTMENT_FK"
+    Expression="TO_DEPARTMENT_FK"
+    SQLType="NUMERIC"/>
+  <ViewCriteria
+    Name="ArcOldDocumentLovSearch"
+    ViewObjectName="arc.model.ro.ArcOldDocumentRVO"
+    Conjunction="AND">
+    <Properties Name="_Props">
+      <CustomProperties>
+        <Property
+          Name="autoExecute"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="false"/>
+        <Property
+          Name="showInList"
+          Value="false"/>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="ArcOldDocumentRVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="OldDocumentPk"
+        ViewAttribute="OldDocumentPk"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="OldDocumentPk"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</ViewObject>

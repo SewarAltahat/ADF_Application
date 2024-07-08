@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject BindingStyle="JDBC" CustomQuery="true"
+    FetchMode="FETCH_AS_NEEDED" FetchSize="25"
+    InheritPersonalization="merge" Name="SsoActiveLookupValuesVwView"
+    ComponentClass="gen.common.BaseViewObjectImpl"
+    PageIterMode="Full"
+    Version="12.2.1.12.24" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_isExpertMode" Value="true"/>
+    </DesignTime>
+    <Variable Kind="viewcriteria" Name="p_system_lookups_fk" Type="java.math.BigDecimal">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+        </AttrArray>
+    </Variable>
+    <Variable Kind="viewcriteria" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="1"/>
+        </AttrArray>
+        <TransientExpression Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+    </Variable>
+    <Variable
+        Name="p_users_fk"
+        Kind="where"
+        Type="java.math.BigDecimal">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getUserId()]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT
+                    Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <Variable
+        Name="p_systems_fk"
+        Kind="where"
+        Type="java.math.BigDecimal">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="1"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getSystemId()]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT
+                    Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <Variable
+        Name="p_departments_fk"
+        Kind="where"
+        Type="java.math.BigDecimal">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="2"/>
+        </AttrArray>
+        <TransientExpression
+            Name="expression"><![CDATA[gen.common.GenLib.getUserLoginDepartment()]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT
+                    Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <ViewAccessor
+        Name="SsoLanguagesVwView1"
+        ViewObjectName="arc.model.ro.SsoLanguagesVwView"
+        RowLevelBinds="true"/>
+    <ListBinding
+        Name="LOV_LanguagesFk"
+        ListVOName="SsoLanguagesVwView1"
+        NullValueFlag="start"
+        NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+        MRUCount="0">
+        <AttrArray Name="AttrNames">
+            <Item Value="LanguagesFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="LanguagesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="LangName"/>
+        </AttrArray>
+        <DisplayCriteria/>
+    </ListBinding>
+    <SQLQuery><![CDATA[SELECT ErpSsoSsoActiveLookupValuesV1.SYSTEM_LOOKUP_VALUES_PK,        
+       ErpSsoSsoActiveLookupValuesV1.SYSTEM_LOOKUPS_FK,        
+       ErpSsoSsoActiveLookupValuesV1.ITEM_ID,        
+       ErpSsoSsoActiveLookupValuesV1.ITEM_SEQ_NUMBER,        
+       ErpSsoSsoActiveLookupValuesV1.LOOKUP_VAL_STATUS_FL,        
+       ErpSsoSsoActiveLookupValuesV1.DISPLAY_SYSTEM_LOOKUPS_FK,             
+       ErpSsoSsoActiveLookupValuesV1.LANGUAGES_FK        
+FROM SSO_ACTIVE_LOOKUP_VALUES_VW ErpSsoSsoActiveLookupValuesV1       
+WHERE (ErpSsoSsoActiveLookupValuesV1.SECURITY_LEVEL_FK IS NULL        
+OR ErpSsoSsoActiveLookupValuesV1.SECURITY_LEVEL_FK IN (SELECT SECURITY_LEVELS_FK FROM SSO_USER_SECURITY_LEVELS_VW VW         
+WHERE VW.USERS_PK = ? AND VW.SYSTEMS_FK = ? AND VW.DEPARTMENTS_FK = ?))]]></SQLQuery>
+    <ViewAttribute AliasName="SYSTEM_LOOKUP_VALUES_PK"
+        ColumnType="NUMBER" Expression="SYSTEM_LOOKUP_VALUES_PK"
+        IsNotNull="true" IsPersistent="false" IsUpdateable="false"
+        Name="SystemLookupValuesPk" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoActiveLookupValuesVwView.SystemLookupValuesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="SYSTEM_LOOKUPS_FK" ColumnType="NUMBER"
+        Expression="SYSTEM_LOOKUPS_FK" IsPersistent="false"
+        IsUpdateable="false" Name="SystemLookupsFk" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="ITEM_ID" ColumnType="VARCHAR2"
+        Expression="ITEM_ID" IsPersistent="false" IsUpdateable="false"
+        Name="ItemId" PrecisionRule="true" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoSystemLookupValues.ItemId']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="ITEM_SEQ_NUMBER" ColumnType="NUMBER"
+        Expression="ITEM_SEQ_NUMBER" IsPersistent="false"
+        IsUpdateable="false" Name="ItemSeqNumber" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="LOOKUP_VAL_STATUS_FL" ColumnType="NUMBER"
+        Expression="LOOKUP_VAL_STATUS_FL" IsPersistent="false"
+        IsUpdateable="false" Name="LookupValStatusFl"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="DISPLAY_SYSTEM_LOOKUPS_FK"
+        ColumnType="CHAR" Expression="DISPLAY_SYSTEM_LOOKUPS_FK"
+        IsPersistent="false" IsUpdateable="false"
+        Name="DisplaySystemLookupsFk" Precision="100"
+        PrecisionRule="true" SQLType="VARCHAR" Type="java.lang.String">
+        <DesignTime>
+            <Attr Name="_DisplaySize" Value="100"/>
+        </DesignTime>
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['SsoActiveLookupValuesVwView.DisplaySystemLookupsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="LANGUAGES_FK" ColumnType="NUMBER"
+        Expression="LANGUAGES_FK" IsPersistent="false"
+        IsUpdateable="false" Name="LanguagesFk" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"
+        LOVName="LOV_LanguagesFk">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE
+                    Value="combo"/>
+                <AUTOSUBMIT
+                    Value="true"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewCriteria Conjunction="AND" Name="SsoSystemLookupValuesFilter" ViewObjectName="arc.model.ro.SsoActiveLookupValuesVwView">
+        <Properties Name="_Props">
+            <CustomProperties>
+                <Property Name="autoExecute" Value="true"/>
+                <Property Name="mode" Value="Basic"/>
+                <Property Name="allowConjunctionOverride" Value="false"/>
+                <Property Name="showInList" Value="false"/>
+                <Property Name="displayOperators" Value="InAdvancedMode"/>
+            </CustomProperties>
+        </Properties>
+        <ViewCriteriaRow Name="SsoSystemLookupValuesViewCriteria1_row_0" UpperColumns="1">
+            <ViewCriteriaItem Conjunction="AND" IsBindVarValue="true"
+                Name="SystemLookupsFk" Operator="=" Required="Optional"
+                Value=":p_system_lookups_fk" ViewAttribute="SystemLookupsFk"/>
+            <ViewCriteriaItem Conjunction="AND" Name="LookupValStatusFl"
+                Operator="=" Required="Optional" Value="1" ViewAttribute="LookupValStatusFl"/>
+            <ViewCriteriaItem Conjunction="AND" IsBindVarValue="true"
+                Name="LanguagesFk" Operator="=" Required="Optional"
+                Value=":p_lang" ViewAttribute="LanguagesFk"/>
+        </ViewCriteriaRow>
+    </ViewCriteria>
+    <ViewCriteria Conjunction="AND"
+        Name="SsoSystemLookupValuesLOVSearch" ViewObjectName="arc.model.ro.SsoActiveLookupValuesVwView">
+        <Properties Name="_Props">
+            <CustomProperties>
+                <Property Name="autoExecute" Value="true"/>
+                <Property Name="mode" Value="Basic"/>
+                <Property Name="allowConjunctionOverride" Value="false"/>
+                <Property Name="showInList" Value="false"/>
+                <Property Name="displayOperators" Value="InAdvancedMode"/>
+            </CustomProperties>
+        </Properties>
+        <ViewCriteriaRow Name="SsoSystemLookupValuesLOVSearch_row_0" UpperColumns="1">
+            <ViewCriteriaItem Conjunction="AND"
+                Name="SystemLookupValuesPk" Operator="="
+                Required="Optional" ViewAttribute="SystemLookupValuesPk"/>
+            <ViewCriteriaItem Conjunction="AND" Name="LookupValStatusFl"
+                Operator="=" Required="Optional" Value="1" ViewAttribute="LookupValStatusFl">
+                <Properties>
+                    <CustomProperties>
+                        <Property Name="renderedMode" Value="Never"/>
+                    </CustomProperties>
+                </Properties>
+            </ViewCriteriaItem>
+            <ViewCriteriaItem Conjunction="AND"
+                Name="DisplaySystemLookupsFk" Operator="CONTAINS"
+                Required="Optional" ViewAttribute="DisplaySystemLookupsFk"/>
+        </ViewCriteriaRow>
+    </ViewCriteria>
+    <AttrArray Name="KeyAttributes">
+        <Item Value="SystemLookupValuesPk"/>
+    </AttrArray>
+    <ResourceBundle>
+        <PropertiesBundle
+            PropertiesFile="arc.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

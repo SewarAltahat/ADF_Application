@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><Application xmlns="http://xmlns.oracle.com/adfm/application" ClientType="Generic" Package="arc" SeparateXMLFiles="false" id="DataBindings" version="12.2.1.16.48">
+  <definitionFactories>
+    <factory className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl" nameSpace="http://xmlns.oracle.com/adf/controller/binding"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/arcDocument.jspx" usageId="arcDocumentUsageId"/>
+    <page path="/arcDocumentSearch.jspx" usageId="arcDocumentSearchUsageId"/>
+    <page path="/mainpage.jspx" usageId="arc_mainpagePageDef"/>
+    <page path="/scan.jspx" usageId="arc_scanPageDef"/>
+    <page path="/fileLocationsStandard.jspx" usageId="fileLocationsStandardUsageId"/>
+    <page path="/disposedDocuments.jspx" usageId="disposedDocumentsUsageId"/>
+    <page path="/fileLocations.jspx" usageId="fileLocationsUsageId"/>
+    <page path="/borrowRequestsSearch.jspx" usageId="borrowRequestsSearchUsageId"/>
+    <page path="/borrowRequests.jspx" usageId="borrowRequestsUsageId"/>
+    <page path="/arcTaskList.jspx" usageId="arc_arcTaskListPageDef"/>
+    <page path="/filesLocationTree.jsff" usageId="arc_filesLocationsPageDef"/>
+    <page path="/borrowRequestFrag.jsff" usageId="arc_borrowRequestFragPageDef"/>
+    <page path="/requestHistoryFrag.jsff" usageId="arc_requestHistoryFragPageDef"/>
+    <page path="/WEB-INF/borrowRequestTF.xml#borrowRequestTF@SetCurrentRowWithKeyValue" usageId="arc_borrowRequestTF_borrowRequestTF_SetCurrentRowWithKeyValuePageDef"/>
+    <page path="/arcDocumentView.jspx" usageId="arcDocumentViewUsageId"/>
+    <page path="/arcDashboard.jspx" usageId="arcDashboardUsageId"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="arcDocumentUsageId" path="arc.pageDefs.arcDocumentPageDef"/>
+    <page id="arcDocumentSearchUsageId" path="arc.pageDefs.arcDocumentSearchPageDef"/>
+    <page id="arc_mainpagePageDef" path="arc.pageDefs.mainpagePageDef"/>
+    <page id="arc_scanPageDef" path="arc.pageDefs.scanPageDef"/>
+    <page id="fileLocationsStandardUsageId" path="arc.pageDefs.fileLocationsStandardPageDef"/>
+    <page id="disposedDocumentsUsageId" path="arc.pageDefs.disposedDocumentsPageDef"/>
+    <page id="fileLocationsUsageId" path="arc.pageDefs.fileLocationsPageDef"/>
+    <page id="borrowRequestsSearchUsageId" path="arc.pageDefs.borrowRequestsSearchPageDef"/>
+    <page id="borrowRequestsUsageId" path="arc.pageDefs.borrowRequestsPageDef"/>
+    <page id="arc_arcTaskListPageDef" path="arc.pageDefs.arcTaskListPageDef"/>
+    <page id="arc_filesLocationsPageDef" path="arc.pageDefs.filesLocationsPageDef"/>
+    <page id="arc_borrowRequestFragPageDef" path="arc.pageDefs.borrowRequestFragPageDef"/>
+    <page id="arc_requestHistoryFragPageDef" path="arc.pageDefs.requestHistoryFragPageDef"/>
+    <page id="arc_borrowRequestTF_borrowRequestTF_SetCurrentRowWithKeyValuePageDef" path="arc.pageDefs.borrowRequestTF_borrowRequestTF_SetCurrentRowWithKeyValuePageDef"/>
+    <page id="arcDocumentViewUsageId" path="arc.pageDefs.arcDocumentViewPageDef"/>
+    <page id="arcDashboardUsageId" path="arc.pageDefs.arcDashboardPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <!--<dc id="BPMProgressOperations" path="arc.BPMProgressOperations"/>-->
+    <BC4JDataControl xmlns="http://xmlns.oracle.com/adfm/datacontrol" Configuration="AppModuleLocal" FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" Package="arc.model" SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true" SupportsSortCollection="true" SupportsTransactions="true" id="AppModuleDataControl" syncMode="Immediate"/>
+  </dataControlUsages>
+</Application>

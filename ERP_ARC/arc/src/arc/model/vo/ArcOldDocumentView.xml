@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject BindingStyle="JDBC"
+    ComponentClass="gen.common.BaseViewObjectImpl" CustomQuery="false"
+    FetchMode="FETCH_AS_NEEDED" FetchSize="25" FromListFlags="1"
+    InheritPersonalization="merge" Name="ArcOldDocumentView"
+    PageIterMode="Full"
+    RowClass="arc.model.vo.ArcOldDocumentViewRowImpl"
+    SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.12.24" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+            <Item Value="2"/>
+            <Item Value="3"/>
+            <Item Value="4"/>
+            <Item Value="5"/>
+            <Item Value="6"/>
+            <Item Value="7"/>
+            <Item Value="8"/>
+            <Item Value="9"/>
+            <Item Value="10"/>
+            <Item Value="11"/>
+        </AttrArray>
+        <TransientExpression Name="expression"><![CDATA[gen.common.GenLib.getLanguageNo()]]></TransientExpression>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </Variable>
+    <ViewAccessor Name="SsoActiveLookupValuesDocumentTypeFk"
+        RangeSize="10" RowLevelBinds="true" ViewObjectName="arc.model.ro.SsoActiveLookupValuesVwView">
+        <ViewCriteriaUsage
+            FullName="arc.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter" Name="SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[3]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="SsoActiveLookupValuesDocumentPriorityFk"
+        RowLevelBinds="true" ViewObjectName="arc.model.ro.SsoActiveLookupValuesVwView">
+        <ViewCriteriaUsage
+            FullName="arc.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter" Name="SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[12]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="SsoActiveLookupValuesDocumentSecurityFk"
+        RowLevelBinds="true" ViewObjectName="arc.model.ro.SsoActiveLookupValuesVwView">
+        <ViewCriteriaUsage
+            FullName="arc.model.ro.SsoActiveLookupValuesVwView.SsoSystemLookupValuesFilter" Name="SsoSystemLookupValuesFilter"/>
+        <ParameterMap>
+            <PIMap Variable="p_system_lookups_fk">
+                <TransientExpression Name="ExpressionScript" trustMode="untrusted"><![CDATA[112]]></TransientExpression>
+            </PIMap>
+        </ParameterMap>
+    </ViewAccessor>
+    <ViewAccessor Name="HcmDepartmentsFrom" RowLevelBinds="true" ViewObjectName="arc.model.ro.HcmDepartmentsRVO"/>
+    <ViewAccessor Name="HcmDepartmentsTO" RangeSize="10"
+        RowLevelBinds="true" ViewObjectName="arc.model.ro.HcmDepartmentsRVO"/>
+    <ViewAccessor Name="HcmEmployeesRVO" RowLevelBinds="true" ViewObjectName="arc.model.ro.HcmEmployeesRVO"/>
+    <ViewAccessor Name="ArcFilesLocationRVO" RowLevelBinds="true" ViewObjectName="arc.model.ro.ArcFilesLocationRVO"/>
+    <ListBinding ComboRowCountHint="10"
+        ListVOName="SsoActiveLookupValuesDocumentTypeFk" MRUCount="0"
+        Name="LOV_DocumentTypeFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="DocumentTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayDocumentTypeFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="SsoSystemLookupValuesLOVSearch"/>
+    </ListBinding>
+    <ListBinding ComboRowCountHint="10"
+        ListVOName="SsoActiveLookupValuesDocumentPriorityFk"
+        MRUCount="0" Name="LOV_DocumentPriorityFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="DocumentPriorityFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayDocumentPriorityFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="SsoSystemLookupValuesLOVSearch"/>
+    </ListBinding>
+    <ListBinding ComboRowCountHint="10"
+        ListVOName="SsoActiveLookupValuesDocumentSecurityFk"
+        MRUCount="0" Name="LOV_DocumentSecurityFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="DocumentSecurityFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayDocumentSecurityFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="SystemLookupValuesPk"/>
+            <Item Value="DisplaySystemLookupsFk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="SsoSystemLookupValuesLOVSearch"/>
+    </ListBinding>
+    <ListBinding ComboRowCountHint="10" ListVOName="HcmDepartmentsFrom"
+        MRUCount="0" Name="LOV_FromDepartmentFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="FromDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayFromDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="HcmDepartmentsRVOLovSearch"/>
+    </ListBinding>
+    <ListBinding ComboRowCountHint="10" ListVOName="HcmDepartmentsTO"
+        MRUCount="0" Name="LOV_ToDepartmentFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="ToDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayToDepartmentFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="DepartmentsPk"/>
+            <Item Value="DisplayDepartmentsPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="HcmDepartmentsRVOLovSearch"/>
+    </ListBinding>
+    <ListBinding ComboRowCountHint="10" ListVOName="HcmEmployeesRVO"
+        MRUCount="0" Name="LOV_EmployeesFk" NullValueFlag="none">
+        <AttrArray Name="AttrNames">
+            <Item Value="EmployeesFk"/>
+        </AttrArray>
+        <AttrArray Name="AttrExpressions"/>
+        <AttrArray Name="DerivedAttrNames">
+            <Item Value="DisplayEmployeesFk"/>
+        </AttrArray>
+        <AttrArray Name="ListAttrNames">
+            <Item Value="EmployeesPk"/>
+            <Item Value="DisplayEmployeesPk"/>
+        </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+            <Item Value="EmployeesPk"/>
+            <Item Value="DisplayEmployeesPk"/>
+        </AttrArray>
+        <DisplayCriteria Hint="showAndExecute" Name="HcmEmployeesLovSearch"/>
+    </ListBinding>
+    <EntityUsage Entity="arc.model.eo.ArcOldDocument" Name="ArcOldDocument"/>
+    <ViewAttribute AliasName="OLD_DOCUMENT_PK"
+        EntityAttrName="OldDocumentPk" EntityUsage="ArcOldDocument"
+        IsNotNull="true" Name="OldDocumentPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.OldDocumentPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DOCUMENT_NUMBER"
+        EntityAttrName="DocumentNumber" EntityUsage="ArcOldDocument"
+        Name="DocumentNumber" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DocumentNumber']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DOCUMENT_TYPE_FK"
+        EntityAttrName="DocumentTypeFk" EntityUsage="ArcOldDocument"
+        LOVName="LOV_DocumentTypeFk" Name="DocumentTypeFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DocumentTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DOCUMENT_PRIORITY_FK"
+        EntityAttrName="DocumentPriorityFk" EntityUsage="ArcOldDocument"
+        LOVName="LOV_DocumentPriorityFk" Name="DocumentPriorityFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DocumentPriorityFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DOCUMENT_SECURITY_FK"
+        EntityAttrName="DocumentSecurityFk" EntityUsage="ArcOldDocument"
+        LOVName="LOV_DocumentSecurityFk" Name="DocumentSecurityFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DocumentSecurityFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FROM_DEPARTMENT_FK"
+        EntityAttrName="FromDepartmentFk" EntityUsage="ArcOldDocument"
+        LOVName="LOV_FromDepartmentFk" Name="FromDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.FromDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="TO_DEPARTMENT_FK"
+        EntityAttrName="ToDepartmentFk" EntityUsage="ArcOldDocument"
+        LOVName="LOV_ToDepartmentFk" Name="ToDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.ToDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <CONTROLTYPE Value="input_text_lov"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DOC_RECEIVE_DATE"
+        EntityAttrName="DocReceiveDate" EntityUsage="ArcOldDocument"
+        Name="DocReceiveDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DocReceiveDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <FMT_FORMAT ResId="#{menu.dateTimeWithSecondsFormat}"/>
+                <FMT_FORMATTER ResId="arc.model.vo.ArcOldDocumentView.DocReceiveDate_FMT_FORMATTER"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="ROOM" EntityAttrName="Room"
+        EntityUsage="ArcOldDocument" Name="Room" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.Room']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CUPBOARD" EntityAttrName="Cupboard"
+        EntityUsage="ArcOldDocument" Name="Cupboard" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.Cupboard']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="SHELVE" EntityAttrName="Shelve"
+        EntityUsage="ArcOldDocument" Name="Shelve" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.Shelve']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="RACK" EntityAttrName="Rack"
+        EntityUsage="ArcOldDocument" Name="Rack" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.Rack']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DOC_EXPIRY_DATE"
+        EntityAttrName="DocExpiryDate" EntityUsage="ArcOldDocument"
+        Name="DocExpiryDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DocExpiryDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <FMT_FORMATTER ResId="arc.model.vo.ArcOldDocumentView.DocReceiveDate_FMT_FORMATTER"/>
+                <FMT_FORMAT ResId="#{menu.dateTimeWithSecondsFormat}"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="KEYWORDS" EntityAttrName="Keywords"
+        EntityUsage="ArcOldDocument" Name="Keywords" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.Keywords']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="ORG_CODE_FK" EntityAttrName="OrgCodeFk"
+        EntityUsage="ArcOldDocument" Name="OrgCodeFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.OrgCodeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="ArcOldDocument" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate" EntityUsage="ArcOldDocument"
+        Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <FMT_FORMATTER ResId="arc.model.vo.ArcOldDocumentView.DocReceiveDate_FMT_FORMATTER"/>
+                <FMT_FORMAT ResId="#{menu.dateTimeWithSecondsFormat}"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="ArcOldDocument" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate" EntityUsage="ArcOldDocument"
+        Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <FMT_FORMATTER ResId="arc.model.vo.ArcOldDocumentView.DocReceiveDate_FMT_FORMATTER"/>
+                <FMT_FORMAT ResId="#{menu.dateTimeWithSecondsFormat}"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk" EntityUsage="ArcOldDocument"
+        Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DISPOSED_BY" EntityAttrName="DisposedBy"
+        EntityUsage="ArcOldDocument" Name="DisposedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisposedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DISPOSAL_DATE"
+        EntityAttrName="DisposalDate" EntityUsage="ArcOldDocument"
+        Name="DisposalDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisposalDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <FMT_FORMAT ResId="#{menu.dateTimeWithSecondsFormat}"/>
+                <FMT_FORMATTER ResId="arc.model.vo.ArcOldDocumentView.DocReceiveDate_FMT_FORMATTER"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="ORIGINAL_DOCUMENT_DISPOSED_FL"
+        EntityAttrName="OriginalDocumentDisposedFl"
+        EntityUsage="ArcOldDocument" Name="OriginalDocumentDisposedFl" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.OriginalDocumentDisposedFl']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDocumentSubject"
+        EntityAttrName="DisplayDocumentSubject"
+        EntityUsage="ArcOldDocument"
+        Expression="GET_DOCUMENT_SUBJECT(OLD_DOCUMENT_PK, ?)"
+        Name="DisplayDocumentSubject" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentSubject']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDocumentDescription"
+        EntityAttrName="DisplayDocumentDescription"
+        EntityUsage="ArcOldDocument"
+        Expression="GET_DOCUMENT_DESCRIPTION(OLD_DOCUMENT_PK, ?)"
+        Name="DisplayDocumentDescription" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentDescription']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayFromDepartmentFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_DEPARTMENT_NAME(FROM_DEPARTMENT_FK, ?)"
+        IsPersistent="false" Name="DisplayFromDepartmentFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayToDepartmentFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_DEPARTMENT_NAME(TO_DEPARTMENT_FK, ?)"
+        IsPersistent="false" Name="DisplayToDepartmentFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.FromDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDocumentTypeFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_LOOKUP_DESC(DOCUMENT_TYPE_FK,  ?)"
+        IsPersistent="false" Name="DisplayDocumentTypeFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentTypeFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDocumentPriorityFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_LOOKUP_DESC(DOCUMENT_PRIORITY_FK, ?)"
+        IsPersistent="false" Name="DisplayDocumentPriorityFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentPriorityFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDocumentSecurityFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_LOOKUP_DESC(DOCUMENT_SECURITY_FK,  ?)"
+        IsPersistent="false" Name="DisplayDocumentSecurityFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentSecurityFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <AUTOSUBMIT Value="true"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayCreatedBy" ColumnType="CHAR"
+        Expression="GET_USER_FULL_NAME(CREATED_BY, ?)"
+        IsPersistent="false" Name="DisplayCreatedBy"
+        PrecisionRule="true" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDisposedBy" ColumnType="VARCHAR2"
+        Expression="GET_USER_FULL_NAME(DISPOSED_BY,  ?)"
+        IsPersistent="false" Name="DisplayDisposedBy" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisplayDisposedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <AUTOSUBMIT Value="true"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDocumentComment"
+        EntityAttrName="DisplayDocumentComment"
+        EntityUsage="ArcOldDocument"
+        Expression="GET_DOCUMENT_COMMENT(OLD_DOCUMENT_PK, ?)"
+        Name="DisplayDocumentComment" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentComment']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DISPOSED_COMMITTE_MEMBERS"
+        EntityAttrName="DisposedCommitteMembers"
+        EntityUsage="ArcOldDocument" Name="DisposedCommitteMembers" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisposedCommitteMembers']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DISPOSED_DECISION_DATE_G"
+        EntityAttrName="DisposedDecisionDateG"
+        EntityUsage="ArcOldDocument" Name="DisposedDecisionDateG" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisposedDecisionDateG']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DISPOSED_DECISION_DATE_H"
+        EntityAttrName="DisposedDecisionDateH"
+        EntityUsage="ArcOldDocument" Name="DisposedDecisionDateH" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisposedDecisionDateH']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DISPOSED_DECISION_NO"
+        EntityAttrName="DisposedDecisionNo" EntityUsage="ArcOldDocument"
+        Name="DisposedDecisionNo" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisposedDecisionNo']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="EMPLOYEES_FK" EntityAttrName="EmployeesFk"
+        EntityUsage="ArcOldDocument" LOVName="LOV_EmployeesFk"
+        Name="EmployeesFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <CONTROLTYPE Value="input_text_lov"/>
+                <LABEL ResId="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <AUTOSUBMIT Value="true"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FILES_LOCATION_FK"
+        EntityAttrName="FilesLocationFk" EntityUsage="ArcOldDocument"
+        Name="FilesLocationFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.FilesLocationFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayEmployeesFk" ColumnType="VARCHAR2"
+        Expression="GET_EMPLOYEES_EMPLOYEE_NAME(EMPLOYEES_FK, ?)"
+        IsPersistent="false" Name="DisplayEmployeesFk" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false" IsUpdateable="false"
+        Name="DisplayOrgCodeFk" PrecisionRule="true" SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDocumentSubjectSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayDocumentSubjectSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="DisplayDocumentCommentSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayDocumentCommentSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="DisplayDocumentDescriptionSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayDocumentDescriptionSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="DisplayFromDepartmentFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayFromDepartmentFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="DisplayToDepartmentFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayToDepartmentFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="DisplayDocumentTypeFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayDocumentTypeFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="DisplayDocumentPriorityFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayDocumentPriorityFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="DisplayDocumentSecurityFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayDocumentSecurityFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="DisplayCreatedBySearch" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayCreatedBySearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="DisplayCreatedBySearch" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayDisposedBySearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="DocumentTypeFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="DocumentPriorityFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="DocumentSecurityFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="FromDepartmentFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="ToDepartmentFkSearch" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false" Name="DisposedFl"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="DisposedCommitteMembersSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisposedCommitteMembersSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplaydisposedCommitteMembers" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisposedCommitteMembers']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <AUTOSUBMIT Value="true"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplaydisposedDecisionNo" PrecisionRule="true"
+        SQLType="NUMERIC" Type="java.math.BigDecimal">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisposedDecisionNo']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <AUTOSUBMIT Value="true"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="VIEW_ATTR" ColumnType="TIMESTAMP"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplaydisposedDecisionDateG" PrecisionRule="true"
+        SQLType="TIMESTAMP" Type="java.sql.Timestamp">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DisposedDecisionDateG']}"/>
+                <DISPLAYWIDTH Value="20"/>
+                <AUTOSUBMIT Value="true"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="EmployeesFkSearch" ColumnType="BIGINT"
+        IsPersistent="false" IsSelected="false" Name="EmployeesFkSearch"
+        PrecisionRule="true" SQLType="NUMERIC" Type="java.math.BigDecimal"/>
+    <ViewAttribute AliasName="DisplayEmployeesFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayEmployeesFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR" Type="java.lang.String"/>
+    <ViewAttribute AliasName="DisplayFilesLocationFk"
+        ColumnType="VARCHAR2"
+        Expression="GET_FILES_LOCATION_FILE_LOCATI(FILES_LOCATION_FK, ?)"
+        IsPersistent="false" Name="DisplayFilesLocationFk"
+        SQLType="VARCHAR" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DOC_YEAR" EntityAttrName="DocYear"
+        EntityUsage="ArcOldDocument" Name="DocYear" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcOldDocument.DocYear']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewCriteria Conjunction="AND" Name="ArcOldDocumentSearch" ViewObjectName="arc.model.vo.ArcOldDocumentView">
+        <Properties Name="_Props">
+            <CustomProperties>
+                <Property Name="autoExecute" Value="false"/>
+                <Property Name="mode" Value="Basic"/>
+                <Property Name="allowConjunctionOverride" Value="false"/>
+                <Property Name="showInList" Value="true"/>
+                <Property Name="displayOperators" Value="InAdvancedMode"/>
+            </CustomProperties>
+        </Properties>
+        <ViewCriteriaRow Name="ArcOldDocumentSearch_row_0" UpperColumns="1">
+            <ViewCriteriaItem Conjunction="AND" Name="OldDocumentPk"
+                Operator="=" Required="Optional" ViewAttribute="OldDocumentPk"/>
+            <ViewCriteriaItem Conjunction="AND" Name="DocumentNumber"
+                Operator="CONTAINS" Required="Optional" ViewAttribute="DocumentNumber"/>
+            <ViewCriteriaItem Conjunction="AND" Name="DocumentTypeFk"
+                Operator="=" Required="Optional" ViewAttribute="DocumentTypeFk"/>
+            <ViewCriteriaItem Conjunction="AND"
+                Name="DocumentPriorityFk" Operator="="
+                Required="Optional" ViewAttribute="DocumentPriorityFk"/>
+            <ViewCriteriaItem Conjunction="AND"
+                Name="DocumentSecurityFk" Operator="="
+                Required="Optional" ViewAttribute="DocumentSecurityFk"/>
+            <ViewCriteriaItem Conjunction="AND" Name="FromDepartmentFk"
+                Operator="=" Required="Optional" ViewAttribute="FromDepartmentFk"/>
+            <ViewCriteriaItem Conjunction="AND" Name="ToDepartmentFk"
+                Operator="=" Required="Optional" ViewAttribute="ToDepartmentFk"/>
+            <ViewCriteriaItem Conjunction="AND" Name="DocReceiveDate"
+                Operator="BETWEEN" Required="Optional" ViewAttribute="DocReceiveDate"/>
+            <ViewCriteriaItem Conjunction="AND" Name="Room"
+                Operator="CONTAINS" Required="Optional" ViewAttribute="Room"/>
+            <ViewCriteriaItem Conjunction="AND" Name="Cupboard"
+                Operator="CONTAINS" Required="Optional" ViewAttribute="Cupboard"/>
+            <ViewCriteriaItem Conjunction="AND" Name="Shelve"
+                Operator="CONTAINS" Required="Optional" ViewAttribute="Shelve"/>
+            <ViewCriteriaItem Conjunction="AND" Name="Rack"
+                Operator="CONTAINS" Required="Optional" ViewAttribute="Rack"/>
+            <ViewCriteriaItem Conjunction="AND" Name="DocExpiryDate"
+                Operator="BETWEEN" Required="Optional" ViewAttribute="DocExpiryDate"/>
+            <ViewCriteriaItem Conjunction="AND" Name="Keywords"
+                Operator="CONTAINS" Required="Optional" ViewAttribute="Keywords"/>
+            <ViewCriteriaItem Conjunction="AND" Name="CreationDate"
+                Operator="BETWEEN" Required="Optional" ViewAttribute="CreationDate"/>
+            <ViewCriteriaItemCompound Name="DisposalDate" ViewAttribute="DisposalDate">
+                <ViewCriteria Conjunction="OR"
+                    Name="ArcOldDocumentSearch_ArcOldDocumentSearch_row_0_DisposalDate_itemHolder" ViewObjectName="arc.model.vo.ArcOldDocumentView">
+                    <ViewCriteriaRow Conjunction="AND" Name="ArcOldDocumentSearch_ArcOldDocumentSearch_row_0_DisposalDate_itemHolder_row_0">
+                        <ViewCriteriaItem Conjunction="AND"
+                            Name="DisposalDate" Operator="BETWEEN"
+                            Required="Optional" ViewAttribute="DisposalDate"/>
+                    </ViewCriteriaRow>
+                    <ViewCriteriaRow Conjunction="AND" Name="ArcOldDocumentSearch_ArcOldDocumentSearch_row_0_DisposalDate_itemHolder_row_1">
+                        <ViewCriteriaItem Conjunction="AND"
+                            Name="ArcOldDocumentSearch_ArcOldDocumentSearch_row_0_DisposalDate_ArcOldDocumentSearch_ArcOldDocumentSearch_row_0_DisposalDate_itemHolder_ArcOldDocumentSearch_ArcOldDocumentSearch_row_0_DisposalDate_itemHolder_row_1_DisposalDate"
+                            Operator="BETWEEN" Required="Optional" ViewAttribute="DisposalDate"/>
+                    </ViewCriteriaRow>
+                </ViewCriteria>
+            </ViewCriteriaItemCompound>
+            <ViewCriteriaItem Conjunction="AND"
+                Name="OriginalDocumentDisposedFl" Operator="="
+                Required="Optional" ViewAttribute="OriginalDocumentDisposedFl"/>
+            <ViewCriteriaItem Conjunction="AND"
+                Name="DisposedCommitteMembers" Operator="CONTAINS"
+                Required="Optional" ViewAttribute="DisposedCommitteMembers"/>
+            <ViewCriteriaItem Conjunction="AND"
+                Name="DisposedDecisionDateG" Operator="BETWEEN"
+                Required="Optional" ViewAttribute="DisposedDecisionDateG"/>
+            <ViewCriteriaItem Conjunction="AND"
+                Name="DisposedDecisionNo" Operator="="
+                Required="Optional" ViewAttribute="DisposedDecisionNo"/>
+            <ViewCriteriaItem Conjunction="AND" Name="EmployeesFk"
+                Operator="=" Required="Optional" ViewAttribute="EmployeesFk"/>
+            <ViewCriteriaItem Conjunction="AND" IsNestedCriteria="true"
+                Name="ArcOldDocumentSearch_ArcOldDocumentSearch_row_0_ArcDocumentAttachmentView"
+                Operator="EXISTS" Required="Optional" ViewAttribute="ArcDocumentAttachmentView">
+                <ViewCriteria Conjunction="AND"
+                    Name="ArcDocumentAttachmentViewNestedCriteria" ViewObjectName="arc.model.vo.ArcDocumentAttachmentView">
+                    <ViewCriteriaRow
+                        Name="ArcDocumentAttachmentViewNestedCriteria_row_0" UpperColumns="1">
+                        <ViewCriteriaItem Conjunction="AND"
+                            Name="DocumentAttachTypeFk" Operator="="
+                            Required="Optional" ViewAttribute="DocumentAttachTypeFk"/>
+                        <ViewCriteriaItem Conjunction="AND"
+                            IsNestedCriteria="true"
+                            Name="ArcDocumentAttachmentViewNestedCriteria_ArcDocumentAttachmentViewNestedCriteria_row_0_ArcDocumentAttachmentTlView"
+                            Operator="EXISTS" Required="Optional" ViewAttribute="ArcDocumentAttachmentTlView">
+                            <ViewCriteria Conjunction="AND"
+                                Name="ArcDocumentAttachmentTlViewNestedCriteria" ViewObjectName="arc.model.vo.ArcDocumentAttachmentTlView">
+                                <ViewCriteriaRow
+                                    Name="ArcDocumentAttachmentTlViewNestedCriteria_row_0" UpperColumns="1">
+                                    <ViewCriteriaItem Conjunction="AND"
+                                    Name="DocumentAttachDescription"
+                                    Operator="CONTAINS"
+                                    Required="Optional" ViewAttribute="DocumentAttachDescription"/>
+                                </ViewCriteriaRow>
+                            </ViewCriteria>
+                        </ViewCriteriaItem>
+                    </ViewCriteriaRow>
+                </ViewCriteria>
+            </ViewCriteriaItem>
+            <ViewCriteriaItem Conjunction="AND" IsNestedCriteria="true"
+                Name="ArcOldDocumentSearch_ArcOldDocumentSearch_row_0_ArcOldDocumentTlView"
+                Operator="EXISTS" Required="Optional" ViewAttribute="ArcOldDocumentTlView">
+                <ViewCriteria Conjunction="AND"
+                    Name="ArcOldDocumentTlViewNestedCriteria" ViewObjectName="arc.model.vo.ArcOldDocumentTlView">
+                    <ViewCriteriaRow
+                        Name="ArcOldDocumentTlViewNestedCriteria_row_0" UpperColumns="1">
+                        <ViewCriteriaItem Conjunction="AND"
+                            Name="DocumentSubject" Operator="CONTAINS"
+                            Required="Optional" ViewAttribute="DocumentSubject"/>
+                        <ViewCriteriaItem Conjunction="AND"
+                            Name="DocumentComment" Operator="CONTAINS"
+                            Required="Optional" ViewAttribute="DocumentComment"/>
+                        <ViewCriteriaItem Conjunction="AND"
+                            Name="DocumentDescription"
+                            Operator="CONTAINS" Required="Optional" ViewAttribute="DocumentDescription"/>
+                    </ViewCriteriaRow>
+                </ViewCriteria>
+            </ViewCriteriaItem>
+            <ViewCriteriaItem Conjunction="AND" IsNestedCriteria="true"
+                Name="SsoUsersRVO" Operator="EXISTS" Required="Optional" ViewAttribute="SsoUsersRVO">
+                <ViewCriteria Conjunction="AND"
+                    Name="SsoUsersRVONestedCriteria" ViewObjectName="arc.model.ro.SsoUsersRVO">
+                    <ViewCriteriaRow
+                        Name="SsoUsersRVONestedCriteria_row_0" UpperColumns="1">
+                        <ViewCriteriaItem Conjunction="AND"
+                            Name="DisplayCreatedBy" Operator="CONTAINS"
+                            Required="Optional" ViewAttribute="DisplayCreatedBy"/>
+                    </ViewCriteriaRow>
+                </ViewCriteria>
+            </ViewCriteriaItem>
+            <ViewCriteriaItem Conjunction="AND" IsNestedCriteria="true"
+                Name="SsoUsersRVO1" Operator="EXISTS"
+                Required="Optional" ViewAttribute="SsoUsersRVO1">
+                <ViewCriteria Conjunction="AND"
+                    Name="SsoUsersRVONestedCriteria" ViewObjectName="arc.model.ro.SsoUsersRVO">
+                    <ViewCriteriaRow
+                        Name="SsoUsersRVONestedCriteria_row_0" UpperColumns="1">
+                        <ViewCriteriaItem Conjunction="AND"
+                            Name="DisplayDisposedBy" Operator="CONTAINS"
+                            Required="Optional" ViewAttribute="DisplayDisposedBy"/>
+                    </ViewCriteriaRow>
+                </ViewCriteria>
+            </ViewCriteriaItem>
+        </ViewCriteriaRow>
+    </ViewCriteria>
+    <ViewCriteria Conjunction="AND" Name="ArcOldDisposalDocumentSearch" ViewObjectName="arc.model.vo.ArcOldDocumentView">
+        <Properties Name="_Props">
+            <CustomProperties>
+                <Property Name="autoExecute" Value="false"/>
+                <Property Name="mode" Value="Basic"/>
+                <Property Name="allowConjunctionOverride" Value="false"/>
+                <Property Name="showInList" Value="true"/>
+                <Property Name="displayOperators" Value="InAdvancedMode"/>
+            </CustomProperties>
+        </Properties>
+        <ViewCriteriaRow Name="ArcOldDocumentViewCriteria_row_0" UpperColumns="1">
+            <ViewCriteriaItem Conjunction="AND" Name="DocExpiryDate"
+                Operator="BETWEEN" Required="Optional" ViewAttribute="DocExpiryDate"/>
+        </ViewCriteriaRow>
+    </ViewCriteria>
+    <ViewCriteria Conjunction="AND"
+        Name="ArcOldDocumentViewFilterByDisposedFl" ViewObjectName="arc.model.vo.ArcOldDocumentView">
+        <Properties Name="_Props">
+            <CustomProperties>
+                <Property Name="autoExecute" Value="false"/>
+                <Property Name="mode" Value="Basic"/>
+                <Property Name="allowConjunctionOverride" Value="true"/>
+                <Property Name="showInList" Value="true"/>
+                <Property Name="displayOperators" Value="InAdvancedMode"/>
+            </CustomProperties>
+        </Properties>
+        <ViewCriteriaRow Name="ArcOldDocumentViewCriteria_row_0" UpperColumns="1">
+            <ViewCriteriaItemCompound Name="OriginalDocumentDisposedFl" ViewAttribute="OriginalDocumentDisposedFl">
+                <ViewCriteria Conjunction="OR"
+                    Name="ArcOldDocumentViewCriteria_ArcOldDocumentViewCriteria_row_0_OriginalDocumentDisposedFl_itemHolder" ViewObjectName="arc.model.vo.ArcOldDocumentView">
+                    <ViewCriteriaRow Conjunction="AND" Name="ArcOldDocumentViewCriteria_ArcOldDocumentViewCriteria_row_0_OriginalDocumentDisposedFl_itemHolder_row_0">
+                        <ViewCriteriaItem Conjunction="AND"
+                            Name="OriginalDocumentDisposedFl"
+                            Operator="ISBLANK" Required="Optional" ViewAttribute="OriginalDocumentDisposedFl"/>
+                    </ViewCriteriaRow>
+                    <ViewCriteriaRow Conjunction="OR" Name="ArcOldDocumentViewCriteria_ArcOldDocumentViewCriteria_row_0_OriginalDocumentDisposedFl_itemHolder_row_1">
+                        <ViewCriteriaItem Conjunction="OR"
+                            Name="ArcOldDocumentViewCriteria_ArcOldDocumentViewCriteria_row_0_OriginalDocumentDisposedFl_ArcOldDocumentViewCriteria_ArcOldDocumentViewCriteria_row_0_OriginalDocumentDisposedFl_itemHolder_ArcOldDocumentViewCriteria_ArcOldDocumentViewCriteria_row_0_OriginalDocumentDisposedFl_itemHolder_row_1_OriginalDocumentDisposedFl"
+                            Operator="=" Required="Optional" Value="0" ViewAttribute="OriginalDocumentDisposedFl"/>
+                    </ViewCriteriaRow>
+                </ViewCriteria>
+            </ViewCriteriaItemCompound>
+        </ViewCriteriaRow>
+    </ViewCriteria>
+    <ViewLinkAccessor IsUpdateable="false"
+        Name="ArcDocumentAttachmentView" Type="oracle.jbo.RowIterator" ViewLink="arc.model.vl.ArcDocumentAttachmentFkLink"/>
+    <ViewLinkAccessor IsUpdateable="false" Name="ArcOldDocumentTlView"
+        Type="oracle.jbo.RowIterator" ViewLink="arc.model.vl.ArcDocumentTlFkLink"/>
+    <ViewLinkAccessor IsUpdateable="false" Name="SsoUsersRVO"
+        Type="oracle.jbo.RowIterator" ViewLink="arc.model.vl.ArcOldDocumentSsoUsersLink"/>
+    <ViewLinkAccessor IsUpdateable="false" Name="SsoUsersRVO1"
+        Type="oracle.jbo.RowIterator" ViewLink="arc.model.vl.ArcOldDocumentSsoUsers2Link"/>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="arc.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

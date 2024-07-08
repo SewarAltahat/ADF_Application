@@ -1,0 +1,1061 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:erplib="/erplib">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <f:view>
+    <af:document id="Document1" title="#{menu.resourceLabelMap['menu.arcDocumentView']}" uncommittedDataWarning="on"
+                 binding="#{arcDocumentView.arcDocumentsView}">
+      <af:messages id="m1"/>
+      <af:form id="form1">
+        <af:pageTemplate id="page1" viewId="/templateDef.jspx">
+          <f:attribute value="#{menu.resourceLabelMap['menu.arcDocumentView']}" name="pageTitle"/>
+          <f:facet name="main">
+            <af:panelGroupLayout id="panelGroupLayout1" layout="scroll">
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.Department']}">
+                <af:panelStretchLayout id="psl0" styleClass="AFStretchWidth" dimensionsFrom="children">
+                  <f:facet name="center">
+                    <af:panelCollection id="pc0" styleClass="AFStretchWidth"
+                                        featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                      <f:facet name="secondaryToolbar">
+                        <af:toolbar id="tb0">
+                          <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print0"
+                                            styleClass="printButton" immediate="true" disabled="#{!menu.selectAllowed}"
+                                            partialSubmit="true" icon="#{menu.printIcon}"
+                                            visible="#{menu.printVisible}">
+                            <af:showPrintablePageBehavior/>
+                          </af:commandButton>
+                          <af:spacer width="5"/>
+                          
+                             <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel0"
+                                              immediate="true" partialSubmit="true" rendered="true"
+                                              text="#{menu.resourceLabelMap['label.excel']}"
+                                              styleClass="excelButton" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="HcmDepartmentsVwDocumentView" to="#{sessionScope.tableId}"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                         
+                          
+                          <af:spacer width="5"/>
+                        </af:toolbar>
+                      </f:facet>
+                      <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                columnStretching="column:DisplayDepartmentsPk" displayRow="selected"
+                                editingMode="editAll"
+                                emptyText="#{bindings.HcmDepartmentsVwDocumentView.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                fetchSize="#{bindings.HcmDepartmentsVwDocumentView.rangeSize}"
+                                filterModel="#{bindings.HcmDepartmentsVwDocumentViewQuery.queryDescriptor}"
+                                filterVisible="false" id="HcmDepartmentsVwDocumentView"
+                                queryListener="#{bindings.HcmDepartmentsVwDocumentViewQuery.processQuery}"
+                                rowBandingInterval="1" rowSelection="single"
+                                rows="#{bindings.HcmDepartmentsVwDocumentView.rangeSize}" scrollPolicy="page"
+                                selectedRowKeys="#{bindings.HcmDepartmentsVwDocumentView.collectionModel.selectedRow}"
+                                selectionListener="#{arcDocumentView.refreshView}"
+                                styleClass="AFStretchWidth"
+                                value="#{bindings.HcmDepartmentsVwDocumentView.collectionModel}" var="row"
+                                varStatus="vs" verticalGridVisible="false"
+                               >
+                        <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                   headerText="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentsPk']}"
+                                   id="DepartmentsPk" sortProperty="DepartmentsPk" sortable="true" width="200">
+                          <af:inputText columns="#{bindings.HcmDepartmentsVwDocumentView.hints.DepartmentsPk.displayWidth}"
+                                        id="it1" label="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentsPk']}"
+                                        maximumLength="#{bindings.HcmDepartmentsVwDocumentView.hints.DepartmentsPk.precision}"
+                                        readOnly="true"
+                                        required="#{bindings.HcmDepartmentsVwDocumentView.hints.DepartmentsPk.mandatory}"
+                                        value="#{row.bindings.DepartmentsPk.inputValue}">
+                            <f:validator binding="#{row.bindings.DepartmentsPk.validator}"/>
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{bindings.HcmDepartmentsVwDocumentView.hints.DepartmentsPk.format}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                   headerText="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentName']}"
+                                   id="DisplayDepartmentsPk" sortProperty="DisplayDepartmentsPkSearch" sortable="true"
+                                   width="200">
+                          <af:inputText columns="#{bindings.HcmDepartmentsVwDocumentView.hints.DisplayDepartmentsPk.displayWidth}"
+                                        id="it2" label="#{menu.resourceLabelMap['HcmDepartmentsVwView.DepartmentName']}"
+                                        maximumLength="#{bindings.HcmDepartmentsVwDocumentView.hints.DisplayDepartmentsPk.precision}"
+                                        readOnly="true"
+                                        required="#{bindings.HcmDepartmentsVwDocumentView.hints.DisplayDepartmentsPk.mandatory}"
+                                        value="#{row.bindings.DisplayDepartmentsPk.inputValue}">
+                            <f:validator binding="#{row.bindings.DisplayDepartmentsPk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </af:panelBox>
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['menu.fileLocationsdetail']}">
+                <af:panelStretchLayout id="psl3" styleClass="AFStretchWidth" dimensionsFrom="children">
+                  <f:facet name="center">
+                    <af:panelCollection id="pc3" styleClass="AFStretchWidth"
+                                        featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                      <f:facet name="secondaryToolbar">
+                        <af:toolbar id="t1">
+                          <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="cb2"
+                                            styleClass="printButton" immediate="true" disabled="#{!menu.selectAllowed}"
+                                            partialSubmit="true" icon="#{menu.printIcon}"
+                                            visible="#{menu.printVisible}">
+                            <af:showPrintablePageBehavior/>
+                          </af:commandButton>
+                          <af:spacer width="5"/>
+                          
+                          <af:commandButton icon="#{menu.translationIcon}" id="translation1" immediate="true"
+                                            partialSubmit="true"
+                                            text="#{menu.resourceLabelMap['label.translation']}"
+                                            styleClass="printButton" partialTriggers="t2">
+                            <af:showPopupBehavior popupId="::ArcFilesLocationTlPopup" triggerType="action"/>
+                          </af:commandButton>
+                        </af:toolbar>
+                      </f:facet>
+                      <af:tree value="#{bindings.ArcFilesLocationDepartmentMasterRVO.treeModel}" var="node"
+                               partialTriggers=":::pc0:HcmDepartmentsVwDocumentView"
+                               selectionListener="#{arcDocumentView.selectFileLocation}" rowSelection="single" id="t2">
+                        <f:facet name="nodeStamp">
+                          <af:outputText value="#{node}" id="ot1"/>
+                        </f:facet>
+                      </af:tree>
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </af:panelBox>
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['ArcDocumentAttachment.sdi_ArcOldDocument29']}">
+                <af:panelStretchLayout id="psl2" styleClass="AFStretchWidth" dimensionsFrom="children"
+                                       partialTriggers="pc0:HcmDepartmentsVwDocumentView pc3:t2">
+                  <f:facet name="center">
+                    <af:panelCollection id="pc2" styleClass="AFStretchWidth"
+                                        featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                      <f:facet name="secondaryToolbar">
+                        <af:toolbar id="t3">
+                          <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="cb3"
+                                            styleClass="printButton" immediate="true" disabled="#{!menu.selectAllowed}"
+                                            partialSubmit="true" icon="#{menu.printIcon}"
+                                            visible="#{menu.printVisible}">
+                            <af:showPrintablePageBehavior/>
+                          </af:commandButton>
+                          <af:spacer width="5"/>
+                    
+                          
+                                  <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="cb1"
+                                              immediate="true" partialSubmit="true" rendered="true"
+                                              text="#{menu.resourceLabelMap['label.excel']}"
+                                              styleClass="excelButton" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="ARC_OLD_DOCUMENT" to="#{sessionScope.tableId}"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                          
+                          
+                          <af:spacer width="5"/>
+                          <af:commandButton icon="#{menu.translationIcon}" id="translation5" immediate="true"
+                                            partialSubmit="true"
+                                            text="#{menu.resourceLabelMap['label.translation']}"
+                                            styleClass="printButton">
+                            <af:showPopupBehavior popupId="::ArcOldDocumentPopup" triggerType="action"/>
+                          </af:commandButton>
+                        </af:toolbar>
+                      </f:facet>
+                      <af:table value="#{bindings.ArcOldDocumentView1.collectionModel}" id="ARC_OLD_DOCUMENT"
+                                styleClass="AFStretchWidth t70" var="row" varStatus="vs"
+                                rows="#{bindings.ArcOldDocumentView1.rangeSize}"
+                                selectionListener="#{bindings.ArcOldDocumentView1.collectionModel.makeCurrent}"
+                                selectedRowKeys="#{bindings.ArcOldDocumentView1.collectionModel.selectedRow}"
+                                filterModel="#{bindings.ArcOldDocumentView3CriteriaQuery.queryDescriptor}"
+                                queryListener="#{bindings.ArcOldDocumentView3CriteriaQuery.processQuery}"
+                                columnSelection="multiple" columnStretching="last" verticalGridVisible="false"
+                                emptyText="#{bindings.ArcOldDocumentView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                rowSelection="single" fetchSize="#{bindings.ArcOldDocumentView1.rangeSize}"
+                                displayRow="selected" editingMode="editAll" filterVisible="false" autoHeightRows="5"
+                                blockRowNavigationOnError="always" scrollPolicy="page"
+                                partialTriggers=":::pc0:HcmDepartmentsVwDocumentView :::pc3:t2">
+                        <af:column id="OldDocumentPkC1" sortProperty="OldDocumentPk"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.OldDocumentPk']}" sortable="true"
+                                   filterable="true" filterFeatures="caseInsensitive" align="center" width="50">
+                          <af:inputText value="#{row.bindings.OldDocumentPk.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.OldDocumentPk']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.OldDocumentPk.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.OldDocumentPk.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.OldDocumentPk.precision}"
+                                        id="arcOldDocumentOlddocumentpk" readOnly="true">
+                            <af:convertNumber groupingUsed="false" pattern="#{row.bindings.OldDocumentPk.format}"/>
+                            <f:validator binding="#{row.bindings.OldDocumentPk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DocumentNumberC2" sortProperty="DocumentNumber" align="center" width="50"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DocumentNumber']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive">
+                          <af:inputText value="#{row.bindings.DocumentNumber.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DocumentNumber']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DocumentNumber.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DocumentNumber.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DocumentNumber.precision}"
+                                        id="arcOldDocumentDocumentnumber" readOnly="true">
+                            <f:validator binding="#{row.bindings.DocumentNumber.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DisplayDocumentSubjectC34" sortProperty="DisplayDocumentSubjectSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentSubject']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="100">
+                          <af:inputText value="#{row.bindings.DisplayDocumentSubject.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentSubject']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentSubject.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentSubject.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentSubject.precision}"
+                                        id="arcOldDocumentDisplaydocumentsubject" autoSubmit="true" readOnly="true"
+                                        partialTriggers="arcOldDocumentTodepartmentfk">
+                            <f:validator binding="#{row.bindings.DisplayDocumentSubject.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DisplayDocumentDescriptionC35" sortProperty="DisplayDocumentDescriptionSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentDescription']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="100">
+                          <af:inputText value="#{row.bindings.DisplayDocumentDescription.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentDescription']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentDescription.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentDescription.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentDescription.precision}"
+                                        id="arcOldDocumentDisplaydocumentdescription" autoSubmit="true"
+                                        partialTriggers="arcOldDocumentTodepartmentfk" readOnly="true">
+                            <f:validator binding="#{row.bindings.DisplayDocumentDescription.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DisplayDocumentCommentC36" sortProperty="DisplayDocumentCommentSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentComment']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="100">
+                          <af:inputText value="#{row.bindings.DisplayDocumentComment.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentComment']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentComment.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentComment.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentComment.precision}"
+                                        id="arcOldDocumentDisplaydocumentcomment" autoSubmit="true" readOnly="true"
+                                        partialTriggers="arcOldDocumentTodepartmentfk">
+                            <f:validator binding="#{row.bindings.DisplayDocumentComment.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DocumentTypeFkC4" sortProperty="DocumentTypeFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DocumentTypeFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" align="center"
+                                   width="150" rendered="false">
+                          <af:panelGroupLayout id="pgl3DocumentTypeFk" layout="horizontal">
+                            <af:inputListOfValues value="#{row.bindings.DocumentTypeFk.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcOldDocument.DocumentTypeFk']}"
+                                                  required="#{bindings.ArcOldDocumentView1.hints.DocumentTypeFk.mandatory}"
+                                                  columns="#{bindings.ArcOldDocumentView1.hints.DocumentTypeFk.displayWidth}"
+                                                  id="arcOldDocumentDocumenttypefk"
+                                                  model="#{row.bindings.DocumentTypeFk.listOfValuesModel}"
+                                                  autoSubmit="true" simple="true" readOnly="true"
+                                                  popupTitle="#{bindings.ArcOldDocumentView1.hints.DocumentTypeFk.label}"
+                                                  searchDesc="#{menu.resourceLabelMap['ArcOldDocument.DocumentTypeFk']}">
+                              <af:convertNumber groupingUsed="false" pattern="#{row.bindings.DocumentTypeFk.format}"/>
+                              <f:validator binding="#{row.bindings.DocumentTypeFk.validator}"/>
+                            </af:inputListOfValues>
+                          </af:panelGroupLayout>
+                        </af:column>
+                        <af:column id="DisplayDocumentTypeFkC5" sortProperty="DisplayDocumentTypeFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentTypeFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="100">
+                          <af:inputText value="#{row.bindings.DisplayDocumentTypeFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentTypeFk']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentTypeFk.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentTypeFk.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentTypeFk.precision}"
+                                        id="arcOldDocumentDisplaydocumenttypefk" autoSubmit="true" readOnly="true"
+                                        partialTriggers="arcOldDocumentDocumenttypefk">
+                            <f:validator binding="#{row.bindings.DisplayDocumentTypeFk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DocumentPriorityFkC7" sortProperty="DocumentPriorityFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DocumentPriorityFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" align="center" rendered="false"
+                                   width="150">
+                          <af:panelGroupLayout id="pgl6DocumentPriorityFk" layout="horizontal">
+                            <af:inputListOfValues value="#{row.bindings.DocumentPriorityFk.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcOldDocument.DocumentPriorityFk']}"
+                                                  required="#{bindings.ArcOldDocumentView1.hints.DocumentPriorityFk.mandatory}"
+                                                  columns="#{bindings.ArcOldDocumentView1.hints.DocumentPriorityFk.displayWidth}"
+                                                  id="arcOldDocumentDocumentpriorityfk"
+                                                  model="#{row.bindings.DocumentPriorityFk.listOfValuesModel}"
+                                                  partialTriggers="arcOldDocumentDocumenttypefk" autoSubmit="true"
+                                                  simple="true" readOnly="true"
+                                                  popupTitle="#{bindings.ArcOldDocumentView1.hints.DocumentPriorityFk.label}"
+                                                  searchDesc="#{menu.resourceLabelMap['ArcOldDocument.DocumentPriorityFk']}">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{row.bindings.DocumentPriorityFk.format}"/>
+                              <f:validator binding="#{row.bindings.DocumentPriorityFk.validator}"/>
+                            </af:inputListOfValues>
+                          </af:panelGroupLayout>
+                        </af:column>
+                        <af:column id="DisplayDocumentPriorityFkC8" sortProperty="DisplayDocumentPriorityFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentPriorityFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="100">
+                          <af:inputText value="#{row.bindings.DisplayDocumentPriorityFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentPriorityFk']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentPriorityFk.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentPriorityFk.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentPriorityFk.precision}"
+                                        id="arcOldDocumentDisplaydocumentpriorityfk" autoSubmit="true" readOnly="true"
+                                        partialTriggers="arcOldDocumentDocumentpriorityfk">
+                            <f:validator binding="#{row.bindings.DisplayDocumentPriorityFk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DocumentSecurityFkC10" sortProperty="DocumentSecurityFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DocumentSecurityFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="150"
+                                   align="center" rendered="false">
+                          <af:panelGroupLayout id="pgl9DocumentSecurityFk" layout="horizontal">
+                            <af:inputListOfValues value="#{row.bindings.DocumentSecurityFk.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcOldDocument.DocumentSecurityFk']}"
+                                                  required="#{bindings.ArcOldDocumentView1.hints.DocumentSecurityFk.mandatory}"
+                                                  columns="#{bindings.ArcOldDocumentView1.hints.DocumentSecurityFk.displayWidth}"
+                                                  id="arcOldDocumentDocumentsecurityfk"
+                                                  model="#{row.bindings.DocumentSecurityFk.listOfValuesModel}"
+                                                  partialTriggers="arcOldDocumentDocumentpriorityfk" autoSubmit="true"
+                                                  simple="true" readOnly="true"
+                                                  popupTitle="#{bindings.ArcOldDocumentView1.hints.DocumentSecurityFk.label}"
+                                                  searchDesc="#{menu.resourceLabelMap['ArcOldDocument.DocumentSecurityFk']}">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{row.bindings.DocumentSecurityFk.format}"/>
+                              <f:validator binding="#{row.bindings.DocumentSecurityFk.validator}"/>
+                            </af:inputListOfValues>
+                          </af:panelGroupLayout>
+                        </af:column>
+                        <af:column id="DisplayDocumentSecurityFkC11" sortProperty="DisplayDocumentSecurityFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentSecurityFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="100">
+                          <af:inputText value="#{row.bindings.DisplayDocumentSecurityFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisplayDocumentSecurityFk']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentSecurityFk.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentSecurityFk.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisplayDocumentSecurityFk.precision}"
+                                        id="arcOldDocumentDisplaydocumentsecurityfk" autoSubmit="true" readOnly="true"
+                                        partialTriggers="arcOldDocumentDocumentsecurityfk">
+                            <f:validator binding="#{row.bindings.DisplayDocumentSecurityFk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="FromDepartmentFkC13" sortProperty="FromDepartmentFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.FromDepartmentFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="150"
+                                   align="center" rendered="false">
+                          <af:panelGroupLayout id="pgl12FromDepartmentFk" layout="horizontal">
+                            <af:inputListOfValues value="#{row.bindings.FromDepartmentFk.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcOldDocument.FromDepartmentFk']}"
+                                                  required="#{bindings.ArcOldDocumentView1.hints.FromDepartmentFk.mandatory}"
+                                                  columns="#{bindings.ArcOldDocumentView1.hints.FromDepartmentFk.displayWidth}"
+                                                  id="arcOldDocumentFromdepartmentfk"
+                                                  model="#{row.bindings.FromDepartmentFk.listOfValuesModel}"
+                                                  partialTriggers="arcOldDocumentDocumentsecurityfk" autoSubmit="true"
+                                                  simple="true" readOnly="true"
+                                                  popupTitle="#{bindings.ArcOldDocumentView1.hints.FromDepartmentFk.label}"
+                                                  searchDesc="#{menu.resourceLabelMap['ArcOldDocument.FromDepartmentFk']}">
+                              <af:convertNumber groupingUsed="false" pattern="#{row.bindings.FromDepartmentFk.format}"/>
+                              <f:validator binding="#{row.bindings.FromDepartmentFk.validator}"/>
+                            </af:inputListOfValues>
+                          </af:panelGroupLayout>
+                        </af:column>
+                        <af:column id="DisplayFromDepartmentFkC14" sortProperty="DisplayFromDepartmentFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisplayFromDepartmentFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="100">
+                          <af:inputText value="#{row.bindings.DisplayFromDepartmentFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisplayFromDepartmentFk']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisplayFromDepartmentFk.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisplayFromDepartmentFk.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisplayFromDepartmentFk.precision}"
+                                        id="arcOldDocumentDisplayfromdepartmentfk" autoSubmit="true" readOnly="true"
+                                        partialTriggers="arcOldDocumentFromdepartmentfk">
+                            <f:validator binding="#{row.bindings.DisplayFromDepartmentFk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="ToDepartmentFkC16" sortProperty="ToDepartmentFkSearch" rendered="false"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.ToDepartmentFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="200"
+                                   align="center">
+                          <af:panelGroupLayout id="pgl15ToDepartmentFk" layout="horizontal">
+                            <af:inputListOfValues value="#{row.bindings.ToDepartmentFk.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcOldDocument.ToDepartmentFk']}"
+                                                  required="#{bindings.ArcOldDocumentView1.hints.ToDepartmentFk.mandatory}"
+                                                  columns="#{bindings.ArcOldDocumentView1.hints.ToDepartmentFk.displayWidth}"
+                                                  id="arcOldDocumentTodepartmentfk"
+                                                  model="#{row.bindings.ToDepartmentFk.listOfValuesModel}"
+                                                  partialTriggers="arcOldDocumentFromdepartmentfk" autoSubmit="true"
+                                                  simple="true" readOnly="true"
+                                                  popupTitle="#{bindings.ArcOldDocumentView1.hints.ToDepartmentFk.label}"
+                                                  searchDesc="#{menu.resourceLabelMap['ArcOldDocument.ToDepartmentFk']}">
+                              <af:convertNumber groupingUsed="false" pattern="#{row.bindings.ToDepartmentFk.format}"/>
+                              <f:validator binding="#{row.bindings.ToDepartmentFk.validator}"/>
+                            </af:inputListOfValues>
+                          </af:panelGroupLayout>
+                        </af:column>
+                        <af:column id="DisplayToDepartmentFkC17" sortProperty="DisplayToDepartmentFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisplayToDepartmentFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="100">
+                          <af:inputText value="#{row.bindings.DisplayToDepartmentFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisplayToDepartmentFk']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisplayToDepartmentFk.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisplayToDepartmentFk.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisplayToDepartmentFk.precision}"
+                                        id="arcOldDocumentDisplaytodepartmentfk" autoSubmit="true" readOnly="true"
+                                        partialTriggers="arcOldDocumentTodepartmentfk">
+                            <f:validator binding="#{row.bindings.DisplayToDepartmentFk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DocReceiveDateC18" sortProperty="DocReceiveDate" align="center" width="130"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DocReceiveDate']}"
+                                   sortable="true" filterable="false" filterFeatures="caseInsensitive">
+                          <af:inputDate value="#{row.bindings.DocReceiveDate.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DocReceiveDate']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DocReceiveDate.mandatory}"
+                                        shortDesc="#{menu.resourceLabelMap['ArcOldDocument.DocReceiveDate']}"
+                                        id="arcOldDocumentDocreceivedate" readOnly="true"
+                                        partialTriggers="arcOldDocumentTodepartmentfk">
+                            <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+                            <f:validator binding="#{row.bindings.DocReceiveDate.validator}"/>
+                          </af:inputDate>
+                        </af:column>
+                        <af:column id="RoomC19" sortProperty="Room"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.Room']}" sortable="true"
+                                   filterable="true" filterFeatures="caseInsensitive" width="50">
+                          <af:inputText value="#{row.bindings.Room.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.Room']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.Room.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.Room.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.Room.precision}"
+                                        id="arcOldDocumentRoom" partialTriggers="arcOldDocumentTodepartmentfk"
+                                        readOnly="true">
+                            <f:validator binding="#{row.bindings.Room.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="CupboardC20" sortProperty="Cupboard"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.Cupboard']}" sortable="true"
+                                   filterable="true" filterFeatures="caseInsensitive" width="50">
+                          <af:inputText value="#{row.bindings.Cupboard.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.Cupboard']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.Cupboard.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.Cupboard.displayWidth}"
+                                        readOnly="true"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.Cupboard.precision}"
+                                        id="arcOldDocumentCupboard" partialTriggers="arcOldDocumentTodepartmentfk">
+                            <f:validator binding="#{row.bindings.Cupboard.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="ShelveC21" sortProperty="Shelve"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.Shelve']}" sortable="true"
+                                   filterable="true" filterFeatures="caseInsensitive" width="50">
+                          <af:inputText value="#{row.bindings.Shelve.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.Shelve']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.Shelve.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.Shelve.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.Shelve.precision}"
+                                        readOnly="true" id="arcOldDocumentShelve"
+                                        partialTriggers="arcOldDocumentTodepartmentfk">
+                            <f:validator binding="#{row.bindings.Shelve.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="RackC22" sortProperty="Rack"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.Rack']}" sortable="true"
+                                   filterable="true" filterFeatures="caseInsensitive" width="50">
+                          <af:inputText value="#{row.bindings.Rack.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.Rack']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.Rack.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.Rack.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.Rack.precision}"
+                                        readOnly="true" id="arcOldDocumentRack"
+                                        partialTriggers="arcOldDocumentTodepartmentfk">
+                            <f:validator binding="#{row.bindings.Rack.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DocExpiryDateC23" sortProperty="DocExpiryDate" align="center" width="130"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DocExpiryDate']}" sortable="true"
+                                   filterable="false" filterFeatures="caseInsensitive">
+                          <af:inputDate value="#{row.bindings.DocExpiryDate.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DocExpiryDate']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DocExpiryDate.mandatory}"
+                                        shortDesc="#{menu.resourceLabelMap['ArcOldDocument.DocExpiryDate']}"
+                                        id="arcOldDocumentDocexpirydate" partialTriggers="arcOldDocumentTodepartmentfk"
+                                        readOnly="true">
+                            <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+                            <f:validator binding="#{row.bindings.DocExpiryDate.validator}"/>
+                          </af:inputDate>
+                        </af:column>
+                        <af:column id="KeywordsC24" sortProperty="Keywords"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.Keywords']}" sortable="true"
+                                   filterable="true" filterFeatures="caseInsensitive" width="100">
+                          <af:inputText value="#{row.bindings.Keywords.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.Keywords']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.Keywords.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.Keywords.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.Keywords.precision}"
+                                        id="arcOldDocumentKeywords" partialTriggers="arcOldDocumentTodepartmentfk"
+                                        readOnly="true">
+                            <f:validator binding="#{row.bindings.Keywords.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DisposedFlC50" align="center"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.OriginalDocumentDisposedFl']}"
+                                   width="50">
+                          <af:commandImageLink actionListener="#{arcDocumentView.untick}" disabled="true"
+                                               icon="/images/tick.png" id="check" partialSubmit="true"
+                                               partialTriggers="check uncheck"
+                                               visible="#{row.bindings.OriginalDocumentDisposedFl.inputValue == '1'}">
+                            <f:attribute name="iteratorName" value="ArcOldDocumentView1Iterator"/>
+                            <f:attribute name="attributeName" value="OriginalDocumentDisposedFl"/>
+                          </af:commandImageLink>
+                          <af:commandImageLink actionListener="#{arcDocumentView.tick}" disabled="true"
+                                               icon="/images/untick.png" id="uncheck" partialSubmit="true"
+                                               partialTriggers="check uncheck"
+                                               visible="#{row.bindings.OriginalDocumentDisposedFl.inputValue == null or row.bindings.OriginalDocumentDisposedFl.inputValue == '0'}">
+                            <f:attribute name="iteratorName" value="ArcOldDocumentView1Iterator"/>
+                            <f:attribute name="attributeName" value="OriginalDocumentDisposedFl"/>
+                          </af:commandImageLink>
+                        </af:column>
+                        <af:column id="DisposedByC31" sortProperty="DisposedBy"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisposedBy']}" sortable="true"
+                                   filterable="true" filterFeatures="caseInsensitive" width="100" align="center">
+                          <af:inputText value="#{row.bindings.DisposedBy.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisposedBy']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisposedBy.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisposedBy.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisposedBy.precision}"
+                                        readOnly="true" id="arcOldDocumentDisposedby"
+                                        partialTriggers="arcOldDocumentTodepartmentfk">
+                            <af:convertNumber groupingUsed="false" pattern="#{row.bindings.DisposedBy.format}"/>
+                            <f:validator binding="#{row.bindings.DisposedBy.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DisposalDateC32" sortProperty="DisposalDate" align="center" width="130"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisposalDate']}" sortable="true"
+                                   filterable="false" filterFeatures="caseInsensitive">
+                          <af:inputDate value="#{row.bindings.DisposalDate.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisposalDate']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisposalDate.mandatory}"
+                                        shortDesc="#{menu.resourceLabelMap['ArcOldDocument.DisposalDate']}"
+                                        readOnly="true" id="arcOldDocumentDisposaldate"
+                                        partialTriggers="arcOldDocumentTodepartmentfk">
+                            <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+                            <f:validator binding="#{row.bindings.DisposalDate.validator}"/>
+                          </af:inputDate>
+                        </af:column>
+                        <af:column id="DisposedCommitteMembersC37" sortProperty="DisposedCommitteMembers"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisposedCommitteMembers']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="100">
+                          <af:inputText value="#{row.bindings.DisposedCommitteMembers.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisposedCommitteMembers']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisposedCommitteMembers.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisposedCommitteMembers.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisposedCommitteMembers.precision}"
+                                        id="arcOldDocumentDisposedcommittemembers" readOnly="true"
+                                        partialTriggers="arcOldDocumentTodepartmentfk">
+                            <f:validator binding="#{row.bindings.DisposedCommitteMembers.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DisposedDecisionDateGC38" sortProperty="DisposedDecisionDateG" align="center"
+                                   width="130"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisposedDecisionDateG']}"
+                                   sortable="true" filterable="false" filterFeatures="caseInsensitive">
+                          <af:inputDate value="#{row.bindings.DisposedDecisionDateG.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisposedDecisionDateG']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisposedDecisionDateG.mandatory}"
+                                        shortDesc="#{menu.resourceLabelMap['ArcOldDocument.DisposedDecisionDateG']}"
+                                        id="arcOldDocumentDisposeddecisiondateg" readOnly="true"
+                                        partialTriggers="arcOldDocumentTodepartmentfk">
+                            <af:convertDateTime pattern="#{menu.dateTimeWithSecondsFormat}"/>
+                            <f:validator binding="#{row.bindings.DisposedDecisionDateG.validator}"/>
+                          </af:inputDate>
+                        </af:column>
+                        <af:column id="DisposedDecisionNoC40" sortProperty="DisposedDecisionNo"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.DisposedDecisionNo']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="50"
+                                   align="center">
+                          <af:inputText value="#{row.bindings.DisposedDecisionNo.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcOldDocument.DisposedDecisionNo']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisposedDecisionNo.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisposedDecisionNo.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisposedDecisionNo.precision}"
+                                        id="arcOldDocumentDisposeddecisionno" readOnly="true"
+                                        partialTriggers="arcOldDocumentTodepartmentfk">
+                            <af:convertNumber groupingUsed="false" pattern="#{row.bindings.DisposedDecisionNo.format}"/>
+                            <f:validator binding="#{row.bindings.DisposedDecisionNo.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="EmployeesFkC42" sortProperty="EmployeesFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcOldDocument.EmployeesFk']}" sortable="true"
+                                   filterable="true" filterFeatures="caseInsensitive" width="150" align="center" rendered="false">
+                          <af:panelGroupLayout id="pgl41EmployeesFk" layout="horizontal">
+                            <af:inputListOfValues value="#{row.bindings.EmployeesFk.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcOldDocument.EmployeesFk']}"
+                                                  required="#{bindings.ArcOldDocumentView1.hints.EmployeesFk.mandatory}"
+                                                  columns="#{bindings.ArcOldDocumentView1.hints.EmployeesFk.displayWidth}"
+                                                  id="arcOldDocumentEmployeesfk"
+                                                  model="#{row.bindings.EmployeesFk.listOfValuesModel}"
+                                                  partialTriggers="arcOldDocumentTodepartmentfk" autoSubmit="true"
+                                                  simple="true" readOnly="true"
+                                                  popupTitle="#{bindings.ArcOldDocumentView1.hints.EmployeesFk.label}"
+                                                  searchDesc="#{menu.resourceLabelMap['ArcOldDocument.EmployeesFk']}">
+                              <af:convertNumber groupingUsed="false" pattern="#{row.bindings.EmployeesFk.format}"/>
+                              <f:validator binding="#{row.bindings.EmployeesFk.validator}"/>
+                            </af:inputListOfValues>
+                          </af:panelGroupLayout>
+                        </af:column>
+                        <af:column id="DisplayEmployeesFkC43" sortProperty="DisplayEmployeesFkSearch"
+                                   headerText="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesName']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="100">
+                          <af:inputText value="#{row.bindings.DisplayEmployeesFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['HcmEmployeesRVO.EmployeesName']}"
+                                        required="#{bindings.ArcOldDocumentView1.hints.DisplayEmployeesFk.mandatory}"
+                                        columns="#{bindings.ArcOldDocumentView1.hints.DisplayEmployeesFk.displayWidth}"
+                                        maximumLength="#{bindings.ArcOldDocumentView1.hints.DisplayEmployeesFk.precision}"
+                                        id="arcOldDocumentDisplayemployeesfk" autoSubmit="true" readOnly="true"
+                                        partialTriggers="arcOldDocumentEmployeesfk">
+                            <f:validator binding="#{row.bindings.DisplayEmployeesFk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </af:panelBox>
+              <af:panelBox styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['ArcDocumentAttachment.sdi_ArcOldDocument59']}">
+                <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth" dimensionsFrom="children">
+                  <f:facet name="center">
+                    <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                        featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem">
+                      <f:facet name="secondaryToolbar">
+                        <af:toolbar id="tb1">
+                          <af:commandButton text="#{menu.resourceLabelMap['label.print']}" id="print1"
+                                            styleClass="printButton" immediate="true" disabled="#{!menu.selectAllowed}"
+                                            partialSubmit="true" icon="#{menu.printIcon}"
+                                            visible="#{menu.printVisible}">
+                            <af:showPrintablePageBehavior/>
+                          </af:commandButton>
+                          <af:spacer width="5"/>
+                        
+                                  <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="cb8"
+                                              immediate="true" partialSubmit="true" rendered="true"
+                                              text="#{menu.resourceLabelMap['label.excel']}"
+                                              styleClass="excelButton" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="ARC_DOCUMENT_ATTACHMENT" to="#{sessionScope.tableId}"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                          
+                                                    <af:spacer width="5" id="s1"/>
+
+                          <af:commandButton icon="#{menu.translationIcon}" id="translation2" immediate="true"
+                                            partialSubmit="true"
+                                            text="#{menu.resourceLabelMap['label.translation']}"
+                                            styleClass="printButton">
+                            <af:showPopupBehavior popupId="::ArcDocumentAttachmentPopup" triggerType="action"/>
+                          </af:commandButton>
+                        </af:toolbar>
+                      </f:facet>
+                      <af:table value="#{bindings.ArcDocumentAttachmentView1.collectionModel}"
+                                id="ARC_DOCUMENT_ATTACHMENT" styleClass="AFStretchWidth t50" var="row" varStatus="vs"
+                                rows="#{bindings.ArcDocumentAttachmentView1.rangeSize}"
+                                selectionListener="#{bindings.ArcDocumentAttachmentView1.collectionModel.makeCurrent}"
+                                selectedRowKeys="#{bindings.ArcDocumentAttachmentView1.collectionModel.selectedRow}"
+                                filterModel="#{bindings.ArcDocumentAttachmentView3CriteriaQuery.queryDescriptor}"
+                                queryListener="#{bindings.ArcDocumentAttachmentView3CriteriaQuery.processQuery}"
+                                partialTriggers=":::pc2:ARC_OLD_DOCUMENT" columnSelection="multiple"
+                                columnStretching="last" verticalGridVisible="false"
+                                emptyText="#{bindings.ArcDocumentAttachmentView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                rowSelection="single" fetchSize="#{bindings.ArcDocumentAttachmentView1.rangeSize}"
+                                displayRow="selected" editingMode="editAll" filterVisible="false" autoHeightRows="5"
+                                blockRowNavigationOnError="always" scrollPolicy="page">
+                        <af:column id="DocumentAttachmentPkC53" sortProperty="DocumentAttachmentPk"
+                                   headerText="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentAttachmentPk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="150"
+                                   align="center">
+                          <af:inputText value="#{row.bindings.DocumentAttachmentPk.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentAttachmentPk']}"
+                                        required="#{bindings.ArcDocumentAttachmentView1.hints.DocumentAttachmentPk.mandatory}"
+                                        columns="#{bindings.ArcDocumentAttachmentView1.hints.DocumentAttachmentPk.displayWidth}"
+                                        readOnly="true"
+                                        maximumLength="#{bindings.ArcDocumentAttachmentView1.hints.DocumentAttachmentPk.precision}"
+                                        id="arcDocumentAttachmentDocumentattachmentpk">
+                            <af:convertNumber groupingUsed="false"
+                                              pattern="#{row.bindings.DocumentAttachmentPk.format}"/>
+                            <f:validator binding="#{row.bindings.DocumentAttachmentPk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DocumentAttachTypeFkC55" sortProperty="DocumentAttachTypeFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentAttachTypeFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="200"
+                                   align="center" rendered="false">
+                          <af:panelGroupLayout id="pgl54DocumentAttachTypeFk" layout="horizontal">
+                            <af:inputListOfValues value="#{row.bindings.DocumentAttachTypeFk.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentAttachTypeFk']}"
+                                                  required="#{bindings.ArcDocumentAttachmentView1.hints.DocumentAttachTypeFk.mandatory}"
+                                                  columns="#{bindings.ArcDocumentAttachmentView1.hints.DocumentAttachTypeFk.displayWidth}"
+                                                  id="arcDocumentAttachmentDocumentattachtypefk"
+                                                  model="#{row.bindings.DocumentAttachTypeFk.listOfValuesModel}"
+                                                  autoSubmit="true" simple="true" readOnly="true"
+                                                  popupTitle="#{bindings.ArcDocumentAttachmentView1.hints.DocumentAttachTypeFk.label}"
+                                                  searchDesc="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentAttachTypeFk']}">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{row.bindings.DocumentAttachTypeFk.format}"/>
+                              <f:validator binding="#{row.bindings.DocumentAttachTypeFk.validator}"/>
+                            </af:inputListOfValues>
+                          </af:panelGroupLayout>
+                        </af:column>
+                        <af:column id="DisplayDocumentAttachTypeFkC56" sortProperty="DisplayDocumentAttachTypeFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcDocumentAttachment.DisplayDocumentAttachTypeFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="200">
+                          <af:inputText value="#{row.bindings.DisplayDocumentAttachTypeFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcDocumentAttachment.DisplayDocumentAttachTypeFk']}"
+                                        required="#{bindings.ArcDocumentAttachmentView1.hints.DisplayDocumentAttachTypeFk.mandatory}"
+                                        columns="#{bindings.ArcDocumentAttachmentView1.hints.DisplayDocumentAttachTypeFk.displayWidth}"
+                                        maximumLength="#{bindings.ArcDocumentAttachmentView1.hints.DisplayDocumentAttachTypeFk.precision}"
+                                        id="arcDocumentAttachmentDisplaydocumentattachtypefk" autoSubmit="true"
+                                        readOnly="true" partialTriggers="arcDocumentAttachmentDocumentattachtypefk">
+                            <f:validator binding="#{row.bindings.DisplayDocumentAttachTypeFk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DocumentSecurityFkC65" sortProperty="DocumentSecurityFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentSecurityFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="200"
+                                   align="center" rendered="false">
+                          <af:panelGroupLayout id="pgl64DocumentSecurityFk" layout="horizontal">
+                            <af:inputListOfValues value="#{row.bindings.DocumentSecurityFk.inputValue}"
+                                                  label="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentSecurityFk']}"
+                                                  required="#{bindings.ArcDocumentAttachmentView1.hints.DocumentSecurityFk.mandatory}"
+                                                  columns="#{bindings.ArcDocumentAttachmentView1.hints.DocumentSecurityFk.displayWidth}"
+                                                  id="arcDocumentAttachmentDocumentsecurityfk"
+                                                  model="#{row.bindings.DocumentSecurityFk.listOfValuesModel}"
+                                                  partialTriggers="arcDocumentAttachmentDocumentattachtypefk"
+                                                  autoSubmit="true" simple="true" readOnly="true"
+                                                  popupTitle="#{bindings.ArcDocumentAttachmentView1.hints.DocumentSecurityFk.label}"
+                                                  searchDesc="#{menu.resourceLabelMap['ArcDocumentAttachment.DocumentSecurityFk']}">
+                              <af:convertNumber groupingUsed="false"
+                                                pattern="#{row.bindings.DocumentSecurityFk.format}"/>
+                              <f:validator binding="#{row.bindings.DocumentSecurityFk.validator}"/>
+                            </af:inputListOfValues>
+                          </af:panelGroupLayout>
+                        </af:column>
+                        <af:column id="DisplayDocumentSecurityFkC66" sortProperty="DisplayDocumentSecurityFkSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcDocumentAttachment.DisplayDocumentSecurityFk']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="200">
+                          <af:inputText value="#{row.bindings.DisplayDocumentSecurityFk.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcDocumentAttachment.DisplayDocumentSecurityFk']}"
+                                        required="#{bindings.ArcDocumentAttachmentView1.hints.DisplayDocumentSecurityFk.mandatory}"
+                                        columns="#{bindings.ArcDocumentAttachmentView1.hints.DisplayDocumentSecurityFk.displayWidth}"
+                                        maximumLength="#{bindings.ArcDocumentAttachmentView1.hints.DisplayDocumentSecurityFk.precision}"
+                                        id="arcDocumentAttachmentDisplaydocumentsecurityfk" autoSubmit="true"
+                                        readOnly="true" partialTriggers="arcDocumentAttachmentDocumentsecurityfk">
+                            <f:validator binding="#{row.bindings.DisplayDocumentSecurityFk.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="DisplayDocumentAttachDescriptionC67"
+                                   sortProperty="DisplayDocumentAttachDescriptionSearch"
+                                   headerText="#{menu.resourceLabelMap['ArcDocumentAttachment.DisplayDocumentAttachDescription']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="300">
+                          <af:inputText value="#{row.bindings.DisplayDocumentAttachDescription.inputValue}"
+                                        label="#{menu.resourceLabelMap['ArcDocumentAttachment.DisplayDocumentAttachDescription']}"
+                                        required="#{bindings.ArcDocumentAttachmentView1.hints.DisplayDocumentAttachDescription.mandatory}"
+                                        columns="#{bindings.ArcDocumentAttachmentView1.hints.DisplayDocumentAttachDescription.displayWidth}"
+                                        maximumLength="#{bindings.ArcDocumentAttachmentView1.hints.DisplayDocumentAttachDescription.precision}"
+                                        id="arcDocumentAttachmentDisplaydocumentattachdescription" autoSubmit="true"
+                                        readOnly="true" partialTriggers="arcDocumentAttachmentDocumentsecurityfk">
+                            <f:validator binding="#{row.bindings.DisplayDocumentAttachDescription.validator}"/>
+                          </af:inputText>
+                        </af:column>
+                        <af:column id="WaterMarkFlC70" sortProperty="WaterMarkFl" align="center"
+                                   headerText="#{menu.resourceLabelMap['ArcDocumentAttachment.WaterMarkFl']}"
+                                   sortable="true" filterable="true" filterFeatures="caseInsensitive" width="70">
+                          <af:commandImageLink actionListener="#{arcDocumentView.untick}" disabled="true"
+                                               icon="/images/tick.png" id="check21" partialSubmit="true"
+                                               partialTriggers="check21 uncheck21"
+                                               visible="#{row.bindings.WaterMarkFl.inputValue == '1'}">
+                            <f:attribute name="iteratorName" value="ArcDocumentAttachmentView1Iterator"/>
+                            <f:attribute name="attributeName" value="WaterMarkFl"/>
+                          </af:commandImageLink>
+                          <af:commandImageLink actionListener="#{arcDocumentView.tick}" disabled="true"
+                                               icon="/images/untick.png" id="uncheck21" partialSubmit="true"
+                                               partialTriggers="check21 uncheck21"
+                                               visible="#{row.bindings.WaterMarkFl.inputValue== null or row.bindings.WaterMarkFl.inputValue == '0'}">
+                            <f:attribute name="iteratorName" value="ArcDocumentAttachmentView1Iterator"/>
+                            <f:attribute name="attributeName" value="WaterMarkFl"/>
+                          </af:commandImageLink>
+                        </af:column>
+                        <af:column align="center" headerText="#{menu.resourceLabelMap['label.download']}" id="c8"
+                                   visible="#{requestScope.hideColumn ne true}" width="150">
+                          <af:commandButton disabled="#{row.bindings.FilePath.inputValue == null}"
+                                            icon="/images/get_down.png" id="cb7" partialSubmit="true"
+                                            text="#{menu.resourceLabelMap['label.download']}">
+                            <af:fileDownloadActionListener method="#{arcDocumentView.downloadDocumentAttachment}"/>
+                          </af:commandButton>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                  </f:facet>
+                </af:panelStretchLayout>
+              </af:panelBox>
+              <af:panelBox  id="pb1" styleClass="AFStretchWidth" text="#{menu.resourceLabelMap['ArcDocumentAttachment.arcView']}">
+                <af:panelGroupLayout partialTriggers="pc1:ARC_DOCUMENT_ATTACHMENT" styleClass="AFStretchWidth"
+                                     visible="#{bindings.FilePath.inputValue != null}" id="pgl1">
+                  <erplib:viewer addWaterMark="${bindings.WaterMarkFl.inputValue}"
+                                 filePath="${bindings.FilePath.inputValue}"/>
+                </af:panelGroupLayout>
+              </af:panelBox>
+              <af:popup contentDelivery="lazyUncached" id="ArcFilesLocationTlPopup">
+                <af:dialog id="ArcFilesLocationTlDialog" type="okCancel">
+                  <af:panelTabbed dimensionsFrom="disclosedChild" id="pt1" styleClass="AFStretchWidth">
+                    <af:showDetailItem id="sdi1" styleClass="AFStretchWidth"
+                                       text="#{menu.resourceLabelMap['label.translation']}">
+                      <af:panelStretchLayout dimensionsFrom="children" id="psl31" styleClass="AFStretchWidth">
+                        <f:facet name="center">
+                          <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                              id="pc17" styleClass="AFStretchWidth">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="tb2">
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print2"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.print']}"
+                                                  styleClass="printButton" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer id="s5" width="5"/>
+                         
+                                
+                                
+                                        <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel2"
+                                              immediate="true" partialSubmit="true" rendered="true"
+                                              text="#{menu.resourceLabelMap['label.excel']}"
+                                              styleClass="excelButton" visible="#{menu.excelVisible}">
+                              <af:setPropertyListener from="ArcFilesLocationTl1" to="#{sessionScope.tableId}"
+                                                      type="action"/>
+                              <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                            </af:commandButton>
+                                <af:spacer id="s6" width="5"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                      partialTriggers=":::pc3:t2" columnStretching="last" displayRow="selected"
+                                      editingMode="editAll"
+                                      emptyText="#{bindings.ArcFilesLocationTlView1.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                      fetchSize="#{bindings.ArcFilesLocationTlView1.rangeSize}"
+                                      filterModel="#{bindings.ArcFilesLocationTlView1Query.queryDescriptor}"
+                                      filterVisible="false" id="ArcFilesLocationTl1"
+                                      queryListener="#{bindings.ArcFilesLocationTlView1Query.processQuery}"
+                                      rowBandingInterval="1" rowSelection="single"
+                                      rows="#{bindings.ArcFilesLocationTlView1.rangeSize}" scrollPolicy="page"
+                                      selectedRowKeys="#{bindings.ArcFilesLocationTlView1.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.ArcFilesLocationTlView1.collectionModel.makeCurrent}"
+                                      styleClass="AFStretchWidth"
+                                      value="#{bindings.ArcFilesLocationTlView1.collectionModel}" var="row"
+                                      varStatus="vs" verticalGridVisible="false">
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesLocationTl.LanguagesFk']}"
+                                         id="LanguagesFkC21" sortProperty="LanguagesFk" sortable="true" width="150">
+                                <af:selectOneChoice id="soc1"
+                                                    label="#{menu.resourceLabelMap['ArcFilesLocationTl.LanguagesFk']}"
+                                                    readOnly="true"
+                                                    required="#{bindings.ArcFilesLocationTlView1.hints.LanguagesFk.mandatory}"
+                                                    value="#{row.bindings.LanguagesFk.inputValue}">
+                                  <f:selectItems id="si1" value="#{row.bindings.LanguagesFk.items}"/>
+                                  <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"
+                                         id="FileLocationDescC20" showRequired="true"
+                                         sortProperty="FileLocationDescSearch" sortable="true">
+                                <af:inputText autoSubmit="true"
+                                              columns="#{bindings.ArcFilesLocationTlView1.hints.FileLocationDesc.displayWidth}"
+                                              id="it4"
+                                              label="#{menu.resourceLabelMap['ArcFilesLocationTl.FileLocationDesc']}"
+                                              maximumLength="#{bindings.ArcFilesLocationTlView1.hints.FileLocationDesc.precision}"
+                                              required="true" value="#{row.bindings.FileLocationDesc.inputValue}"
+                                              readOnly="true">
+                                  <f:validator binding="#{row.bindings.FileLocationDesc.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+              <af:popup contentDelivery="lazyUncached" id="ArcOldDocumentPopup">
+                <af:dialog id="ArcOldDocumentDialog" title="" type="okCancel">
+                  <af:panelTabbed id="pt3" styleClass="AFStretchWidth">
+                    <af:showDetailItem id="sdi2" styleClass="AFStretchWidth"
+                                       text="#{menu.resourceLabelMap['label.translation']}">
+                      <af:panelStretchLayout dimensionsFrom="children" id="psl98" styleClass="AFStretchWidth">
+                        <f:facet name="center">
+                          <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                              id="pc83" styleClass="AFStretchWidth">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="tb3">
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="print3"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.print']}"
+                                                  styleClass="printButton" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer id="s2" width="5"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="excel3"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.excel']}"
+                                                  styleClass="excelButton" visible="#{menu.excelVisible}">
+                                  <af:setPropertyListener from="ArcOldDocumentTl1" to="#{sessionScope.tableId}"
+                                                          type="action"/>
+                                  <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                </af:commandButton>
+                                <af:spacer id="s3" width="5"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                      columnStretching="last" displayRow="selected" editingMode="editAll"
+                                      emptyText="#{bindings.ArcOldDocumentTlView2.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                      fetchSize="#{bindings.ArcOldDocumentTlView2.rangeSize}"
+                                      filterModel="#{bindings.ArcOldDocumentTlView3Query.queryDescriptor}"
+                                      filterVisible="false" id="ArcOldDocumentTl1"
+                                      queryListener="#{bindings.ArcOldDocumentTlView3Query.processQuery}"
+                                      rowBandingInterval="1" rowSelection="single"
+                                      rows="#{bindings.ArcOldDocumentTlView2.rangeSize}" scrollPolicy="page"
+                                      selectedRowKeys="#{bindings.ArcOldDocumentTlView2.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.ArcOldDocumentTlView2.collectionModel.makeCurrent}"
+                                      styleClass="AFStretchWidth"
+                                      value="#{bindings.ArcOldDocumentTlView2.collectionModel}" var="row" varStatus="vs"
+                                      verticalGridVisible="false">
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcOldDocumentTl.LanguagesFk']}"
+                                         id="LanguagesFkC37" sortProperty="LanguagesFk" sortable="true" width="100">
+                                <af:selectOneChoice id="soc3" label="#{row.bindings.LanguagesFk.label}" readOnly="true"
+                                                    required="#{bindings.ArcOldDocumentTlView2.hints.LanguagesFk.mandatory}"
+                                                    value="#{row.bindings.LanguagesFk.inputValue}">
+                                  <f:selectItems id="si3" value="#{row.bindings.LanguagesFk.items}"/>
+                                  <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcOldDocumentTl.DocumentSubject']}"
+                                         id="DocumentSubjectC34" showRequired="true" sortProperty="DocumentSubject"
+                                         sortable="true" width="300">
+                                <af:inputText autoSubmit="true"
+                                              columns="#{bindings.ArcOldDocumentTlView2.hints.DocumentSubject.displayWidth}"
+                                              id="arcOldDocumentTlDocumentsubject" readOnly="true"
+                                              label="#{bindings.ArcOldDocumentTlView2.hints.DocumentSubject.label}"
+                                              maximumLength="#{bindings.ArcOldDocumentTlView2.hints.DocumentSubject.precision}"
+                                              required="true" value="#{row.bindings.DocumentSubject.inputValue}">
+                                  <f:validator binding="#{row.bindings.DocumentSubject.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcOldDocumentTl.DocumentComment']}"
+                                         id="DocumentCommentC35" sortProperty="DocumentComment" sortable="true"
+                                         width="300">
+                                <af:inputText columns="#{bindings.ArcOldDocumentTlView2.hints.DocumentComment.displayWidth}"
+                                              id="arcOldDocumentTlDocumentcomment" readOnly="true"
+                                              label="#{bindings.ArcOldDocumentTlView2.hints.DocumentComment.label}"
+                                              maximumLength="#{bindings.ArcOldDocumentTlView2.hints.DocumentComment.precision}"
+                                              required="#{bindings.ArcOldDocumentTlView2.hints.DocumentComment.mandatory}"
+                                              value="#{row.bindings.DocumentComment.inputValue}">
+                                  <f:validator binding="#{row.bindings.DocumentComment.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                              <af:column align="center" filterFeatures="caseInsensitive" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcOldDocumentTl.DocumentDescription']}"
+                                         id="DocumentDescriptionC36" sortProperty="DocumentDescription" sortable="true">
+                                <af:inputText columns="#{bindings.ArcOldDocumentTlView2.hints.DocumentDescription.displayWidth}"
+                                              id="arcOldDocumentTlDocumentdescription" readOnly="true"
+                                              label="#{bindings.ArcOldDocumentTlView2.hints.DocumentDescription.label}"
+                                              maximumLength="#{bindings.ArcOldDocumentTlView2.hints.DocumentDescription.precision}"
+                                              required="#{bindings.ArcOldDocumentTlView2.hints.DocumentDescription.mandatory}"
+                                              value="#{row.bindings.DocumentDescription.inputValue}">
+                                  <f:validator binding="#{row.bindings.DocumentDescription.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+              <af:popup contentDelivery="lazyUncached" id="ArcDocumentAttachmentPopup">
+                <af:dialog id="ArcDocumentAttachmentDialog" title="" type="okCancel">
+                  <af:panelTabbed id="pt2" styleClass="AFStretchWidth">
+                    <af:showDetailItem id="sdi3" styleClass="AFStretchWidth"
+                                       text="#{menu.resourceLabelMap['label.translation']}">
+                      <af:panelStretchLayout dimensionsFrom="children" id="psl4" styleClass="AFStretchWidth">
+                        <f:facet name="center">
+                          <af:panelCollection featuresOff="statusBar freeze viewMenu formatMenu wrapToolbarItem"
+                                              id="pc4" styleClass="AFStretchWidth">
+                            <f:facet name="secondaryToolbar">
+                              <af:toolbar id="t4">
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.printIcon}" id="cb5"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.print']}"
+                                                  styleClass="printButton" visible="#{menu.printVisible}">
+                                  <af:showPrintablePageBehavior/>
+                                </af:commandButton>
+                                <af:spacer id="s10" width="5"/>
+                                <af:commandButton disabled="#{!menu.selectAllowed}" icon="#{menu.excelIcon}" id="cb6"
+                                                  immediate="true" partialSubmit="true"
+                                                  text="#{menu.resourceLabelMap['label.excel']}"
+                                                  styleClass="excelButton" visible="#{menu.excelVisible}">
+                                  <af:setPropertyListener from="ArcDocumentAttachmentTl" to="#{sessionScope.tableId}"
+                                                          type="action"/>
+                                  <af:fileDownloadActionListener method="#{menu.exportToExcel}"/>
+                                </af:commandButton>
+                                <af:spacer id="s11" width="5"/>
+                              </af:toolbar>
+                            </f:facet>
+                            <af:table autoHeightRows="5" blockRowNavigationOnError="always" columnSelection="multiple"
+                                      columnStretching="last" displayRow="selected" editingMode="editAll"
+                                      emptyText="#{bindings.ArcDocumentAttachmentTlView3.viewable ? menu.emptyText : menu.accessDeniedText}"
+                                      fetchSize="#{bindings.ArcDocumentAttachmentTlView3.rangeSize}"
+                                      filterModel="#{bindings.ArcDocumentAttachmentTlView3Query.queryDescriptor}"
+                                      filterVisible="false" id="ArcDocumentAttachmentTl"
+                                      queryListener="#{bindings.ArcDocumentAttachmentTlView3Query.processQuery}"
+                                      rowSelection="single" rows="#{bindings.ArcDocumentAttachmentTlView3.rangeSize}"
+                                      scrollPolicy="page"
+                                      selectedRowKeys="#{bindings.ArcDocumentAttachmentTlView3.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.ArcDocumentAttachmentTlView3.collectionModel.makeCurrent}"
+                                      value="#{bindings.ArcDocumentAttachmentTlView3.collectionModel}" var="row"
+                                      varStatus="vs" verticalGridVisible="false">
+                              <af:column align="center" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcDocumentAttachmentTl.LanguagesFk']}"
+                                         id="LanguagesFkc3" sortProperty="LanguagesFk" sortable="true">
+                                <af:selectOneChoice id="soc2" label="#{row.bindings.LanguagesFk.label}" readOnly="true"
+                                                    required="#{bindings.ArcDocumentAttachmentTlView3.hints.LanguagesFk.mandatory}"
+                                                    value="#{row.bindings.LanguagesFk.inputValue}">
+                                  <f:selectItems id="si2" value="#{row.bindings.LanguagesFk.items}"/>
+                                  <f:validator binding="#{row.bindings.LanguagesFk.validator}"/>
+                                </af:selectOneChoice>
+                              </af:column>
+                              <af:column align="center" filterable="true"
+                                         headerText="#{menu.resourceLabelMap['ArcDocumentAttachmentTl.DocumentAttachDescription']}"
+                                         id="DocumentAttachDescriptionc2" sortProperty="DocumentAttachDescription"
+                                         sortable="true">
+                                <af:inputText autoSubmit="true"
+                                              columns="#{bindings.ArcDocumentAttachmentTlView3.hints.DocumentAttachDescription.displayWidth}"
+                                              id="DocumentAttachDescriptionit2" readOnly="true"
+                                              label="#{bindings.ArcDocumentAttachmentTlView3.hints.DocumentAttachDescription.label}"
+                                              maximumLength="#{bindings.ArcDocumentAttachmentTlView3.hints.DocumentAttachDescription.precision}"
+                                              required="#{bindings.ArcDocumentAttachmentTlView3.hints.DocumentAttachDescription.mandatory}"
+                                              value="#{row.bindings.DocumentAttachDescription.inputValue}">
+                                  <f:validator binding="#{row.bindings.DocumentAttachDescription.validator}"/>
+                                </af:inputText>
+                              </af:column>
+                            </af:table>
+                          </af:panelCollection>
+                        </f:facet>
+                      </af:panelStretchLayout>
+                    </af:showDetailItem>
+                  </af:panelTabbed>
+                </af:dialog>
+              </af:popup>
+            </af:panelGroupLayout>
+          </f:facet>
+        </af:pageTemplate>
+      </af:form>
+    </af:document>
+  </f:view>
+</jsp:root>

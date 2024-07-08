@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ArcFilesLocationMasterArcFilesLocationDetailLink"
+  Version="12.2.1.12.24"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="arc.model.vl.ArcFilesLocationMasterArcFilesLocationDetailLink_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="ArcFilesLocationMasterRVO"
+    Cardinality="1"
+    Source="true"
+    Owner="arc.model.ro.ArcFilesLocationMasterRVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcFilesLocationMasterRVO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.ro.ArcFilesLocationMasterRVO.FilesLocationPk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ArcFilesLocationDetailRVO"
+    Cardinality="-1"
+    Owner="arc.model.ro.ArcFilesLocationDetailRVO">
+    <DesignTime>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="ArcFilesLocationDetailRVO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="arc.model.ro.ArcFilesLocationDetailRVO.MainLocationFk"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="arc.view.scrlabels"/>
+  </ResourceBundle>
+</ViewLink>

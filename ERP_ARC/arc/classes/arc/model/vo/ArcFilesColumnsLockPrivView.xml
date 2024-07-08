@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<ViewObject BindingStyle="JDBC" CustomQuery="false" FromListFlags="1"
+    InheritPersonalization="merge" Name="ArcFilesColumnsLockPrivView"
+    PageIterMode="Full" SelectAllAttributes="false" SelectListFlags="1"
+    Version="12.2.1.16.48" WhereFlags="1" xmlns="http://xmlns.oracle.com/bc4j">
+    <EntityUsage Entity="arc.model.eo.ArcFilesColumnsLockPriv" Name="ArcFilesColumnsLockPriv"/>
+    <ViewAttribute AliasName="FILES_COLUMNS_LOCK_PRIV_PK"
+        EntityAttrName="FilesColumnsLockPrivPk"
+        EntityUsage="ArcFilesColumnsLockPriv" IsNotNull="true"
+        Name="FilesColumnsLockPrivPk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.FilesColumnsLockPrivPk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="FILES_COLUMNS_LOCKERS_FK"
+        EntityAttrName="FilesColumnsLockersFk"
+        EntityUsage="ArcFilesColumnsLockPriv"
+        Name="FilesColumnsLockersFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.FilesColumnsLockersFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="PRIVILEGE_LEVEL_FK"
+        EntityAttrName="PrivilegeLevelFk"
+        EntityUsage="ArcFilesColumnsLockPriv" Name="PrivilegeLevelFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.PrivilegeLevelFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DEPARTMENTS_FK"
+        EntityAttrName="DepartmentsFk"
+        EntityUsage="ArcFilesColumnsLockPriv" Name="DepartmentsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.DepartmentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="GROUPS_FK" EntityAttrName="GroupsFk"
+        EntityUsage="ArcFilesColumnsLockPriv" Name="GroupsFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.GroupsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="START_DATE" EntityAttrName="StartDate"
+        EntityUsage="ArcFilesColumnsLockPriv" Name="StartDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.StartDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="END_DATE" EntityAttrName="EndDate"
+        EntityUsage="ArcFilesColumnsLockPriv" Name="EndDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.EndDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USERS_FK" EntityAttrName="UsersFk"
+        EntityUsage="ArcFilesColumnsLockPriv" Name="UsersFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.UsersFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATED_BY" EntityAttrName="CreatedBy"
+        EntityUsage="ArcFilesColumnsLockPriv" Name="CreatedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreatedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="CREATION_DATE"
+        EntityAttrName="CreationDate"
+        EntityUsage="ArcFilesColumnsLockPriv" Name="CreationDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.CreationDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_BY" EntityAttrName="ModifiedBy"
+        EntityUsage="ArcFilesColumnsLockPriv" Name="ModifiedBy" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedBy']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="MODIFIED_DATE"
+        EntityAttrName="ModifiedDate"
+        EntityUsage="ArcFilesColumnsLockPriv" Name="ModifiedDate" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.ModifiedDate']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="USER_DEPARTMENT_FK"
+        EntityAttrName="UserDepartmentFk"
+        EntityUsage="ArcFilesColumnsLockPriv" Name="UserDepartmentFk" PrecisionRule="true">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['label.UserDepartmentFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayFilesColumnsLockersFk"
+        ColumnType="CHAR"
+        Expression="get_FILES_COLUMNS_LOCK_PRIV_FI(FILES_COLUMNS_LOCK_PRIV_PK, ?)"
+        Name="DisplayFilesColumnsLockersFk" PrecisionRule="true"
+        SQLType="VARCHAR2" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.FilesColumnsLockersFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayFilesColumnsLockersFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayFilesColumnsLockersFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR2" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.FilesColumnsLockersFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayPrivilegeLevelFk" ColumnType="CHAR"
+        Expression="get_FILES_COLUMNS_LOCK_PRIV_PR(FILES_COLUMNS_LOCK_PRIV_PK, ?)"
+        Name="DisplayPrivilegeLevelFk" PrecisionRule="true"
+        SQLType="VARCHAR2" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.PrivilegeLevelFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayPrivilegeLevelFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayPrivilegeLevelFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR2" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.PrivilegeLevelFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDepartmentsFk" ColumnType="CHAR"
+        Expression="get_FILES_COLUMNS_LOCK_PRIV_DE(FILES_COLUMNS_LOCK_PRIV_PK, ?)"
+        Name="DisplayDepartmentsFk" PrecisionRule="true"
+        SQLType="VARCHAR2" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.DepartmentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayDepartmentsFkSearch"
+        ColumnType="CHAR" IsPersistent="false" IsSelected="false"
+        Name="DisplayDepartmentsFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR2" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.DepartmentsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayGroupsFk" ColumnType="CHAR"
+        Expression="get_FILES_COLUMNS_LOCK_PRIV_GR(FILES_COLUMNS_LOCK_PRIV_PK, ?)"
+        Name="DisplayGroupsFk" PrecisionRule="true" SQLType="VARCHAR2" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.GroupsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayGroupsFkSearch" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayGroupsFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR2" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.GroupsFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayUsersFk" ColumnType="CHAR"
+        Expression="get_FILES_COLUMNS_LOCK_PRIV_US(FILES_COLUMNS_LOCK_PRIV_PK, ?)"
+        Name="DisplayUsersFk" PrecisionRule="true" SQLType="VARCHAR2" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.UsersFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <ViewAttribute AliasName="DisplayUsersFkSearch" ColumnType="CHAR"
+        IsPersistent="false" IsSelected="false"
+        Name="DisplayUsersFkSearch" PrecisionRule="true"
+        SQLType="VARCHAR2" Type="java.lang.String">
+        <Properties>
+            <SchemaBasedProperties>
+                <LABEL ResId="#{menu.resourceLabelMap['ArcFilesColumnsLockPriv.UsersFk']}"/>
+                <DISPLAYWIDTH Value="20"/>
+            </SchemaBasedProperties>
+        </Properties>
+    </ViewAttribute>
+    <Variable Kind="where" Name="p_lang" Type="java.lang.Integer">
+        <AttrArray Name="ExtendedDataInts">
+            <Item Value="0"/>
+            <Item Value="1"/>
+            <Item Value="2"/>
+            <Item Value="3"/>
+            <Item Value="4"/>
+        </AttrArray>
+        <Properties>
+            <SchemaBasedProperties>
+                <DISPLAYHINT Value="Hide"/>
+            </SchemaBasedProperties>
+        </Properties>
+        <TransientExpression>gen.common.GenLib.getLanguageNo()</TransientExpression>
+    </Variable>
+    <ResourceBundle>
+        <PropertiesBundle PropertiesFile="arc.view.scrlabels"/>
+    </ResourceBundle>
+</ViewObject>
+<!---->

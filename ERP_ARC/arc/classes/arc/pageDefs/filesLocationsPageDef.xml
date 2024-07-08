@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.2.1.12.24" id="filesLocationsPageDef"
+                Package="arc.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ArcFilesLocationMasterRVO" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesLocationMasterRVOIterator"/>
+    <iterator Binds="ArcFilesLocationView4" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesLocationView4Iterator"/>
+    <searchRegion Binds="ArcFilesLocationView4Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ArcFilesLocationView4Query"/>
+    <iterator Binds="ArcFilesLocationDepartmentRVO" RangeSize="25" DataControl="AppModuleDataControl"
+              id="ArcFilesLocationDepartmentRVOIterator"/>
+    <searchRegion Binds="ArcFilesLocationDepartmentRVOIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ArcFilesLocationDepartmentRVOQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ArcFilesLocationMasterRVOIterator" id="ArcFilesLocationMasterRVO">
+      <nodeDefinition DefName="arc.model.ro.ArcFilesLocationMasterRVO" Name="ArcFilesLocationMasterRVO0">
+        <AttrNames>
+          <Item Value="FilesLocationPk"/>
+          <Item Value="DisplayFilesLocationPk"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="ArcFilesLocationDetailRVO"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="arc.model.ro.ArcFilesLocationDetailRVO" Name="ArcFilesLocationMasterRVO1">
+        <AttrNames>
+          <Item Value="FilesLocationPk"/>
+          <Item Value="DisplayFilesLocationPk"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="FilesLocationPkArcFilesLocationDetailRVO"/>
+        </Accessors>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArcFilesLocationView4Iterator" id="ArcFilesLocationView4">
+      <nodeDefinition DefName="arc.model.vo.ArcFilesLocationView" Name="ArcFilesLocationView40">
+        <AttrNames>
+          <Item Value="FilesLocationPk"/>
+          <Item Value="DisplayFileLocationDesc"/>
+          <Item Value="DisplayFileLocationDescSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="ArcFilesLocationDepartmentRVOIterator" id="ArcFilesLocationDepartmentRVO">
+      <nodeDefinition DefName="arc.model.ro.ArcFilesLocationDepartmentRVO" Name="ArcFilesLocationDepartmentRVO0">
+        <AttrNames>
+          <Item Value="FilesLocationPk"/>
+          <Item Value="DisplayFilesLocationPk"/>
+          <Item Value="DisplayFilesLocationPkSearch"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

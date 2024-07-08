@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<Entity AliasName="ArcFilesLocationPrivilege" BindingStyle="JDBC"
+    DBObjectName="ARC_FILES_LOCATION_PRIVILEGE" DBObjectType="table"
+    InheritPersonalization="merge" Name="ArcFilesLocationPrivilege"
+    RowClass="arc.model.eo.ArcFilesLocationPrivilegeImpl"
+    Version="12.2.1.16.48" xmlns="http://xmlns.oracle.com/bc4j">
+    <DesignTime>
+        <Attr Name="_codeGenFlag2" Value="Access"/>
+        <Attr Name="_isCodegen" Value="true"/>
+    </DesignTime>
+    <Attribute ColumnName="FILES_LOCATION_PRIVILEGE_PK"
+        ColumnType="NUMBER" IsNotNull="false"
+        Name="FilesLocationPrivilegePk" PrimaryKey="true"
+        SQLType="NUMERIC" TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="FILES_LOCATION_FK" ColumnType="NUMBER"
+        Name="FilesLocationFk" SQLType="NUMERIC"
+        TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="PRIVILEGE_LEVEL_FK" ColumnType="NUMBER"
+        Name="PrivilegeLevelFk" SQLType="NUMERIC"
+        TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="DEPARTMENTS_FK" ColumnType="NUMBER"
+        Name="DepartmentsFk" SQLType="NUMERIC"
+        TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="GROUPS_FK" ColumnType="NUMBER"
+        Name="GroupsFk" SQLType="NUMERIC"
+        TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="START_DATE" ColumnType="DATE"
+        Name="StartDate" SQLType="DATE"
+        TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.sql.Date"/>
+    <Attribute ColumnName="END_DATE" ColumnType="DATE" Name="EndDate"
+        SQLType="DATE" TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.sql.Date"/>
+    <Attribute ColumnName="USERS_FK" ColumnType="NUMBER" Name="UsersFk"
+        SQLType="NUMERIC" TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATED_BY" ColumnType="NUMBER"
+        Name="CreatedBy" SQLType="NUMERIC"
+        TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="CREATION_DATE" ColumnType="TIMESTAMP"
+        Name="CreationDate" SQLType="TIMESTAMP"
+        TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="MODIFIED_BY" ColumnType="NUMBER"
+        Name="ModifiedBy" SQLType="NUMERIC"
+        TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.math.BigDecimal"/>
+    <Attribute ColumnName="MODIFIED_DATE" ColumnType="TIMESTAMP"
+        Name="ModifiedDate" SQLType="TIMESTAMP"
+        TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.sql.Timestamp"/>
+    <Attribute ColumnName="USER_DEPARTMENT_FK" ColumnType="NUMBER"
+        Name="UserDepartmentFk" SQLType="NUMERIC"
+        TableName="ARC_FILES_LOCATION_PRIVILEGE" Type="java.math.BigDecimal"/>
+    <Key Name="ArcFileLocationPrivilegPk" PrimaryKey="true">
+        <DesignTime>
+            <Attr Name="_DBObjectName" Value="ARC_FILE_LOCATION_PRIVILEG_PK"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesLocationPrivilege.FilesLocationPrivilegePk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesLocationPrivilFk1">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="ARC_FILE_LOCATION_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_LOCATION_PRIVIL_FK1"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesLocationPrivilege.FilesLocationFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesLocationPrivilFk2">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SYSTEM_LOOKUP_VALUES_REF_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_LOCATION_PRIVIL_FK2"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesLocationPrivilege.PrivilegeLevelFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesLocationPrivilFk3">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SSO_OPERATIONS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_LOCATION_PRIVIL_FK3"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesLocationPrivilege.GroupsFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesLocationPrivilFk4">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="SSO_USERS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_LOCATION_PRIVIL_FK4"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesLocationPrivilege.UsersFk"/>
+        </AttrArray>
+    </Key>
+    <Key Name="ArcFilesLocationPrivilFk5">
+        <DesignTime>
+            <Attr Name="_referencedKey" Value="HCM_DEPARTMENTS_PK"/>
+            <Attr Name="_isForeign" Value="true"/>
+            <Attr Name="_DBObjectName" Value="ARC_FILES_LOCATION_PRIVIL_FK5"/>
+        </DesignTime>
+        <AttrArray Name="Attributes">
+            <Item Value="arc.model.eo.ArcFilesLocationPrivilege.DepartmentsFk"/>
+        </AttrArray>
+    </Key>
+</Entity>
+<!---->
